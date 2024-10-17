@@ -4,4 +4,5 @@
 format: jb-book
 root: intro
 chapters:
-- file: thermodynamics
+- file: 1. Gas laws
+- file: 2. Thermodynamics (i)
