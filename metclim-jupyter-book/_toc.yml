@@ -6,3 +6,4 @@ root: intro
 chapters:
 - file: 1. Gas laws
 - file: 2. Thermodynamics (i)
+- file: 3. Thermodynamics (ii)
