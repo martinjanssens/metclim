@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome &#8212; Lecture notes - Meteorology &amp; Climate</title>
+    <title>Truncated fundamentals of water/air systems &#8212; Lecture notes - Meteorology &amp; Climate</title>
   
   
   
@@ -59,10 +59,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'S1. Moist thermodynamics';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. Gas laws" href="1.%20Gas%20laws.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +144,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -170,8 +169,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Welcome
                 </a>
             </li>
@@ -179,7 +178,6 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1.%20Gas%20laws.html">1. Gas laws</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.%20Thermodynamics%20%28i%29.html">2. Thermodynamics (i)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.%20Thermodynamics%20%28ii%29.html">3. Thermodynamics (ii) - Moist thermodynamics</a></li>
 </ul>
 
     </div>
@@ -251,7 +249,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FS1. Moist thermodynamics.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +279,7 @@
       
       
       
-      <li><a href="_sources/intro.ipynb" target="_blank"
+      <li><a href="_sources/S1. Moist thermodynamics.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -365,7 +363,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome</h1>
+    <h1>Truncated fundamentals of water/air systems</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -375,7 +373,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lectures">Lectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-mixture-of-dry-air-and-water-vapour-liquid-and-solid">A mixture of dry air and water vapour, liquid and solid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium">Equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triple-point">Triple point</a></li>
 </ul>
             </nav>
         </div>
@@ -387,19 +387,52 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome">
-<h1>Welcome<a class="headerlink" href="#welcome" title="Link to this heading">#</a></h1>
-<p>Welcome to our course on Meteorology &amp; Climate (<a class="reference external" href="https://studyhandbook.wur.nl/modules/MAQ21806?type=Cursory">MAQ21806</a>)!</p>
-<p>These notes aim to help you through some theoretical developments in the course. They are a work in progress, and for this year, they only cover the lectures on thermodynamics and climate. The notes offer an annotated summary of my own derivations, and are hopefully helpful to clarify concepts covered more rapdily during lectures.</p>
-<section id="lectures">
-<h2>Lectures<a class="headerlink" href="#lectures" title="Link to this heading">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="1.%20Gas%20laws.html">1. Gas laws</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2.%20Thermodynamics%20%28i%29.html">2. Thermodynamics (i)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3.%20Thermodynamics%20%28ii%29.html">3. Thermodynamics (ii) - Moist thermodynamics</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="truncated-fundamentals-of-water-air-systems">
+<h1>Truncated fundamentals of water/air systems<a class="headerlink" href="#truncated-fundamentals-of-water-air-systems" title="Link to this heading">#</a></h1>
+<section id="a-mixture-of-dry-air-and-water-vapour-liquid-and-solid">
+<h2>A mixture of dry air and water vapour, liquid and solid<a class="headerlink" href="#a-mixture-of-dry-air-and-water-vapour-liquid-and-solid" title="Link to this heading">#</a></h2>
+<p>Such multi-phase cloudy air mixtures are called “heterogeneous”. This means that we no longer know the full state with only two independent variables: E.g. for dry air (or moist unsaturated air), knowing <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span> (or <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T_v\)</span>) determined the mass (through the gas law), as well as the maximum work that could be done – the <a class="reference external" href="https://en.wikipedia.org/wiki/Gibbs_free_energy">Gibbs energy potential</a> <span class="math notranslate nohighlight">\(G(p,T) = U + pV - TS\)</span>. In a heterogneeous system, we now need to know in addition how much there is of each phase (<span class="math notranslate nohighlight">\(q_v\)</span>, <span class="math notranslate nohighlight">\(q_l\)</span>, <span class="math notranslate nohighlight">\(q_s\)</span>), to determine the state. Systems (like the water vapour system), which can lose mass within the control volume to another phase are called “open”, even if they are “homogeneous”, in the sense that the water vapour phase consists of a single phase.</p>
+<p>So, for any “extensive property” <span class="math notranslate nohighlight">\(Z(p,T,m_d,m_v,m_c) = m_dz_d + m_vz_v + m_cz_c\)</span><a class="footnote-reference brackets" href="#fncond" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, e.g. <span class="math notranslate nohighlight">\(G\)</span>, internal energy <span class="math notranslate nohighlight">\(U\)</span> or enthalpy <span class="math notranslate nohighlight">\(H\)</span>, if the heterogeneous system is closed:</p>
+<div class="math notranslate nohighlight" id="equation-dz-gen">
+<span class="eqno">()<a class="headerlink" href="#equation-dz-gen" title="Link to this equation">#</a></span>\[
+ dZ = \left(\frac{\partial Z}{\partial T}\right)_{p,m} dT + \left(\frac{\partial Z}{\partial p}\right)_{T,m} dp + (z_v - z_c)dm_v
+\]</div>
+<p>Where we took:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   \left(\frac{\partial Z}{\partial T}\right)_{p,m} dT &amp; = m_d \left(\frac{\partial z_d}{\partial T}\right)_{p,m} dT + m_v \left(\frac{\partial z_v}{\partial T}\right)_{p,m} dT + m_c \left(\frac{\partial z_c}{\partial T}\right)_{p,m} dT \\
+   \left(\frac{\partial Z}{\partial p}\right)_{T,m} dp &amp; = m_d \left(\frac{\partial z_d}{\partial p}\right)_{T,m} dp + m_v \left(\frac{\partial z_v}{\partial p}\right)_{T,m} dp + m_c \left(\frac{\partial z_c}{\partial p}\right)_{T,m} dp \\
+   d m_d &amp; = 0 \\
+   d m_v &amp; = - dm_c
+\end{split}\]</div>
+<p>The last two lines just say that we’ve kept the dry air mass fraction constant, and all increases in water vapour are reductions in condensed-phase water. We could also have expressed the last term with respect to liquid water, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+  (z_v - z_c)dm_v = -(z_v - z_c)dm_c
+\]</div>
+<p>You can generalise these equations to multiple components <span class="math notranslate nohighlight">\(c\)</span> and phases <span class="math notranslate nohighlight">\(\phi\)</span>, each time adding a term which expresses the difference in property <span class="math notranslate nohighlight">\(Z_{c_i,\phi_j}\)</span> between phases <span class="math notranslate nohighlight">\(\phi_j\)</span> and <span class="math notranslate nohighlight">\(\phi_0\)</span>, <em>at constant temperature and pressure</em>. And, if you keep the chosen reference component/phase the same, you can express them all with respect to that phase. In the atmosphere, these are often differences in <span class="math notranslate nohighlight">\(G\)</span> (or <span class="math notranslate nohighlight">\(U\)</span> or <span class="math notranslate nohighlight">\(H\)</span>) between water vapour and liquid, and liquid and ice, i.e. they  express differences in internal energy/enthalpy/gibbs potential between water in vapour, liquid and solid form. For all these quantities, the difference <span class="math notranslate nohighlight">\(Z_{c_i,\phi_j} - Z{c_0, \phi_0}\)</span> are the same differences, in <em>chemical potential</em> <span class="math notranslate nohighlight">\(\mu\)</span>. So, we can think of the energetic differences between vapour/liquid/solid (at constant <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span>) purely as differences in chemical potential.</p>
+</section>
+<section id="equilibrium">
+<h2>Equilibrium<a class="headerlink" href="#equilibrium" title="Link to this heading">#</a></h2>
+<p>If our mixture really holds condensed water, it turns out to be super useful to assume that the phases are <em>in internal equilibrium</em>. If the system is closed (and it’s all reversible), then <span class="math notranslate nohighlight">\(dG=0\)</span>. If <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span> are also constant, then internal equilibrium between two phases means the first terms in eq. <a class="reference internal" href="#equation-dz-gen">()</a> vanish. That is, <span class="math notranslate nohighlight">\((\mu_v - \mu_c)dm_v=0\)</span>, or <span class="math notranslate nohighlight">\(\mu_v = \mu_c\)</span>, i.e. <em>at equilibrium, the chemical potentials between the phases must be the same</em>. This doesn’t tell us anything yet, because we don’t know what these potentials are. In fact, they are functions of <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(p\)</span> too (this is how <span class="math notranslate nohighlight">\(G\)</span> is defined, see above!)</p>
+<p>I think this is all a really long way of saying: If you have a heterogeneous system with two phases, one at <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span> with Gibbs potential <span class="math notranslate nohighlight">\(G=\mu(T,p)\)</span>, and the other at <span class="math notranslate nohighlight">\(p'\)</span> and <span class="math notranslate nohighlight">\(T'\)</span> with <span class="math notranslate nohighlight">\(G'(T',p')\)</span>, then <em>if they are in equilibrium</em>, <span class="math notranslate nohighlight">\(p=p'\)</span>, <span class="math notranslate nohighlight">\(T=T'\)</span> and <span class="math notranslate nohighlight">\(G(T,p)=G'(T', p')\)</span>. So if we know <em>any one</em> of <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(p'\)</span> or <span class="math notranslate nohighlight">\(T'\)</span>, we immediately know all the others too. This is super useful, because it means that if we choose <span class="math notranslate nohighlight">\(T\)</span> to be the thing to track, then we can always find a <span class="math notranslate nohighlight">\(p\)</span> where there is equilibrium, because of the additional constraint of equal chemical potentials. In terms we’re used to: The saturation vapour pressure (equilibrium between phases) is uniquely determined by the moist air temperature <span class="math notranslate nohighlight">\(T\)</span><a class="footnote-reference brackets" href="#fntemp" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="triple-point">
+<h2>Triple point<a class="headerlink" href="#triple-point" title="Link to this heading">#</a></h2>
+<p>Going along the same lines, if all three phases are present at the same time, then if you impose equilibrium, you have six variables (<span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(p'\)</span>, <span class="math notranslate nohighlight">\(p''\)</span>, <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(T'\)</span>, <span class="math notranslate nohighlight">\(T''\)</span>), and six equations (<span class="math notranslate nohighlight">\(T=T'\)</span>, <span class="math notranslate nohighlight">\(T'=T''\)</span>, <span class="math notranslate nohighlight">\(p=p'\)</span>, <span class="math notranslate nohighlight">\(p'=p''\)</span>, <span class="math notranslate nohighlight">\(G=G'\)</span>, <span class="math notranslate nohighlight">\(G'=G''\)</span>), so if you know <span class="math notranslate nohighlight">\(T\)</span>, you immediately know everything. This point is called the triple point. For water, it occurs at <span class="math notranslate nohighlight">\(p_t = 610.7 Pa\)</span>, defining <span class="math notranslate nohighlight">\(T=273.15 K\)</span>, but also the phase densities and chemical potentials (and the latent heats for phase changes which follow).</p>
+<p>You need to have defined enthalpy to now continue to derive the Clausius Claperyon equation, which also immediately identifies the latent heat of vaporisation. So going back to the lecture, you will need to have gone through all the dry thinking (having identified enthalpy) before it makes sense to introduce CC (which is surprisingly easy to derive).</p>
+<p>So</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="fncond" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><span class="math notranslate nohighlight">\(m_c\)</span> is now taken to be any condensate. However, Iribarne and Godson say (p. 49) that we cannot in general write equations when the liquid and solid states are present at the same time, because that system “is not in equilibrium”. But in practice we will have to.</p>
+</aside>
+<aside class="footnote brackets" id="fntemp" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Or, less practically, <span class="math notranslate nohighlight">\(T'\)</span> or <span class="math notranslate nohighlight">\(p'\)</span></p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -412,16 +445,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: ""
+            mode: "metclim_env"
         },
         kernelOptions: {
-            name: "",
+            name: "metclim_env",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = ''</script>
+    <script>kernelName = 'metclim_env'</script>
 
                 </article>
               
@@ -433,15 +466,6 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="1.%20Gas%20laws.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">1. Gas laws</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -458,7 +482,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lectures">Lectures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-mixture-of-dry-air-and-water-vapour-liquid-and-solid">A mixture of dry air and water vapour, liquid and solid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equilibrium">Equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#triple-point">Triple point</a></li>
 </ul>
   </nav></div>
 

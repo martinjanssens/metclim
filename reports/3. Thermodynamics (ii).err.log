@@ -1,0 +1,88 @@
+Traceback (most recent call last):
+  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import xarray as xr
+import pandas as pd
+from metpy.plots import SkewT
+
+ds_temp = xr.open_dataset('data/ptmean.nc')
+
+# Load vapour pressure (water vapour content)
+df = pd.read_csv(r"data/vapr_00z-mly.txt", sep=r'\s+', header=None).rename(columns={3: "pres", 4: "pvap"})
+df_vap = df[["pres", "pvap"]].groupby(["pres"]).mean().loc[3:1000]
+
+# It is stored in 0.1 Pa, so need to multiply by 10 to convert to Pa
+df_vap['pvap'] = df_vap['pvap'] / 10
+
+# Add to dataset
+ds_vap = df_vap.to_xarray()
+ds_vap = ds_vap.reindex(pres=list(reversed(ds_vap.pres)))
+ds_ther = xr.merge([ds_temp, ds_vap])
+ds_ther['pvap'] = ds_ther['pvap'].swap_dims({'pres':'hgeo'})
+
+def Tdew(e):
+    return (1/T_trip - Rv/lv_trip*np.log(e/es_trip))**(-1)
+
+# Convert to dew point temperature
+ds_ther['Tdew'] = Tdew(ds_ther['pvap'])
+
+# Plot
+fig = plt.figure()
+skew = SkewT(fig, rotation=45)
+
+skew.plot(ds_temp['pres'], ds_temp['temp']-273.155, label='Temperature', c='salmon')
+# skew.plot(e_s(ds_temp['temp']), ds_temp['temp']-273.15)
+skew.plot(ds_ther['pres'], ds_ther['Tdew']-273.15, label='Dew-point temperature', c='dodgerblue')
+skew.ax.legend(bbox_to_anchor=(1,1), loc='upper left')
+skew.ax.set_xlabel('Temperature [C]')
+_ = skew.ax.set_ylabel('Pressure [hPa]')
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[2], line 5[0m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmetpy[39;00m[38;5;21;01m.[39;00m[38;5;21;01mplots[39;00m [38;5;28;01mimport[39;00m SkewT
+[0;32m----> 5[0m ds_temp [38;5;241m=[39m [43mxr[49m[38;5;241;43m.[39;49m[43mopen_dataset[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mdata/ptmean.nc[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[1;32m      7[0m [38;5;66;03m# Load vapour pressure (water vapour content)[39;00m
+[1;32m      8[0m df [38;5;241m=[39m pd[38;5;241m.[39mread_csv([38;5;124mr[39m[38;5;124m"[39m[38;5;124mdata/vapr_00z-mly.txt[39m[38;5;124m"[39m, sep[38;5;241m=[39m[38;5;124mr[39m[38;5;124m'[39m[38;5;124m\[39m[38;5;124ms+[39m[38;5;124m'[39m, header[38;5;241m=[39m[38;5;28;01mNone[39;00m)[38;5;241m.[39mrename(columns[38;5;241m=[39m{[38;5;241m3[39m: [38;5;124m"[39m[38;5;124mpres[39m[38;5;124m"[39m, [38;5;241m4[39m: [38;5;124m"[39m[38;5;124mpvap[39m[38;5;124m"[39m})
+
+File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/api.py:592[0m, in [0;36mopen_dataset[0;34m(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)[0m
+[1;32m    589[0m     kwargs[38;5;241m.[39mupdate(backend_kwargs)
+[1;32m    591[0m [38;5;28;01mif[39;00m engine [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 592[0m     engine [38;5;241m=[39m [43mplugins[49m[38;5;241;43m.[39;49m[43mguess_engine[49m[43m([49m[43mfilename_or_obj[49m[43m)[49m
+[1;32m    594[0m [38;5;28;01mif[39;00m from_array_kwargs [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    595[0m     from_array_kwargs [38;5;241m=[39m {}
+
+File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/plugins.py:187[0m, in [0;36mguess_engine[0;34m(store_spec)[0m
+[1;32m    179[0m [38;5;28;01melse[39;00m:
+[1;32m    180[0m     error_msg [38;5;241m=[39m (
+[1;32m    181[0m         [38;5;124m"[39m[38;5;124mfound the following matches with the input file in xarray[39m[38;5;124m'[39m[38;5;124ms IO [39m[38;5;124m"[39m
+[1;32m    182[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mbackends: [39m[38;5;132;01m{[39;00mcompatible_engines[38;5;132;01m}[39;00m[38;5;124m. But their dependencies may not be installed, see:[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m    183[0m         [38;5;124m"[39m[38;5;124mhttps://docs.xarray.dev/en/stable/user-guide/io.html [39m[38;5;130;01m\n[39;00m[38;5;124m"[39m
+[1;32m    184[0m         [38;5;124m"[39m[38;5;124mhttps://docs.xarray.dev/en/stable/getting-started-guide/installing.html[39m[38;5;124m"[39m
+[1;32m    185[0m     )
+[0;32m--> 187[0m [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(error_msg)
+
+[0;31mValueError[0m: did not find a match in any of xarray's currently installed IO backends ['netcdf4', 'scipy', 'gini', 'pydap', 'zarr']. Consider explicitly selecting one of the installed engines via the ``engine`` parameter, or installing additional IO dependencies, see:
+https://docs.xarray.dev/en/stable/getting-started-guide/installing.html
+https://docs.xarray.dev/en/stable/user-guide/io.html
+

@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. Thermodynamics (i) &#8212; Lecture notes - Meteorology &amp; Climate</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2. Thermodynamics (i)';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="3. Thermodynamics (ii) - Moist thermodynamics" href="3.%20Thermodynamics%20%28ii%29.html" />
+    <link rel="prev" title="1. Gas laws" href="1.%20Gas%20laws.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Lecture notes - Meteorology & Climate</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.%20Gas%20laws.html">1. Gas laws</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Thermodynamics (i)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.%20Thermodynamics%20%28ii%29.html">3. Thermodynamics (ii) - Moist thermodynamics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F2. Thermodynamics (i).html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2. Thermodynamics (i).ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>2. Thermodynamics (i)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vertical-structure-of-the-troposphere">The vertical structure of the troposphere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pressure-the-force-balance-of-hydrostatic-equilibrium">Pressure - the force balance of hydrostatic equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-atmospheric-energetics">Temperature and atmospheric energetics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geopotential-and-the-energetic-interpretation-of-the-hydrostatic-balance">Geopotential and the energetic interpretation of the hydrostatic balance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-an-atmospheric-air-parcel">Energy of an atmospheric air parcel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dry-adiabatic-lapse-rate">The dry adiabatic lapse rate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-static-stability">Dry static stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-dry-adiabatic-thinking-useful">When is dry adiabatic thinking useful?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature">Potential temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skew-t-ln-p-chart">The skew T - ln p chart</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="thermodynamics-i">
+<h1>2. Thermodynamics (i)<a class="headerlink" href="#thermodynamics-i" title="Link to this heading">#</a></h1>
+<p>The gas we were thinking about in the previous lecture must satisfy conservation laws: Conservation of mass <span class="math notranslate nohighlight">\(m_a\)</span>, momentum <span class="math notranslate nohighlight">\(m_a[u, v, w]^T=m_a\mathbf{u}\)</span> and energy <span class="math notranslate nohighlight">\(E\)</span><a class="footnote-reference brackets" href="#fnfd" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, which give us extremely powerful tools to predict the evolution of the atmospheric gas. Therefore, a lot of atmospheric science boils down to studying flows of mass, momentum and energy through the atmosphere. In the next two lectures, we will use simplified versions of the vertical momentum and energy flows, <strong>to work towards the simplest possible model of the troposphere’s vertical structure.</strong> That is, we will study the globally (and decadally) averaged atmosphere - the atmosphere that sets our global climate. As we will see in the next lecture, even smaller, local phenomena that determine the weather are often studied as “perturbations” to this basic, vertical structure.</p>
+<p>Because the energy flows in the atmosphere are driven by solar radiation, we can only truly understand them once we have studied radiation in module 6<a class="footnote-reference brackets" href="#fnclim" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. But we can already get pretty accurate vertical profiles if we take the energy supply for granted for a moment, and just focus on the consequences.</p>
+<p>Along the way, we will have to make many definitions of different thermodynamic variables (mostly energies, entropies and moistures). Remembering, understanding and distinguishing between these is hard and tedious <a class="footnote-reference brackets" href="#fnlec" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, so we will try to present them in service of our goal of understanding the atmosphere’s vertical structure. However, mastering this “grammar” is essential to speak the language of atmospheric science.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Questions you should be able to answer at the end of this lecture:</p>
+<ul class="simple">
+<li><p>Why does the troposphere’s pressure drop off with height the way it does?</p></li>
+<li><p>What types of energy does an atmospheric air parcel contain?</p></li>
+<li><p>Why do we rather use enthalpy, rather than internal energy, for our calculations of energy exchange?</p></li>
+<li><p>Why do dry adiabatic parcels lifted from the surface generally fall back down?</p></li>
+<li><p>Can I read a thermodynamic (skew T-log p) diagram?</p></li>
+</ul>
+</div>
+<section id="the-vertical-structure-of-the-troposphere">
+<h2>The vertical structure of the troposphere<a class="headerlink" href="#the-vertical-structure-of-the-troposphere" title="Link to this heading">#</a></h2>
+<p>Below, you can see a plot of pressure and temperature with “geopotenial height”<a class="footnote-reference brackets" href="#fngeo" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, from all radiosondes launched across the world, since 1947, up to November 2024<a class="footnote-reference brackets" href="#fnigra" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Why do they look like this? Let’s start with pressure, which is the simplest of the two.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">)])</span>
+
+<span class="c1"># Data from</span>
+<span class="c1"># https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/monthly-por/</span>
+<span class="c1"># All monthly-averaged temperature, pressure and geopotential, from all stations, since the start of the record (1947)</span>
+
+<span class="c1"># Pressure</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/ghgt_00z-mly.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;hgeo&quot;</span><span class="p">})</span>
+<span class="n">df_pres</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="s2">&quot;hgeo&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;pres&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+
+<span class="c1"># Temperature</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/temp_00z-mly.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;temp&quot;</span><span class="p">})</span>
+<span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;pres&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+
+<span class="c1"># Temperatures are stored in tenths of a deg C, so they need to be divided by 10 and converted to Kelvin for later calculations:</span>
+<span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">+</span> <span class="mf">273.15</span>
+
+<span class="c1"># Set the height coordinates of temperature to the height coordinates of pressure</span>
+<span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pres</span><span class="p">,</span> <span class="n">df_temp</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Make pressure just another column in df_pres</span>
+<span class="n">df_pres</span> <span class="o">=</span> <span class="n">df_pres</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># Store as an xarray dataset</span>
+<span class="n">ds_temp</span> <span class="o">=</span> <span class="n">df_temp</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s1">&#39;pres&#39;</span><span class="p">:</span><span class="s1">&#39;hgeo&#39;</span><span class="p">})</span>
+<span class="n">ds_temp</span> <span class="o">=</span> <span class="n">ds_temp</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">hgeo</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">ds_temp</span><span class="o">.</span><span class="n">hgeo</span><span class="p">)))</span>
+<span class="n">ds_temp</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/ptmean.nc&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Temperature [$\degree$C]&#39;</span><span class="p">)</span>
+
+<span class="c1"># plt.savefig(&#39;Figures/p-t-av-height.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/341206ffb592bc30e1d7f17d344d71a2ea91f331f07ad6dc22be15439ba261f0.png" src="_images/341206ffb592bc30e1d7f17d344d71a2ea91f331f07ad6dc22be15439ba261f0.png" />
+</div>
+</div>
+</section>
+<section id="pressure-the-force-balance-of-hydrostatic-equilibrium">
+<h2>Pressure - the force balance of hydrostatic equilibrium<a class="headerlink" href="#pressure-the-force-balance-of-hydrostatic-equilibrium" title="Link to this heading">#</a></h2>
+<p>In the global average, there cannot be vertical motion, unless the atmosphere is expanding into space. And it isn’t, for almost all space and time scales we consider in this course: The globally averaged atmosphere, at any vertical level, is <em>static</em>, and is thus also not accelerating vertically - <span class="math notranslate nohighlight">\(\frac{dw}{dt}=0\)</span>. Therefore, if we look at Newton’s second law (<span class="math notranslate nohighlight">\(\sum_iF_i/m= \frac{dw}{dt}\)</span>), and apply it to a globally averaged slab in the atmosphere, we know that all the forces <span class="math notranslate nohighlight">\(F_i\)</span> which act vertically on that slab, must add up to zero.</p>
+<p>So which forces act on such a layer? In our static situation, only the gravitational weight of all the layers that lie on top of it, and the resulting pressure force <span class="math notranslate nohighlight">\(F_p = pA_l\)</span> on the air in the layer (remember pressure <span class="math notranslate nohighlight">\(p\)</span> is defined as a force <span class="math notranslate nohighlight">\(F_p\)</span>  per unit area <span class="math notranslate nohighlight">\(A_l\)</span>, <span class="math notranslate nohighlight">\(p=F_p/A_l\)</span>). And traveling upwards from the surface, there are less and less such layers left above us before we get to space, so pressure decreases with height, as the left plot above shows. More precisely, for two levels separated by an infinitesimal vertical distance <span class="math notranslate nohighlight">\(dz\)</span>, the dropoff in pressure force <span class="math notranslate nohighlight">\(-dpA_l\)</span> between the two levels must be equal to the weight of the layer in between <span class="math notranslate nohighlight">\(m_lg\)</span>:</p>
+<p><strong>Need figure to support this</strong></p>
+<div class="math notranslate nohighlight">
+\[
+  F = -m_lg - dpA_l = m \frac{dw}{dt} = 0.
+\]</div>
+<p>Taking <span class="math notranslate nohighlight">\(m_l=\rho V_l=\rho A_l dz\)</span> and treating <span class="math notranslate nohighlight">\(A_l\)</span> and <span class="math notranslate nohighlight">\(g\)</span> as constants<a class="footnote-reference brackets" href="#fnglob" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>, we divide by <span class="math notranslate nohighlight">\(A\)</span> to get the force balance per unit area:</p>
+<div class="math notranslate nohighlight">
+\[
+  -\rho g dz + dp = 0,
+\]</div>
+<p>Or more generally<a class="footnote-reference brackets" href="#fnpart" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
+<div class="math notranslate nohighlight" id="equation-hyd-stat">
+<span class="eqno">(14)<a class="headerlink" href="#equation-hyd-stat" title="Link to this equation">#</a></span>\[
+  \frac{\partial p}{\partial z} = -\rho g.
+\]</div>
+<p>Eq.<a class="reference internal" href="#equation-hyd-stat">(14)</a> is called the hydrostatic equation. It is the first equation we derive, because it is the strongest force balance present in the atmosphere. Therefore, deviations from hydrostatic balance are usually quite small, even in weather systems and individual thunderstorms, where there can be large vertical air acceleration! All these motions are due to forces much smaller than those that make up hydrostatic balance. In other words, almost everywhere and always, measuring the pressure equals measuring the weight of the air column above you.</p>
+<p>With the hydrostatic equation, we can derive a pretty accurate model for the pressure profile plotted above. For that, we have to integrate eq.<a class="reference internal" href="#equation-hyd-stat">(14)</a>. And to do that, we choose to re-express <span class="math notranslate nohighlight">\(\rho\)</span> in terms of <span class="math notranslate nohighlight">\(p\)</span> with the gas law <span class="math notranslate nohighlight">\(p = \rho R_d T_v\)</span>. I.e. inserting <span class="math notranslate nohighlight">\(\rho=\frac{p}{R_dT_v}\)</span> in eq.<a class="reference internal" href="#equation-hyd-stat">(14)</a> and integrating between two arbitrary levels 0 and 1 gives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \frac{\partial p}{\partial z} &amp; = -\frac{pg}{R_dT_v} \\
+  \frac{\partial p}{p} &amp; = -\frac{g}{R_dT_v}\partial z \\
+  \int_{p_0}^{p_1} \frac{d p}{p} &amp; = -\frac{g}{R_d}\int_{z_0}^{z_1}\frac{1}{T_v} dz \\
+  \ln p_1 - \ln p_0 &amp; = -\frac{g}{R_d}\int_{z_0}^{z_1}\frac{1}{T_v} dz
+\end{split}\]</div>
+<p>We cannot integrate the right-hand side, because we have not yet discussed how <span class="math notranslate nohighlight">\(T_v\)</span> depends on <span class="math notranslate nohighlight">\(z\)</span> (that’s the next section). However, if we make life easy by removing <span class="math notranslate nohighlight">\(T_v\)</span>’s height-dependence, and instead assume <span class="math notranslate nohighlight">\(T_v\)</span> is equal to its weighted vertical average between the two levels <span class="math notranslate nohighlight">\(\overline{T_v}\)</span><a class="footnote-reference brackets" href="#fnisot" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>, then we can integrate, and we get something called the <em>hypsometric equation</em>:</p>
+<div class="math notranslate nohighlight" id="equation-hypso">
+<span class="eqno">(15)<a class="headerlink" href="#equation-hypso" title="Link to this equation">#</a></span>\[\begin{split}
+  \ln p_1 - \ln p_0 &amp; = -\frac{g}{R_d\overline{T_v}}(z_1 - z_0) \\
+  p_1 &amp; = p_0 e^{\frac{z_1-z_0}{H}}.
+\end{split}\]</div>
+<p>Here, we have defined the <em>scale height</em></p>
+<div class="math notranslate nohighlight">
+\[
+  H = \frac{R_d\overline{T_v}}{g},
+\]</div>
+<p>which is the e-folding height of pressure. To get our desired model of <span class="math notranslate nohighlight">\(p\)</span> throughout the vertical, we take level 0 in eq. <a class="reference internal" href="#equation-hypso">(15)</a> to be the surface and level 1 to be any level in the atmosphere:</p>
+<div class="math notranslate nohighlight" id="equation-phydro">
+<span class="eqno">(16)<a class="headerlink" href="#equation-phydro" title="Link to this equation">#</a></span>\[
+  p = p_0 e^{-z/H}.
+\]</div>
+<p>Knowing the surface pressure <span class="math notranslate nohighlight">\(p_0\)</span> and estimating <span class="math notranslate nohighlight">\(\overline{T_v}\approx \overline{T} \approx -43 ^{\circ}\)</span>C between the surface and the highest level in the radisonde archive (40 km, i.e. we assume the atmosphere is <em>isothermal</em>), eq.<a class="reference internal" href="#equation-phydro">(16)</a> models the observed pressure profile throughout the entire atmosphere pretty well (orange line below).</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">grav</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># acceleration due to gravity [m/s^2]</span>
+<span class="n">Rd</span> <span class="o">=</span> <span class="mf">287.05</span> <span class="c1"># Dry air gas constant [J/kg/K]</span>
+
+<span class="c1"># Get the first pressure level in the radiosonde data, at 1000 hPa.</span>
+<span class="c1"># This is not exactly the surface pressure, but it is a good &quot;reference&quot; to start comparing from</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="mf">1e3</span>
+
+<span class="c1"># Compute average temperature over ~the troposphere</span>
+<span class="n">Tmn</span> <span class="o">=</span> <span class="p">((</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="s1">&#39;hgeo&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">Rd</span><span class="o">*</span><span class="n">Tmn</span><span class="o">/</span><span class="n">grav</span> <span class="c1"># Scale height</span>
+<span class="n">pres_mod</span> <span class="o">=</span> <span class="n">p0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">H</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pres_mod</span><span class="p">,</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Isothermal, hydrostatic model&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Average temperature between 0 and 40 km altitude: </span><span class="si">%.0f</span><span class="s2"> C&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">Tmn</span><span class="o">-</span><span class="mf">273.15</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Scale height: </span><span class="si">%.0f</span><span class="s2"> m&quot;</span> <span class="o">%</span><span class="k">H</span>)
+<span class="c1"># plt.savefig(&#39;Figures/p-piso-av-height.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average temperature between 0 and 40 km altitude: -43 C
+Scale height: 6736 m
+</pre></div>
+</div>
+<img alt="_images/896e08882493fdd06cb18461f1716b082047bbd91c7a16e90fe86c0037262e58.png" src="_images/896e08882493fdd06cb18461f1716b082047bbd91c7a16e90fe86c0037262e58.png" />
+</div>
+</div>
+<p>The model is not super in the troposphere, because eq. <a class="reference internal" href="#equation-hypso">(15)</a> will only give you the right pressure at the end points of the layer over which it is estimated (the surface and 40 km). In the troposphere, the average temperature (<span class="math notranslate nohighlight">\(-14 ^{\circ}\)</span>C) is quite a bit higher than the <span class="math notranslate nohighlight">\(\overline{T}\)</span> we have used (and it is moister too, so <span class="math notranslate nohighlight">\(\overline{T_v}&gt;\overline{T}\)</span>), so <span class="math notranslate nohighlight">\(H\)</span> is larger and the pressure drops off less quickly than our first model.</p>
+<p>For a better model, it’s clear that we need to let go of the assumption that the atmosphere is isothermal. Indeed, if we use eq. <a class="reference internal" href="#equation-hypso">(15)</a> to iterate our way through the vertical, using the observed <span class="math notranslate nohighlight">\(\overline{T}\)</span> at each level, we get an almost exact reproduction of the observed pressure (orange line below). Let’s therefore move toward understanding this vertical structure.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pressure from iterating through the hypsometric equation layer by layer:</span>
+<span class="n">pres_hyp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ds_temp</span><span class="o">.</span><span class="n">hgeo</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">pres_hyp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">p0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ds_temp</span><span class="o">.</span><span class="n">hgeo</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">pres_hyp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pres_hyp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">grav</span><span class="o">/</span><span class="n">Rd</span><span class="o">/</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pres_hyp</span><span class="p">,</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hypsometric equation, with vertically resolved temperature&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># plt.savefig(&#39;Figures/p-tres-av-height.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/478bc9bf2b86231dba953ba3b20fbf3cc9a681ae9b90e06661e603176b116eb9.png" src="_images/478bc9bf2b86231dba953ba3b20fbf3cc9a681ae9b90e06661e603176b116eb9.png" />
+</div>
+</div>
+</section>
+<section id="temperature-and-atmospheric-energetics">
+<h2>Temperature and atmospheric energetics<a class="headerlink" href="#temperature-and-atmospheric-energetics" title="Link to this heading">#</a></h2>
+<section id="geopotential-and-the-energetic-interpretation-of-the-hydrostatic-balance">
+<h3>Geopotential and the energetic interpretation of the hydrostatic balance<a class="headerlink" href="#geopotential-and-the-energetic-interpretation-of-the-hydrostatic-balance" title="Link to this heading">#</a></h3>
+<p>The hydrostatic law is a force balance, but we can re-interpret it in terms of energy. If we rewrite eq. <a class="reference internal" href="#equation-hyd-stat">(14)</a> as</p>
+<div class="math notranslate nohighlight" id="equation-geop-hyd">
+<span class="eqno">(17)<a class="headerlink" href="#equation-geop-hyd" title="Link to this equation">#</a></span>\[
+  gdz = -\frac{dp}{\rho},
+\]</div>
+<p>we see that <span class="math notranslate nohighlight">\(gdz\)</span> expresses a potential energy per unit mass<a class="footnote-reference brackets" href="#fnmass" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>. More precisely, <span class="math notranslate nohighlight">\(gdz\)</span> is the work that must be done to lift a 1 kg packet of air a distance <span class="math notranslate nohighlight">\(dz\)</span> against Earth’s gravitational field. It appears often enough that it’s often lumped into a single quantity called <em>geopotenial</em> <span class="math notranslate nohighlight">\(\Phi\)</span>, i.e. <span class="math notranslate nohighlight">\(d\Phi = d (gz)\)</span><a class="footnote-reference brackets" href="#fngeop" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a>. Eq. <a class="reference internal" href="#equation-geop-hyd">(17)</a> tells us that in hydrostatic balance, to give an air parcel <span class="math notranslate nohighlight">\(gdz\)</span> of geopotential (in Joules per kilogram), we have to spend <span class="math notranslate nohighlight">\(-dp/\rho\)</span>. But what does that term mean? Clearly, it’s some sort of pressure reduction <span class="math notranslate nohighlight">\(-dp\)</span> in energy units (<span class="math notranslate nohighlight">\(J/kg\)</span>). But to understand it energetically, and to understand how this all relates to the temperature profile, we need to understand how changes in pressure in an air parcel relate to changes in its energy. And to do that, we need to think about what types of energy the parcel might have at all!</p>
+</section>
+<section id="energy-of-an-atmospheric-air-parcel">
+<h3>Energy of an atmospheric air parcel<a class="headerlink" href="#energy-of-an-atmospheric-air-parcel" title="Link to this heading">#</a></h3>
+<p>For a parcel of moist atmospheric air of volume <span class="math notranslate nohighlight">\(V\)</span> with a fixed mass <span class="math notranslate nohighlight">\(m_a\)</span> in motion, we might divide its energy <span class="math notranslate nohighlight">\(E\)</span> per unit mass into the following contributions:</p>
+<div class="math notranslate nohighlight" id="equation-energy">
+<span class="eqno">(18)<a class="headerlink" href="#equation-energy" title="Link to this equation">#</a></span>\[
+E/m = gz + \frac{1}{2}u^2 + U/m
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(gz\)</span> is the geopotential above <span class="math notranslate nohighlight">\(z=0\)</span> (sea level)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{1}{2}u^2\)</span> is the kinetic energy above <span class="math notranslate nohighlight">\(u=0\)</span> (air at rest), with <span class="math notranslate nohighlight">\(u=\sqrt{u^2+v^2+w^2}\)</span> the wind speed. Although this kinetic energy is a key part of the weather we sense, its contribution to <span class="math notranslate nohighlight">\(E/m\)</span> is actually really small<a class="footnote-reference brackets" href="#fnwind" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>, so we will ignore it in our discussion of energetics today. Of course, if we are interested in the kinetic energy in winds and turbulence, we cannot ignore it.</p></li>
+<li><p><span class="math notranslate nohighlight">\(U/m\)</span> measures the internal energy, including that of any potential water, in different phases. The presence of water, especially in different phases, has a large impact on <span class="math notranslate nohighlight">\(U/m\)</span>, which we will study in the next lecture. However, it is far easier to begin building our intuitition for this energy under the assumption that the atmosphere is dry. Then, we take <span class="math notranslate nohighlight">\(U/m=c_{v_d}T\)</span> to essentially measure the kinetic energy of the random motion of the dry air molecules within the volume, which we discussed in <a class="reference internal" href="1.%20Gas%20laws.html#sec-ideal-gases"><span class="std std-ref">the previous lecture</span></a>, above <span class="math notranslate nohighlight">\(T=0\)</span> K (absolute zero). To scale this energy into temperature, we need the factor <span class="math notranslate nohighlight">\(c_{v_d}\)</span>, the heat capacity of the air in the parcel at constant volume (for dry air, <span class="math notranslate nohighlight">\(c_{v_d} \approx 717\)</span> J/kg/K)<a class="footnote-reference brackets" href="#fncv" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a>. It is defined “at constant volume” to separate the internal energy from the parcel doing work through expansion (i.e. through changes in volume - see point 2. below).</p></li>
+</ul>
+<!-- - $L q_v - L_i q_i$ is the "latent" (or "hidden") energy stored in the parcel's water vapour, which is "released" when it changes phase. Specifically, $L_v q_v$ is the energy increase that would result from converting all the parcel's water vapour into liquid water (its efficiency is determined by the latent heat of vaporisation $L_v\approx 2.5 \times 10^6$ J/kg condensed water), and $-L_f q_i$ the energy increase from in turn losing some of that liquid water to $q_i$ kg ice/kg air (its efficiency is the smaller latent heat of fusion $L_f \approx 3.34\times 10^5$ J/kg frozen water). -->
+<p>We make these strange-looking “above reference state x” statements, because when we study energy flows, we always consider <em>changes</em> in energy relative to some reference state, and we will always have to be explicit about these states. To describe the vertical profile of <span class="math notranslate nohighlight">\(T\)</span>, we are clearly interested in the processes that can change the part of <span class="math notranslate nohighlight">\(E/m\)</span> that relates to internal energy <span class="math notranslate nohighlight">\(U/m = c_{v_d}T\)</span>. For a little parcel in the atmosphere, there are really only three things that could do this:</p>
+<ol class="arabic simple">
+<li><p>We might exchange some of the air in the parcel with more/less energetic air, i.e. we could <em>advect</em> (or diffuse) air in and out. Let’s denote that very generally as an energy source <span class="math notranslate nohighlight">\(Q_{a,U}\)</span><a class="footnote-reference brackets" href="#fnadv" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>13<span class="fn-bracket">]</span></a></p></li>
+<li><p>The parcel might lose internal energy by doing work <span class="math notranslate nohighlight">\(pdV\)</span> through expansion (<span class="math notranslate nohighlight">\(dV\)</span>)</p></li>
+<li><p>The parcel might heat/cool through radiation with a radiative heating rate of <span class="math notranslate nohighlight">\(Q_r\)</span></p></li>
+</ol>
+<p>That is, over a time increment <span class="math notranslate nohighlight">\(dt\)</span>, changes in specific internal energy <span class="math notranslate nohighlight">\(dU/m\)</span> are:</p>
+<div class="math notranslate nohighlight" id="equation-du">
+<span class="eqno">(19)<a class="headerlink" href="#equation-du" title="Link to this equation">#</a></span>\[
+  dU/m = c_{v_d} dT = Q_{a,E}/m dt + Q_r/m dt - pdV/m
+\]</div>
+<p>And if we define <span class="math notranslate nohighlight">\(dq = Q_{a,E}/m dt + Q_r/m dt\)</span>, you might recognise that eq. <a class="reference internal" href="#equation-du">(19)</a> just states the first law of thermodynamics:</p>
+<div class="math notranslate nohighlight">
+\[
+  c_{v_d} dT + p dV/m = dq
+\]</div>
+</section>
+<section id="the-dry-adiabatic-lapse-rate">
+<h3>The dry adiabatic lapse rate<a class="headerlink" href="#the-dry-adiabatic-lapse-rate" title="Link to this heading">#</a></h3>
+<p>How does eq. <a class="reference internal" href="#equation-du">(19)</a> relate to the temperature profile? Well, suppose first that in the troposphere, the temperature profile is determined by dry parcels moving up and down. Since “tropos” comes from the greek word for “mixing”, this seems like a logical starting point. But it is a big assumption, and we have discussed no reason for why you should believe it. Yet if it’s the case, then eq. <a class="reference internal" href="#equation-du">(19)</a> seems to offer a starting point, because if we can relate the processes on its right-hand side to the energy required to lift the parcel (i.e. to give it geopotential <span class="math notranslate nohighlight">\(gz\)</span>), then the left-hand side will tell us how much internal energy we have to spend to achieve that. But <span class="math notranslate nohighlight">\(gz\)</span> does not appear in  eq. <a class="reference internal" href="#equation-du">(19)</a>. Clearly, we need to work on that right-hand side.</p>
+<p>Let’s first simplify things even more: We ignore the imposed heating rates <span class="math notranslate nohighlight">\(Q_{a,E}\)</span> and <span class="math notranslate nohighlight">\(Q_r\)</span>. Now we are looking a parcel which can only undergo adiabatic processes - i.e. <span class="math notranslate nohighlight">\(dq=0\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-first-law-dry-adiab">
+<span class="eqno">(20)<a class="headerlink" href="#equation-first-law-dry-adiab" title="Link to this equation">#</a></span>\[
+  c_{v_d} dT = -p dV/m
+\]</div>
+<p>In eq. <a class="reference internal" href="#equation-geop-hyd">(17)</a>, we found that <span class="math notranslate nohighlight">\(gdz = -dp/\rho\)</span>. So what we really want, is to relate the compression <span class="math notranslate nohighlight">\(-dp/\rho\)</span> to the work <span class="math notranslate nohighlight">\(-pdV/m\)</span>. Let’s do this. With the product rule, we know</p>
+<div class="math notranslate nohighlight">
+\[
+  d(pV) = Vdp + pdV.
+\]</div>
+<p>So, using the dry gas law <span class="math notranslate nohighlight">\(pV = mR_dT\)</span> and the definition <span class="math notranslate nohighlight">\(\rho=m/V\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  p dV/m = d(pV)/m - Vdp/m = d(mR_dT)/m - Vdp/m = R_d dT - dp/\rho.
+\]</div>
+<p>In words, this relation says that the work done by a dry air parcel could come from raising its temperature, or reducing its pressure. And it is exactly this “pressure work” that eq. <a class="reference internal" href="#equation-geop-hyd">(17)</a> tells us we need to raise the potential energy of a parcel in hydrostatic equilibrium! So let’s plug this expression into our energy equation eq. <a class="reference internal" href="#equation-first-law-dry-adiab">(20)</a> and rearrange:</p>
+<div class="math notranslate nohighlight" id="equation-first-law-enthalpy">
+<span class="eqno">(21)<a class="headerlink" href="#equation-first-law-enthalpy" title="Link to this equation">#</a></span>\[\begin{split}
+  c_{v_d} dT &amp; = -R_d dT + dp/\rho \\
+  (c_{v_d} + R_d) dT &amp; = dp/\rho \\
+  c_{p_d}dT &amp; = dp/\rho. \\
+\end{split}\]</div>
+<p>In the last line, we defined <span class="math notranslate nohighlight">\(c_{p_d} = c_{v_d} + R_d = 717 + 287 = 1004\)</span> J/kg/K. <span class="math notranslate nohighlight">\(c_{p_d}\)</span> is called the specific heat of dry air at constant pressure, because it converts to heat all the temperature changes in the parcel that occur while keeping the pressure constant, including those involved in doing work (the remaining change in energy due to changing the pressure is <span class="math notranslate nohighlight">\(dp/\rho\)</span>). <span class="math notranslate nohighlight">\(c_{p_d}T\)</span> gives alternative measure for heat, called “enthalpy”. And enthalpy is exactly the measure of heat we were looking for, because if we combine this equation with hydrostatic equilibrium eq.<a class="reference internal" href="#equation-geop-hyd">(17)</a> and multiply by <span class="math notranslate nohighlight">\(-1\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-dry-adiabat-energy">
+<span class="eqno">(22)<a class="headerlink" href="#equation-dry-adiabat-energy" title="Link to this equation">#</a></span>\[
+  -c_{p_d} dT = -dp/\rho = gdz.
+\]</div>
+<p>In words, if we lift an air parcel up through a dry atmosphere without adding heat to it (i.e. we lift it adiabatically), then the (change in) enthalpy <span class="math notranslate nohighlight">\(-c_{p_d}dT\)</span> is the heat we have to invest for the parcel to expand to the lower pressure and density (the pressure work <span class="math notranslate nohighlight">\(-dp/\rho\)</span>), and gain potential energy <span class="math notranslate nohighlight">\(gdz\)</span>.</p>
+<p>Put differently, dry adiabatic lifting in hydrostatic equilibrium is a process which conserves the sum of enthalpy and geopotential, which is called the “dry static energy” (DSE)<a class="footnote-reference brackets" href="#fndse" id="id14" role="doc-noteref"><span class="fn-bracket">[</span>14<span class="fn-bracket">]</span></a>:</p>
+<div class="math notranslate nohighlight" id="equation-dse">
+<span class="eqno">(23)<a class="headerlink" href="#equation-dse" title="Link to this equation">#</a></span>\[\begin{split}
+ d(c_{p_d}T + gz) &amp; = 0 \\
+ d (\text{DSE}) &amp; = 0
+\end{split}\]</div>
+<p>From eq. <a class="reference internal" href="#equation-dry-adiabat-energy">(22)</a>, we can now define a “lapse rate” <span class="math notranslate nohighlight">\(\Gamma_d\)</span> for the temperature of our parcel:</p>
+<div class="math notranslate nohighlight" id="equation-dry-adiabat">
+<span class="eqno">(24)<a class="headerlink" href="#equation-dry-adiabat" title="Link to this equation">#</a></span>\[
+  \frac{dT}{dz} = -\Gamma_d = -\frac{g}{c_{p_d}} = -9.81/1004 = -0.00978,
+\]</div>
+<p><span class="math notranslate nohighlight">\(\Gamma_d\)</span> is called the “dry adiabatic lapse rate”. It predicts that to lift dry air parcels from the surface to the tropopause (around 15 km in the tropics), you’d have to reduce the temperature by around <span class="math notranslate nohighlight">\(-0.00978\times 15 \approx 150\)</span> K. It gives us our first shot at a model for the vertical temperature profile - it’s plotted below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cpd</span> <span class="o">=</span> <span class="mf">1004.</span> <span class="c1"># Specific heat of dry air at constant pressure [J/kg/K]</span>
+<span class="n">Gamma_d</span> <span class="o">=</span> <span class="o">-</span><span class="n">grav</span><span class="o">/</span><span class="n">cpd</span>
+
+<span class="c1"># Get the near-surface temperature from the radiosonde data</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Temperature profile of dry adiabatic ascent from this level:</span>
+<span class="n">T_ad</span> <span class="o">=</span> <span class="n">T0</span> <span class="o">+</span> <span class="n">Gamma_d</span><span class="o">*</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Temperature profile which accounts for buoyancy consumption</span>
+<span class="c1"># (see https://www.romps.berkeley.edu/papers/pubdata/2017/leshouches/17leshouches.pdf section 1.7)</span>
+<span class="c1"># T_b = T0*np.exp(-grav*ds_temp[&#39;hgeo&#39;]/cpd/300)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_ad</span><span class="p">,</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Dry adiabatic ascent&#39;</span><span class="p">)</span>
+<span class="c1"># ax.plot(T_b, ds_temp[&#39;hgeo&#39;], label=&#39;Buoyancy-consuming ascent&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [K]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/e1930ccae9d6b9b7166deb1edd78b8c2937cd3ae8ba393ccc79b2a48119cf842.png" src="_images/e1930ccae9d6b9b7166deb1edd78b8c2937cd3ae8ba393ccc79b2a48119cf842.png" />
+</div>
+</div>
+<p>That’s not nothing, but it’s also not fantastic. In Earth’s troposphere, the temperature does drop off, but it does so less quickly than <span class="math notranslate nohighlight">\(-g/c_{p_d}\)</span>. Worse, if we keep on lifting into the stratosphere, where the actual temperatures increase with altitude, we even get temperatures below absoute zero! So where did this go wrong? The main problem with our development so far, is that we never answered the question “why would the atmosphere take on the temperature profile of dry-adiabatically lifted parcels?” This problem has two sub-problems:</p>
+<ol class="arabic simple">
+<li><p>Why would parcels go up and down at all, and imbue the atmosphere with their characteristics?</p></li>
+<li><p>Why would the energetics of moving parcels be governed by dry adiabatic energy exchange in perfect hydrostatic equilibrium?</p></li>
+</ol>
+<p>We’ll look at the first of these today, and the second tomorrow.</p>
+</section>
+</section>
+<section id="dry-static-stability">
+<h2>Dry static stability<a class="headerlink" href="#dry-static-stability" title="Link to this heading">#</a></h2>
+<p>To deal with the first problem, let’s write an actual equation of motion for that parcel we’re trying to lift. To make that parcel move (without us artificially lifting it), we need it to accelerate vertically from rest. If it does, its force balance cannot reduce to hydrostatic equilibrium exactly. To discover why, let us write Newton’s second law for the parcel (subscript <span class="math notranslate nohighlight">\(p\)</span>) more generally:</p>
+<div class="math notranslate nohighlight" id="equation-par-hyd">
+<span class="eqno">(25)<a class="headerlink" href="#equation-par-hyd" title="Link to this equation">#</a></span>\[
+  \rho_p\frac{dw_p}{dt} = -\frac{dp_p}{dz} - \rho_pg
+\]</div>
+<p>If we assume the environment around the parcel remains in hydrostatic equilibrium (which we <em>have</em> confirmed is reasonable, at least globally),</p>
+<div class="math notranslate nohighlight" id="equation-env-hyd">
+<span class="eqno">(26)<a class="headerlink" href="#equation-env-hyd" title="Link to this equation">#</a></span>\[
+\rho_e\frac{dw_e}{dt} = 0 = -\frac{dp_e}{dz} - \rho_eg,
+\]</div>
+<p>then subtracting eq. <a class="reference internal" href="#equation-env-hyd">(26)</a> from eq. <a class="reference internal" href="#equation-par-hyd">(25)</a> gives the equation of motion for the parcel, relative to the environment:</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_p\frac{dw_p}{dt} = -\left(\frac{dp_p}{dz} - \frac{dp_e}{dz}\right) - \left(\rho_p - \rho_e\right)g,
+\]</div>
+<p>When lifting the parcel a distance <span class="math notranslate nohighlight">\(dz\)</span> dry-adiabatically from the same pressure, temperature and density as the environment, the parcel does pressure work until <span class="math notranslate nohighlight">\(p_p(z) = p_e(z)\)</span>. So, <span class="math notranslate nohighlight">\(dp_p/dz = dp_e/dz\)</span>. However, <span class="math notranslate nohighlight">\(\rho_p\)</span> and <span class="math notranslate nohighlight">\(\rho_e\)</span> don’t then generally have to be the same, i.e. the parcel doesn’t have to be in hydrostatic equilibrium. Actually, we can write:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dw_p}{dt} = - \frac{\rho_p - \rho_e}{\rho_p}g \equiv b,
+\]</div>
+<p>where we have defined the Archimedian buoyancy <span class="math notranslate nohighlight">\(b\)</span> of the parcel. In words, this says that if we move our parcel upwards through a hydrostatic atmosphere and let it equilibrate to the new environmental pressure, it will accelerate upwards if its new density is lower than that of the environment. In our dry case where <span class="math notranslate nohighlight">\(p_e=p_p\)</span>, we can use the gas law to re-express <span class="math notranslate nohighlight">\(b\)</span> in temperature differences:</p>
+<div class="math notranslate nohighlight">
+\[
+b = \frac{T_p - T_e}{T_e} ,
+\]</div>
+<p>That is, if at the new height <span class="math notranslate nohighlight">\(T_p &gt; T_e\)</span>, the parcel will accelerate upwards. Warm air goes up.</p>
+<p>However, when we lifted a parcel from the surface with the dry adiabatic lapse rate in the figure above, we found that at any point in the atmosphere, we were colder than the actual environmental profile, because our dry adiabatic profile loses temperature faster than the surrounding atmosphere. Mathematically:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{dT_p}{dz} &amp; &lt; \frac{dT_e}{dz}, \\
+\Gamma_p &amp; &gt; \Gamma_e
+\end{split}\]</div>
+<p>So, lifting our dry parcel adiabatically from the surface would immediately give it a negative buoyancy, and accelerate it back towards the surface. We can say that the global atmosphere is “statically stable” to vertical, adiabatic dry air perturbations. Clearly, its temperature profile cannot be explained by such perturbations.</p>
+</section>
+<section id="when-is-dry-adiabatic-thinking-useful">
+<h2>When is dry adiabatic thinking useful?<a class="headerlink" href="#when-is-dry-adiabatic-thinking-useful" title="Link to this heading">#</a></h2>
+<p>It would be fair to, at this point, question if we are on the right path to explain the vertical temperature structure of the atmosphere. However, the problem actually isn’t the assumption that the atmosphere’s temperature profile is set by vertical mixing of air parcels. As we will see in the next lecture, it is! The real issue is the second problem stated above: We’ve not considered all the sources that could heat a rising air parcel, and thus make it buoyant.</p>
+<p>However, before we start to add these processes back in, let’s ask if there are <em>any</em> regimes dominated by dry adiabatic lifting. In fact, there many of these: E.g. so-called buoyancy waves<a class="footnote-reference brackets" href="#fngws" id="id15" role="doc-noteref"><span class="fn-bracket">[</span>15<span class="fn-bracket">]</span></a>, which spread from a dry perturbation as above like ripples on a pond. Or the atmospheric boundary layer. Below, we’ve plotted the vertical profile of DSE averaged over 1068 radiosondes dropped from an aircraft during a <a class="reference external" href="https://eurec4a.eu/">field campaign over the tropical Atlantic in 2020</a>. For the lowest portion of the atmosphere in this example, the <em>boundary layer</em> (below roughly <span class="math notranslate nohighlight">\(500\)</span> m), the DSE <em>is</em> quite constant, and the temperature follows the dry adiabatic lapse rate quite well! Indeed, it is useful to think of the boundary layer as a layer which is formed by the vertical mixing of parcels which ascend and descend following nearly dry-adiabatic trajectories; we will study this in more detail in module 9.</p>
+<p><strong>Use dry static stability to explain the structure of the mean BL. That is a dry proxy of what we will do moist for the entire atmosphere in the next lecture</strong></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data - see https://howto.eurec4a.eu/dropsondes.html for details</span>
+<span class="kn">import</span> <span class="nn">eurec4a</span>
+<span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
+<span class="n">ds_dropsondes</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">dropsondes</span><span class="o">.</span><span class="n">JOANNE</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">alt</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1500</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of sondes in dataset:&#39;</span><span class="p">,</span> <span class="n">ds_dropsondes</span><span class="o">.</span><span class="n">sonde_id</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">dse</span> <span class="o">=</span> <span class="p">(</span><span class="n">cpd</span> <span class="o">*</span> <span class="n">ds_dropsondes</span><span class="p">[</span><span class="s1">&#39;ta&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">grav</span> <span class="o">*</span> <span class="n">ds_dropsondes</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1e-3</span>
+
+<span class="c1"># Average over all the sondes</span>
+<span class="n">dse_mn</span> <span class="o">=</span> <span class="n">dse</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;sonde_id&#39;</span><span class="p">)</span>
+<span class="n">T_mn</span> <span class="o">=</span> <span class="n">ds_dropsondes</span><span class="p">[</span><span class="s1">&#39;ta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;sonde_id&#39;</span><span class="p">)</span>
+
+<span class="c1"># Dry adiabatic temperature profile, from near the surface</span>
+<span class="n">T_ad</span> <span class="o">=</span> <span class="n">T_mn</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">grav</span><span class="o">/</span><span class="n">cpd</span> <span class="o">*</span> <span class="n">ds_dropsondes</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">]</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dse_mn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Dry static energy [Mega Joules]&#39;</span><span class="p">)</span>
+
+<span class="n">T_mn</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Dropsonde average&#39;</span><span class="p">)</span>
+<span class="n">T_ad</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;alt&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Dry adiabatic ascent&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Air temperature [K]&#39;</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/intake_xarray/base.py:21: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
+  &#39;dims&#39;: dict(self._ds.dims),
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of sondes in dataset: 1068
+</pre></div>
+</div>
+<img alt="_images/1b5fb13160e98ecea9f92ba6289e29660dc3708b2d801f5a94b394c5c51e2d23.png" src="_images/1b5fb13160e98ecea9f92ba6289e29660dc3708b2d801f5a94b394c5c51e2d23.png" />
+</div>
+</div>
+</section>
+<section id="potential-temperature">
+<h2>Potential temperature<a class="headerlink" href="#potential-temperature" title="Link to this heading">#</a></h2>
+<p>So far, we have worked with energies and forces. These are intuitive quantities. However, atmospheric scientists also like to work with something called “potential temperatures”. If both the atmosphere and parcels displaced through it, are in perfect hydrostatic equilibrium, potential temperatures do not tell us anything we cannot express with static energies. However, as we saw above, that assumption led us to ignore parcel buoyancy. Moreover, although they are a bit less intuitive, potential temperatures are used across the atmospheric sciences, and <a class="reference external" href="https://doi.org/10.1175/BAMS-D-22-0013.1">especially in meteorology</a>. Boundary layer meteorology is a great example. Therefore, we have to understand them too.</p>
+<p>Let’s go back to eq. <a class="reference internal" href="#equation-first-law-enthalpy">(21)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+  c_{p_d}dT = \frac{dp}{\rho}
+\]</div>
+<p>Instead of immediately relating this to the vertical structure with hydrostatic balance, let’s try to just solve this, by eliminating <span class="math notranslate nohighlight">\(\rho\)</span> with the gas law, and integrating from a reference pressure <span class="math notranslate nohighlight">\(p_0\)</span> and a corresponding reference temperature <span class="math notranslate nohighlight">\(\theta\)</span>, to <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-theta-dev">
+<span class="eqno">(27)<a class="headerlink" href="#equation-theta-dev" title="Link to this equation">#</a></span>\[\begin{split}
+  c_{p_d}dT &amp; = \frac{dp}{p}R_dT \\
+  \int_{\theta}^T\frac{dT}{T} &amp; = \frac{R_d}{c_{p_d}} \int_{p_0}^p\frac{dp}{p} \\
+  \ln T - \ln \theta &amp; = \frac{R_d}{c_{p_d}} \left(\ln p - \ln p_0\right) \\
+  \ln \frac{T}{\theta} &amp; = \frac{R_d}{c_{p_d}} \ln \frac{p}{p_0} \\
+  \frac{T}{\theta} &amp; = \left(\frac{p}{p_0}\right)^{\frac{R_d}{c_p}} \equiv \Pi
+\end{split}\]</div>
+<p>In the last line, we defined a quantity <span class="math notranslate nohighlight">\(\Pi\)</span> called the “Exner function”, so that:</p>
+<div class="math notranslate nohighlight">
+\[
+  \theta = \frac{T}{\Pi} = T\left(\frac{p_0}{p}\right)^{\frac{R_d}{c_p}}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\theta\)</span> is the potential temperature. It measures the temperature of a dry air parcel, if it is adiabatically compressed or expanded from its current pressure <span class="math notranslate nohighlight">\(p\)</span>, to a reference pressure <span class="math notranslate nohighlight">\(p_0\)</span>. For the atmosphere, where pressure drops off strongly with height, we often consider air parcels from a particular level higher in the atmosphere, and ask “what would its temperature be, if we brought it adiabatically to the surface, thus compressing it to the surface pressure?” Therefore, although we are free to choose it, <span class="math notranslate nohighlight">\(p_0=10^5\)</span> Pa<a class="footnote-reference brackets" href="#fnpzero" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></a> across the atmospheric sciences.</p>
+</section>
+<section id="the-skew-t-ln-p-chart">
+<h2>The skew T - ln p chart<a class="headerlink" href="#the-skew-t-ln-p-chart" title="Link to this heading">#</a></h2>
+<!-- *Relate to dry adiabatic lapse rate?* Yes, through skew-T ln-P chart -->
+<p>Where <span class="math notranslate nohighlight">\(z\)</span> was a natural vertical coordinate to interpret DSE, <span class="math notranslate nohighlight">\(\theta\)</span> is a function of only <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(p\)</span>, and not of <span class="math notranslate nohighlight">\(z\)</span>. This is because we didn’t use hydrostatic balance to derive it, i.e. <span class="math notranslate nohighlight">\(\theta\)</span> is conserved over more general adiabatic energy exchange. So, if we want to study changes in <span class="math notranslate nohighlight">\(T\)</span> through <span class="math notranslate nohighlight">\(\theta\)</span>, our vertical coordinate must be <span class="math notranslate nohighlight">\(p\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+T = \theta \left(\frac{p}{p_0}\right)^{\frac{R_d}{c_p}}
+\]</div>
+<p>We know very well by now that <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(z\)</span> are tightly coupled through hydrostatic balance (see the hypsometric equation eq. <a class="reference internal" href="#equation-hypso">(15)</a>):</p>
+<div class="math notranslate nohighlight">
+\[
+\ln p_1 - \ln p_0 = -\frac{g}{R_d\overline{T}}(z_1 - z_0)
+\]</div>
+<p>So, its very common to reinterpret the vertical coordinate <span class="math notranslate nohighlight">\(z\)</span> in terms of pressure <span class="math notranslate nohighlight">\(p\)</span>, or to get a coordinate which is linearly proportional to <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(\ln p\)</span>. To convince ourselves that nothing has really changed, let’s look at the vertical temperature profile as a function of <span class="math notranslate nohighlight">\(\ln p\)</span>, by making the y-axis scale logarithmic. Let’s also add a few lines of constant <span class="math notranslate nohighlight">\(\theta\)</span> (i.e. lines describing dry adiabatic energy exchange).</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pref</span> <span class="o">=</span> <span class="mf">1e3</span> <span class="c1"># Reference pressure, in hPa (which is what we have in ds_temp)</span>
+
+<span class="c1"># Range over which to plot lines of constant theta</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="mi">360</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># In z coordinates</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">pref</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">),</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mf">48e3</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [K]&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height [m]&#39;</span><span class="p">)</span>
+
+<span class="c1"># In ln p coordinates</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Global radiosonde archive&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">pref</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">),</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta = </span><span class="si">%.0f</span><span class="s1">$&#39;</span><span class="o">%</span><span class="k">theta</span>[i], c=&#39;C1&#39;)
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">1e3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [K]&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa] &#39;</span><span class="p">)</span>
+
+<span class="n">_</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/31134eaacc348fce117e2f9b2e91239c30a1622f870e84aba65026c67450e024.png" src="_images/31134eaacc348fce117e2f9b2e91239c30a1622f870e84aba65026c67450e024.png" />
+</div>
+</div>
+<p>Indeed, the two figures are similar. Note that lifting dry adiabatically along lines of constant <span class="math notranslate nohighlight">\(\theta\)</span> will never lead to negative temperatures, in contrast to what happened when we tried to conserve DSE along our ascent. Since we derived <span class="math notranslate nohighlight">\(\theta\)</span> directly from conservation energy (eq. <a class="reference internal" href="#equation-theta-dev">(27)</a>), it is clear that negative temperatures came from the additional assumptions (regarding hydrostatic balance) we made when deriving conservation of DSE. This is an advantage of using <span class="math notranslate nohighlight">\(\theta\)</span>. However, because we did not add any new physics, it still is a poor model of the vertical structure of the globally averaged atmosphere.</p>
+<p>Because temperature always reduces with <span class="math notranslate nohighlight">\(z\)</span> (or <span class="math notranslate nohighlight">\(\ln p\)</span>), we now need a very long x-axis to plot the entire temperature range for some of these <span class="math notranslate nohighlight">\(\theta\)</span> trajectories. This obscures smaller changes. Therefore, it’s common to just rotate the lines of constant temperature (the vertical lines in the figure above), usually by around 45 degrees, to make the <em>actual</em> temperature change with height look vertical. Such a plot is called a skew T - log p chart. We’ve drawn such a plot below, using the python package <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html">Metpy</a>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Global radiosonde archive&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)):</span>
+    <span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">pref</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta = </span><span class="si">%.0f</span><span class="s1">$&#39;</span><span class="o">%</span><span class="k">theta</span>[i], c=&#39;C1&#39;)
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [C]&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&#39;Figures/skewt.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/a465cc298f71878fd98db05076bde42ecf8efb7eff7b172f5b492b20915dd5e7.png" src="_images/a465cc298f71878fd98db05076bde42ecf8efb7eff7b172f5b492b20915dd5e7.png" />
+</div>
+</div>
+<p>On this plot, one commonly refers to the skewed, constant temperature lines as “isotherms” and the orange lines of constant <span class="math notranslate nohighlight">\(\theta\)</span> as “dry adiabats”. It nicely shows that if you heat a surface parcel to 50<span class="math notranslate nohighlight">\(^{\circ}\)</span>C in the global atmosphere (where the surface temperature is around 15<span class="math notranslate nohighlight">\(^{\circ}\)</span>C), and let it rise dry adiabatically through the global atmosphere, it will become negatively buoyant <span class="math notranslate nohighlight">\(T_p&lt;T_a\)</span> at around 400 hPa, or 7200 m. Only air parcels from giant forest fires ever start with <span class="math notranslate nohighlight">\(T_p - T_a &gt; 35^{\circ}\)</span>C. Yet we routinely find air parcels from the surface which reach into the stratosphere.</p>
+<p>What are we missing? That will be the topic of the next lecture.</p>
+<!-- To include:
+
+Enthalpy isolates changes in heat that occur at constant pressure, rather than at constant volume. Because it exposes the changes in pressure, and it is these giant changes in pressure in the atmosphere's vertical which determine so much of its structure, atmospheric scientists generally prefer to work with enthalpy over internal energy.
+
+What would happen if we hadn't ignored the radiative heating?
+
+Why is adiabatic a good assumption? --><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="fnfd" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>You can choose to derive and study those in depth in the course on <a class="reference external" href="https://studyhandbook.wur.nl/modules/HWM23806?type=Cursory">geophysical fluid mechanics</a></p>
+</aside>
+<aside class="footnote brackets" id="fnclim" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Therefore, we will return to the globally averaged vertical structure in our lectures on climate, at the end of the course</p>
+</aside>
+<aside class="footnote brackets" id="fnlec" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>This applies to lecturers of atmospheric science too :)</p>
+</aside>
+<aside class="footnote brackets" id="fngeo" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>we define this height more precisely below</p>
+</aside>
+<aside class="footnote brackets" id="fnigra" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>these are compiled and quality-controlled by the <a class="reference external" href="https://www.ncei.noaa.gov/products/weather-balloon/integrated-global-radiosonde-archive">Integrated Global Radiosonde Archive (IGRA)</a></p>
+</aside>
+<aside class="footnote brackets" id="fnglob" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>In our global view, <span class="math notranslate nohighlight">\(A_l = 4\pi(R_e + z)^2\)</span> for a level <span class="math notranslate nohighlight">\(R_e + z\)</span> from the centre of the Earth (<span class="math notranslate nohighlight">\(R_e\)</span> is Earth’s radius). Similarly, from Newton’s general law of gravity, <span class="math notranslate nohighlight">\(F_g = m_lG\frac{M}{(R_e+z)^2} = m_lg\)</span> (i.e. <span class="math notranslate nohighlight">\(g=\frac{GM}{(R_e+z)^2}\)</span>, where <span class="math notranslate nohighlight">\(M\)</span> is the mass of Earth, and <span class="math notranslate nohighlight">\(G\)</span> the gravitational constant). I.e. both <span class="math notranslate nohighlight">\(A_l\)</span> and <span class="math notranslate nohighlight">\(g\)</span> depend on <span class="math notranslate nohighlight">\((R_e+z)^2\)</span>, and are not entirely constant with height. Fortunately, since <span class="math notranslate nohighlight">\(R_e=6371\)</span> km, while the troposphere is roughly 10 km deep, the assumption <span class="math notranslate nohighlight">\((R_e+z)^2 = R_e^2\)</span> is still accurate in the troposphere to within <span class="math notranslate nohighlight">\(\frac{z^2}{(R_e+z)^2} = \frac{10^2}{(6371+10)^2} = 0.996\)</span> - the error is less than 0.4%. Therefore, in this course we approximate <span class="math notranslate nohighlight">\(A_l = 4\pi R_e^2\)</span> and <span class="math notranslate nohighlight">\(g=\frac{GM}{R_e^2}\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="fnpart" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>We use partial differences (<span class="math notranslate nohighlight">\(\partial\)</span>) in this equation because pressure depends on more independent variables than <span class="math notranslate nohighlight">\(z\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="fnisot" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
+<p>To be precise, we define <span class="math notranslate nohighlight">\(\overline{T_v} = \frac{z_1-z_0}{\int_{z_0}^{z_1}\frac{dz}{T_v}}\)</span></p>
+</aside>
+<aside class="footnote brackets" id="fnmass" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">9</a><span class="fn-bracket">]</span></span>
+<p>Energy per unit mass, in J/kg, is more precisely called “specific energy”. Because we’ll most often keep the mass that has the energy constant, we will usually just call it energy.</p>
+</aside>
+<aside class="footnote brackets" id="fngeop" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">10</a><span class="fn-bracket">]</span></span>
+<p>In our wish to interpret <span class="math notranslate nohighlight">\(\Phi\)</span> as potential energy due to vertical displacement of air parcels, it matters that we take <span class="math notranslate nohighlight">\(g\)</span> as a constant, because when it’s not, the assumption <span class="math notranslate nohighlight">\(\Phi = \int_0^zgdz = g\int_0^zdz = gz\)</span> breaks down. To circumvent this, it is common to define the “geopotential height” <span class="math notranslate nohighlight">\(Z = 1/g_0\int_0^zgdz = \Phi(z)/g_0\)</span>. <span class="math notranslate nohighlight">\(Z\)</span> is the height to which a parcel is displaced if you give it the geopotential <span class="math notranslate nohighlight">\(\Phi\)</span>, and you assume it’s experiencing the surface gravity <span class="math notranslate nohighlight">\(g_0\)</span>. It appeared e.g. on the y-axes in vertical profiles of pressure, because we went up to altitudes (40 km) where assuming <span class="math notranslate nohighlight">\(g=g_0\)</span> is becoming untenable. That figure is a good example of why most real-world problems involving energy, express height in <em>geopotential height</em> <span class="math notranslate nohighlight">\(Z\)</span>, rather than in geometric height <span class="math notranslate nohighlight">\(z\)</span>. For most applications in this course, however, we stick with the assumption that <span class="math notranslate nohighlight">\(g=g_0\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="fnwind" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">11</a><span class="fn-bracket">]</span></span>
+<p>Consider, for example, a category 5 hurricane. To get that classification, it needs to have wind speeds of <span class="math notranslate nohighlight">\(&gt;\)</span>70 m/s (252 km/hr!). That gives <span class="math notranslate nohighlight">\(\frac{1}{2}u^2 = 2450 J/kg\)</span>. If we were to take all that kinetic energy and dissipate it into internal energy, the temperature would rise by only <span class="math notranslate nohighlight">\(2450/c_{v_d}=2450/717\approx3.5\)</span> K. Fortunately, most winds are even much weaker. So in this lecture, where we are studying an atmosphere with temperature differences between the surface and the tropopause of more than 100 K, we can safely ignore kinetic energy.</p>
+</aside>
+<aside class="footnote brackets" id="fncv" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">12</a><span class="fn-bracket">]</span></span>
+<p>More precisely, if the internal energy per unit mass is <span class="math notranslate nohighlight">\(u\)</span>, then to convert small changes in <span class="math notranslate nohighlight">\(u\)</span> to small changes in <span class="math notranslate nohighlight">\(T\)</span> we would write <span class="math notranslate nohighlight">\(du = \frac{du}{dT} dT\)</span>, identifying <span class="math notranslate nohighlight">\(c_v=\frac{du}{dT}\)</span>. It actually varies with temperature itself, but for this course we’ll keep it fixed</p>
+</aside>
+<aside class="footnote brackets" id="fnadv" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">13</a><span class="fn-bracket">]</span></span>
+<p>The fluid dynamics course focuses in-depth on how to describe such advection mathematically</p>
+</aside>
+<aside class="footnote brackets" id="fndse" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">14</a><span class="fn-bracket">]</span></span>
+<p>This name actually refers to what the DSE <em>doesn’t</em> measure: It’s called “dry” because it excludes any energy stored in moisture, and “static” because it doesn’t include any kinetic energy.</p>
+</aside>
+<aside class="footnote brackets" id="fngws" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">15</a><span class="fn-bracket">]</span></span>
+<p>Sometimes also called gravity waves</p>
+</aside>
+<aside class="footnote brackets" id="fnpzero" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">16</a><span class="fn-bracket">]</span></span>
+<p>This <span class="math notranslate nohighlight">\(p_0\)</span> is not exactly the surface pressure, which is 101325 Pa for a standard atmosphere. But it’s the closest round number.</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "metclim_env"
+        },
+        kernelOptions: {
+            name: "metclim_env",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'metclim_env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1.%20Gas%20laws.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. Gas laws</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3.%20Thermodynamics%20%28ii%29.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">3. Thermodynamics (ii) - Moist thermodynamics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-vertical-structure-of-the-troposphere">The vertical structure of the troposphere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pressure-the-force-balance-of-hydrostatic-equilibrium">Pressure - the force balance of hydrostatic equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-and-atmospheric-energetics">Temperature and atmospheric energetics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geopotential-and-the-energetic-interpretation-of-the-hydrostatic-balance">Geopotential and the energetic interpretation of the hydrostatic balance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-an-atmospheric-air-parcel">Energy of an atmospheric air parcel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dry-adiabatic-lapse-rate">The dry adiabatic lapse rate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-static-stability">Dry static stability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-dry-adiabatic-thinking-useful">When is dry adiabatic thinking useful?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature">Potential temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skew-t-ln-p-chart">The skew T - ln p chart</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Martin Janssens
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

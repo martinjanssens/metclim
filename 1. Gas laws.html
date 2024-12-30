@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Thermodynamics (I) &#8212; Lecture notes - Meteorology &amp; Climate</title>
+    <title>1. Gas laws &#8212; Lecture notes - Meteorology &amp; Climate</title>
   
   
   
@@ -59,10 +59,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'thermodynamics';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1. Gas laws';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to Meteorology &amp; Climate" href="intro.html" />
+    <link rel="next" title="2. Thermodynamics (i)" href="2.%20Thermodynamics%20%28i%29.html" />
+    <link rel="prev" title="Welcome" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -170,12 +171,14 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to Meteorology & Climate
+                    Welcome
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Thermodynamics (I)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Gas laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.%20Thermodynamics%20%28i%29.html">2. Thermodynamics (i)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3.%20Thermodynamics%20%28ii%29.html">3. Thermodynamics (ii) - Moist thermodynamics</a></li>
 </ul>
 
     </div>
@@ -247,7 +250,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fthermodynamics.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F1. Gas laws.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +280,7 @@
       
       
       
-      <li><a href="_sources/thermodynamics.ipynb" target="_blank"
+      <li><a href="_sources/1. Gas laws.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +364,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Thermodynamics (I)</h1>
+    <h1>1. Gas laws</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -371,7 +374,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-gases-the-kinetic-theory">Ideal gases - the kinetic theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-ideal-gases">Ideal gases - the kinetic theory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pressure">Pressure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gas-law">The gas law</a></li>
@@ -394,8 +397,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="thermodynamics-i">
-<h1>Thermodynamics (I)<a class="headerlink" href="#thermodynamics-i" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="gas-laws">
+<h1>1. Gas laws<a class="headerlink" href="#gas-laws" title="Link to this heading">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Questions you should be able to answer at the end of this module:</p>
@@ -406,8 +409,8 @@ document.write(`
 <li><p>How should I interpret virtual temperature?</p></li>
 </ul>
 </div>
-<section id="ideal-gases-the-kinetic-theory">
-<h2>Ideal gases - the kinetic theory<a class="headerlink" href="#ideal-gases-the-kinetic-theory" title="Link to this heading">#</a></h2>
+<section id="sec-ideal-gases">
+<span id="ideal-gases-the-kinetic-theory"></span><h2>Ideal gases - the kinetic theory<a class="headerlink" href="#sec-ideal-gases" title="Link to this heading">#</a></h2>
 <p>We almost always consider the atmosphere to be an ideal gas (even when cloud, ice and aerosol particles form within it!). What does this mean again? Ideal gases obey the gas law:</p>
 <div class="math notranslate nohighlight" id="equation-gaslaw">
 <span class="eqno">(1)<a class="headerlink" href="#equation-gaslaw" title="Link to this equation">#</a></span>\[
@@ -485,30 +488,30 @@ n_0 = n_{0_{N_2}} + n_{0_{O_2}} + n_{0_{H_2O}} + ...
 \[
 p = k_b\frac{n_0T}{V} = (n_{0_{N_2}} + n_{0_{O_2}} + n_{0_{H_2O}} + ...)\frac{k_bT}{V} = n_{0_{N_2}}\frac{k_bT}{V} + n_{0_{O_2}}\frac{k_bT}{V} + n_{0_{H_2O}}\frac{k_bT}{V} + ... = p_{N_2} + p_{O_2} + p_{H_2O} + ...
 \]</div>
-<p>Of course, we can choose which decomposition of <span class="math notranslate nohighlight">\(n_0\)</span> is useful, and in atmospheric science, we almost always decompose it into the total number of water molecules <span class="math notranslate nohighlight">\(n_{H_2O}\)</span>, and “everything else”, <span class="math notranslate nohighlight">\(n_d\)</span> (we usually call <span class="math notranslate nohighlight">\(n_d\)</span> dry air).</p>
+<p>Of course, we can choose which decomposition of <span class="math notranslate nohighlight">\(n_0\)</span> is useful, and in atmospheric science, we almost always decompose it into the total number of water molecules <span class="math notranslate nohighlight">\(n_{v}\)</span><a class="footnote-reference brackets" href="#fnvap" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>, and “everything else”, <span class="math notranslate nohighlight">\(n_d\)</span> (we usually call <span class="math notranslate nohighlight">\(n_d\)</span> dry air).</p>
 <div class="math notranslate nohighlight" id="equation-dalton-water">
 <span class="eqno">(6)<a class="headerlink" href="#equation-dalton-water" title="Link to this equation">#</a></span>\[
-p = (n_d + n_{H_2O})\frac{k_bT}{V}
+p = (n_d + n_{v})\frac{k_bT}{V}
 \]</div>
 </section>
 <section id="converting-to-mass">
 <h3>Converting to mass<a class="headerlink" href="#converting-to-mass" title="Link to this heading">#</a></h3>
-<p>Earlier, we argued that it would be useful to have an expression for gases that don’t rely on having to count numbers and speeds of molecules. That gave us expressions for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(p\)</span> and their relation (eq. <a class="reference internal" href="#equation-gaslaw-derived">(5)</a>), but in eq. <a class="reference internal" href="#equation-dalton-water">(6)</a> we still have <span class="math notranslate nohighlight">\(n_d\)</span> and <span class="math notranslate nohighlight">\(n_{H_2O}\)</span>. In air, it is usually easier to measure masses. For example, the dry air density <span class="math notranslate nohighlight">\(\rho_d\)</span> measures the mass of dry air <span class="math notranslate nohighlight">\(m_d\)</span> in <span class="math notranslate nohighlight">\(V\)</span>: <span class="math notranslate nohighlight">\(\rho_d = m_d/V\)</span>, while for water, <span class="math notranslate nohighlight">\(\rho_{H_2O} = m_{H_2O}/V\)</span>. To convert <span class="math notranslate nohighlight">\(n_d\)</span> to <span class="math notranslate nohighlight">\(m_d\)</span> (or any molecule number to a mass), we need to know how much a particular molecule weighs, which is expressed by the molecular mass <span class="math notranslate nohighlight">\(m_m\)</span> (in kg), i.e.:</p>
+<p>Earlier, we argued that it would be useful to have an expression for gases that don’t rely on having to count numbers and speeds of molecules. That gave us expressions for <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(p\)</span> and their relation (eq. <a class="reference internal" href="#equation-gaslaw-derived">(5)</a>), but in eq. <a class="reference internal" href="#equation-dalton-water">(6)</a> we still have <span class="math notranslate nohighlight">\(n_d\)</span> and <span class="math notranslate nohighlight">\(n_{v}\)</span>. In air, it is usually easier to measure masses. For example, the dry air density <span class="math notranslate nohighlight">\(\rho_d\)</span> measures the mass of dry air <span class="math notranslate nohighlight">\(m_d\)</span> in <span class="math notranslate nohighlight">\(V\)</span>: <span class="math notranslate nohighlight">\(\rho_d = m_d/V\)</span>, while for water, <span class="math notranslate nohighlight">\(\rho_{v} = m_{v}/V\)</span>. To convert <span class="math notranslate nohighlight">\(n_d\)</span> to <span class="math notranslate nohighlight">\(m_d\)</span> (or any molecule number to a mass), we need to know how much a particular molecule weighs, which is expressed by the molecular mass <span class="math notranslate nohighlight">\(m_m\)</span> (in kg), i.e.:</p>
 <div class="math notranslate nohighlight">
 \[
 m = n m_m
 \]</div>
 <p>Because an air volume may contain many versions of the same molecule of different molecular mass (isotopes), often <span class="math notranslate nohighlight">\(m_m\)</span> is reported not for one, but for <span class="math notranslate nohighlight">\(6.022\times 10^{23}\)</span> molecules (equal by definition to Avogadro’s number <span class="math notranslate nohighlight">\(N_A\)</span> and to one mole). That quantity, <span class="math notranslate nohighlight">\(M_m = m_m*N_A\)</span> is called the molar mass (commonly reported in grams per mole). For our conversion, it means:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-m-molar">
+<span class="eqno">(7)<a class="headerlink" href="#equation-m-molar" title="Link to this equation">#</a></span>\[
 m = n \frac{M_m}{N_A}
 \]</div>
 <p>Such that, for the decomposition chosen in eq. <a class="reference internal" href="#equation-dalton-water">(6)</a>,</p>
 <div class="math notranslate nohighlight" id="equation-p-molar">
-<span class="eqno">(7)<a class="headerlink" href="#equation-p-molar" title="Link to this equation">#</a></span>\[
-p = (\frac{m_d}{N_A M_{m_d}} + \frac{N_A m_{H_2O}}{M_{m_{H_2O}}})\frac{k_bT}{V}
+<span class="eqno">(8)<a class="headerlink" href="#equation-p-molar" title="Link to this equation">#</a></span>\[
+p = (\frac{N_A m_d}{M_{m_d}} + \frac{N_A m_{v}}{M_{m_{v}}})\frac{k_bT}{V}
 \]</div>
-<p>with <span class="math notranslate nohighlight">\(M_{m_d}=28.97\)</span> g/mol <a class="footnote-reference brackets" href="#fndry" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a> and <span class="math notranslate nohighlight">\(M_{m_v}=18.016\)</span> g/mol<a class="footnote-reference brackets" href="#fnvap" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>. At this point we usually gather constants, giving the gas constants <span class="math notranslate nohighlight">\(R_d\)</span> and <span class="math notranslate nohighlight">\(R_v\)</span> for dry air and water vapour:</p>
+<p>with <span class="math notranslate nohighlight">\(M_{m_d}=28.97\)</span> g/mol <a class="footnote-reference brackets" href="#fndry" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a> and <span class="math notranslate nohighlight">\(M_{m_v}=18.016\)</span> g/mol. At this point we usually gather constants, giving the gas constants <span class="math notranslate nohighlight">\(R_d\)</span> and <span class="math notranslate nohighlight">\(R_v\)</span> for dry air and water:</p>
 <div class="math notranslate nohighlight">
 \[
 R_d = \frac{N_A k_b}{M_{m_d}} = 287.05 \text{ J / kg / K}, \quad R_v = \frac{N_A k_b}{M_{m_{v}}} = 461.5 \text{ J / kg / K}
@@ -518,48 +521,131 @@ R_d = \frac{N_A k_b}{M_{m_d}} = 287.05 \text{ J / kg / K}, \quad R_v = \frac{N_A
 \[
 R_d/R_v = \frac{\frac{N_A k_b}{M_{m_d}}}{\frac{N_A k_b}{M_{m_{v}}}} = \frac{M_{m_{v}}}{M_{m_d}} = \frac{18.016}{28.97} = 0.622 = \varepsilon.
 \]</div>
-<p>In fact, the fact that water vapour is <span class="math notranslate nohighlight">\(\varepsilon = 0.622\)</span> times lighter than dry air, is the most important reason to choose the decomposition of eq. <a class="reference internal" href="#equation-dalton-water">(6)</a>. Inserting the definitions for <span class="math notranslate nohighlight">\(R_d\)</span> and <span class="math notranslate nohighlight">\(R_v\)</span> in eq. <a class="reference internal" href="#equation-p-molar">(7)</a> and rewriting in terms of densities, then finally gives us a gas law we can practically do atmospheric science with:</p>
+<p>In fact, the fact that water vapour is <span class="math notranslate nohighlight">\(\varepsilon = 0.622\)</span> times lighter than dry air, is the most important reason to choose the decomposition of eq. <a class="reference internal" href="#equation-dalton-water">(6)</a>. Inserting the definitions for <span class="math notranslate nohighlight">\(R_d\)</span> and <span class="math notranslate nohighlight">\(R_v\)</span> in eq. <a class="reference internal" href="#equation-p-molar">(8)</a> and rewriting in terms of densities, then finally gives us a gas law we can practically do atmospheric science with:</p>
 <div class="math notranslate nohighlight" id="equation-gaslaw-moist">
-<span class="eqno">(8)<a class="headerlink" href="#equation-gaslaw-moist" title="Link to this equation">#</a></span>\[
-p = \left(\frac{R_dm_d}{V} + \frac{R_vm_{H_2O}}{V}\right)T = \left(R_d\rho_d + R_v\rho_v\right)T
+<span class="eqno">(9)<a class="headerlink" href="#equation-gaslaw-moist" title="Link to this equation">#</a></span>\[
+p = \left(\frac{R_dm_d}{V} + \frac{R_vm_{v}}{V}\right)T = \left(R_d\rho_d + R_v\rho_v\right)T
 \]</div>
 </section>
 <section id="virtual-temperature">
 <h3>Virtual temperature<a class="headerlink" href="#virtual-temperature" title="Link to this heading">#</a></h3>
-<p>Many atmospheric science problems involve calculating the lightness of air with respect to its surroundings; its buoyancy. Since <span class="math notranslate nohighlight">\(M_{v} = 0.622M_d\)</span>, we cannot ignore the effect of water vapour in these problems <a class="footnote-reference brackets" href="#fnyang" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>. But people like to work with the gas law as if it applied to dry air. To resolve this, it is common to define a temperature that still satisfies the dry gas law, even when the air is moist. Let us do this too. First, we recognise that the total air density <span class="math notranslate nohighlight">\(\rho_t\)</span> in the volume satisfies:</p>
+<p>Many atmospheric science problems involve calculating the lightness of air with respect to its surroundings; its buoyancy. Since <span class="math notranslate nohighlight">\(M_{v} = 0.622M_d\)</span>, we cannot ignore the effect of water vapour in these problems <a class="footnote-reference brackets" href="#fnyang" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a>. But people like to work with the gas law as if it applied to dry air. To resolve this, it is common to define a temperature that still satisfies the dry gas law, even when the air is moist. Let us do this too.</p>
+<p>If we have a volume <span class="math notranslate nohighlight">\(V\)</span> with <span class="math notranslate nohighlight">\(n_d\)</span> dry air molecules at temperature <span class="math notranslate nohighlight">\(T\)</span> and pressure <span class="math notranslate nohighlight">\(p\)</span>, and we replace <span class="math notranslate nohighlight">\(n_v\)</span> of those dry air molecules with <span class="math notranslate nohighlight">\(n_v\)</span> water vapour molecules with the same kinetic energy, the gas law eq. <a class="reference internal" href="#equation-gaslaw-derived">(5)</a> tells us that <span class="math notranslate nohighlight">\(p\)</span> should not have changed, i.e.</p>
+<div class="math notranslate nohighlight" id="equation-gaslaw-dry">
+<span class="eqno">(10)<a class="headerlink" href="#equation-gaslaw-dry" title="Link to this equation">#</a></span>\[
+  p = n_d\frac{k_bT}{V} = \frac{m_d N_A}{M_d}\frac{k_b T}{V} = \rho_dR_dT
+\]</div>
+<p>should be the same after we exchanged the molecules. But the mass of the dry air molecules we have removed (<span class="math notranslate nohighlight">\(n_vM_d/N_A\)</span> by eq. <a class="reference internal" href="#equation-m-molar">(7)</a>) is larger than the mass we added back (<span class="math notranslate nohighlight">\(n_vM_v/N_A\)</span>), because the water molecules weigh less than the dry air molecules. That is, defining <span class="math notranslate nohighlight">\(m_d\)</span> as the dry air mass and <span class="math notranslate nohighlight">\(m_t\)</span> the mass of the dry/moist air mixture:</p>
+<div class="math notranslate nohighlight" id="equation-mass-moist">
+<span class="eqno">(11)<a class="headerlink" href="#equation-mass-moist" title="Link to this equation">#</a></span>\[\begin{split}
+m_t &amp; = m_d - n_v\frac{M_d}{N_a} + n_v\frac{M_v}{N_a} \\
+    &amp; = m_d - \frac{n_v}{N_A}(M_d - M_v) \\
+    &amp; = m_d - m_v\frac{M_d-M_v}{M_v}
+\end{split}\]</div>
+<p>where in the last step, we expressed the exchanged molecules <span class="math notranslate nohighlight">\(n_v\)</span> in terms of their water mass: <span class="math notranslate nohighlight">\(n_v = m_vN_A/M_v\)</span>. Since <span class="math notranslate nohighlight">\(M_d = 1.608M_v\)</span>, <span class="math notranslate nohighlight">\(m_t = m_d - 0.608m_v\)</span>: The moist air mass is lighter than the dry air mass by <span class="math notranslate nohighlight">\(0.608m_v\)</span>.</p>
+<p>What influence does this have on the gas law? We argued above that <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span> are unchanged, but if we divide eq. <a class="reference internal" href="#equation-mass-moist">(11)</a> through <span class="math notranslate nohighlight">\(V\)</span> and rearrange for <span class="math notranslate nohighlight">\(\rho_d\)</span>, we see that:</p>
 <div class="math notranslate nohighlight">
 \[
-\rho_t = \frac{m_d+m_v}{V}
+\rho_d = \rho_t + \rho_v\frac{M_d-M_v}{M_v}.
 \]</div>
-<p>If we define the specific humidity <span class="math notranslate nohighlight">\(q_v\)</span> to measure the amount of water vapour (in kg water vapour per kg air):</p>
+<p>That is, if we just took the lower total density of the moist air <span class="math notranslate nohighlight">\(\rho_t\)</span> and multiplied it by <span class="math notranslate nohighlight">\(R_dT\)</span>, we would underestimate the pressure, by a factor proportional to i) the relative heaviness of dry molecules to moist molecules (<span class="math notranslate nohighlight">\((M_d-M_v)/M_v\)</span>), and ii) how much moisture there is (<span class="math notranslate nohighlight">\(\rho_v\)</span>). It is common to express <span class="math notranslate nohighlight">\(\rho_v\)</span> as a fraction of the total mass in the volume, called the specific humidity <span class="math notranslate nohighlight">\(q_v\)</span> (in kg water vapour per kg moist air)</p>
 <div class="math notranslate nohighlight">
 \[
-q_v = m_v/(m_a + m_v) = \rho_v/\rho_t,
+q_v = \frac{m_v}{m_t} = \frac{\rho_v}{\rho_t},
 \]</div>
-<p>so that <span class="math notranslate nohighlight">\(\rho_v = \rho_t q_v\)</span>, then we can rewrite</p>
+<p>so that <span class="math notranslate nohighlight">\(\rho_v = \rho_t q_v\)</span>. Rewriting <span class="math notranslate nohighlight">\(\rho_d\)</span> in terms of <span class="math notranslate nohighlight">\(q_v\)</span> and <span class="math notranslate nohighlight">\(\rho_t\)</span>, and using the definitions of the gas constants gives:</p>
 <div class="math notranslate nohighlight">
-\[
-\rho_d = \frac{m_d + m_v - m_v}{V} = \rho_t - \rho_v = \rho_t - q_v\rho_t = \rho_t(1 - q_v).
-\]</div>
-<p>If we insert this in the gas law eq. <a class="reference internal" href="#equation-gaslaw-moist">(8)</a> and rearrange, we get:</p>
+\[\begin{split}
+\rho_d &amp; = \rho_t\left(1 + q_v\frac{M_d-M_v}{M_v}\right) \\
+       &amp; = \rho_t\left(1 + q_v\left(\frac{R_v}{R_d} - 1\right)\right)
+\end{split}\]</div>
+<p>To get the proper gas law for the moist air volume, we insert this expression in the gas law for our initial, dry volume:</p>
 <div class="math notranslate nohighlight" id="equation-gaslaw-virt">
-<span class="eqno">(9)<a class="headerlink" href="#equation-gaslaw-virt" title="Link to this equation">#</a></span>\[\begin{split}
-p &amp; = \left(R_d \rho_t(1-q_v) + R_v\rho_t q_v\right)T \\
-  &amp; = \rho_tR_d\left(1 + q_v\left(\frac{1}{\varepsilon} - 1\right)\right)T
+<span class="eqno">(12)<a class="headerlink" href="#equation-gaslaw-virt" title="Link to this equation">#</a></span>\[\begin{split}
+  p &amp; = \rho_dR_dT \\
+    &amp; = \rho_tR_dT\left(1 + q_v\left(\frac{R_v}{R_d} - 1\right)\right) \\
+    &amp; = \rho_tR_dT_v
 \end{split}\]</div>
-<p>From which we define the <em>virtual temperature</em> <span class="math notranslate nohighlight">\(T_v\)</span></p>
+<p>In the last line, we absorbed the factor by which the dry air density is higher than that of the moist/dry air mixture (<span class="math notranslate nohighlight">\(1+q_v\left(R_v/R_d - 1\right)\)</span>) in a redefined temperature, called the <em>virtual temperature</em> <span class="math notranslate nohighlight">\(T_v\)</span> <a class="footnote-reference brackets" href="#fntvirt" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a>:</p>
 <div class="math notranslate nohighlight" id="equation-tvirt">
-<span class="eqno">(10)<a class="headerlink" href="#equation-tvirt" title="Link to this equation">#</a></span>\[\begin{split}
-  T_v &amp; = T\left(1 + q_v\left(\frac{1}{\varepsilon} - 1\right)\right) \\
-      &amp; = T\left(1 + 0.608 q_v\right),
+<span class="eqno">(13)<a class="headerlink" href="#equation-tvirt" title="Link to this equation">#</a></span>\[\begin{split}
+  T_v &amp; = T\left(1 + q_v\left(\frac{R_v}{R_d} - 1\right)\right) \\
+      &amp; = T\left(1 + 0.608 q_v\right).
 \end{split}\]</div>
-<p>so that the gas law for moist air might be expressed as <a class="footnote-reference brackets" href="#fnrho" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a>:</p>
-<div class="math notranslate nohighlight">
-\[
-  p = \rho_t R_d T_v \approx \rho_d R_d T_v.
-\]</div>
-<p>You might now ask: If the gas law only cares about the number of particles bouncing around <span class="math notranslate nohighlight">\(n_0\)</span> (see eq. <a class="reference internal" href="#equation-gaslaw-derived">(5)</a>), why would it matter how light those particles are, and why do we need <span class="math notranslate nohighlight">\(T_v\)</span>? Fundamentally, this comes from our wish to measure atmospheric air properties in mass (<span class="math notranslate nohighlight">\(q_v\)</span> and <span class="math notranslate nohighlight">\(\rho_d\)</span>) rather than in number of molecules (<span class="math notranslate nohighlight">\(n_{d}\)</span>, <span class="math notranslate nohighlight">\(n_{H_2O}\)</span>), and the conversion of the gas law to eq. <a class="reference internal" href="#equation-gaslaw-moist">(8)</a> that was needed to achieve that. The interpretation of <span class="math notranslate nohighlight">\(T_v\)</span> follows from this choice: If we have two identical air volumes with the same number of particles <span class="math notranslate nohighlight">\(n_0\)</span> at the same temperature <span class="math notranslate nohighlight">\(T\)</span>, but one of them consists only of dry air particles and the other contains some water vapour molecules, then, because water vapour is lighter than dry air, we will measure the moist air volume to be lighter than the dry air volume. In other words, <span class="math notranslate nohighlight">\(\rho_t\)</span> is lower in the moist volume than in the dry volume. At the same time, because both volumes have the same <span class="math notranslate nohighlight">\(n_0\)</span>, <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(V\)</span>, the gas law demands that they must have the same <span class="math notranslate nohighlight">\(p\)</span>. To achieve this pressure in the moist volume while using <span class="math notranslate nohighlight">\(\rho_t\)</span> as our air density, we must increase <span class="math notranslate nohighlight">\(\rho_t\)</span> by the factor <span class="math notranslate nohighlight">\(1+0.608q_v\)</span> (note that it is always <span class="math notranslate nohighlight">\(\geq 1\)</span>!), as we did in eq. <a class="reference internal" href="#equation-gaslaw-virt">(9)</a>. By using <span class="math notranslate nohighlight">\(T_v\)</span>, we choose to account for this effect not by changing the density (where the difference resides), but by changing the temperature <a class="footnote-reference brackets" href="#fntvirt" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a>. This leads to an often-used definition for <span class="math notranslate nohighlight">\(T_v\)</span>: It is the higher temperature that a mass of dry air (with <span class="math notranslate nohighlight">\(\rho_t\)</span> and <span class="math notranslate nohighlight">\(R_d\)</span>) would need to have to compensate for the fact that it is heavier than moist air, to exert the same pressure as that moist air.</p>
-<!-- Ideas for exercises:
+<p>The point of the exercise we went through here, is to get a feeling for what <span class="math notranslate nohighlight">\(T_v\)</span> is: It is the temperature we would have to give to a volume that contains both dry and moist air, to bring it to the same pressure as a volume of air where we exchanged all the water vapour molecules for dry air molecules, thus modifying <span class="math notranslate nohighlight">\(\rho_t\)</span> to <span class="math notranslate nohighlight">\(\rho_d\)</span>. <span class="math notranslate nohighlight">\(T_v &gt; T\)</span>, because we have to compensate for the fact that such an exchange would raise <span class="math notranslate nohighlight">\(\rho_t\)</span> to <span class="math notranslate nohighlight">\(\rho_d\)</span>.</p>
+<!-- You might now ask: If the gas law only cares about the number of particles bouncing around $n_0$ (see eq. {eq}``gaslaw-derived``), why would it matter how light those particles are, and so why do we need $T_v$? Fundamentally, this comes from our wish to measure atmospheric air properties in masses ($\rho_t$) and mass fractions ($q_v$), rather than in number of molecules ($n_{d}$, $n_{v}$), and the conversion of the gas law to eq. {eq}``gaslaw-moist`` that was needed. The interpretation of $T_v$ follows from this choice: -->
+<!-- If we have a volume $V$ with $n_0$ dry air molecules at temperature $T$ and pressure $p$, and we replace $n$ of those molecules with $n$ water vapour molecules with the same kinetic energy, the gas law eq. {eq}`gaslaw-derived` tells us that $p$ should not have changed. But, because the water vapour molecules are lighter than the dry air molecules, the moist air volume has less mass than the dry air volume, i.e. $\rho_t < \rho_d$. Were we to measure this new density, and assume that the air is still dry, (i.e. using the dry air gas constant $R_d$), we would estimate a pressure $p = \rho_tR_dT$, which is too low! This is because $R_d$ thinks we need less heavier dry air molecules to achieve the measured $\rho_t$ than we actually have -->
+<!-- The interpretation of $T_v$ follows from this choice: If we have two identical air volumes with the same number of particles $n_0$ at the same temperature $T$, but one of them consists only of dry air particles and the other contains some water vapour molecules, then, because water vapour is lighter than dry air, we will measure the moist air volume to be lighter than the dry air volume. In other words, $\rho_t$ is lower in the moist volume than in the dry volume. At the same time, because both volumes have the same $n_0$, $T$ and $V$, the gas law demands that they must have the same $p$. If we want to treat the moist volume "as if it dry", i.e. using the dry air gas constant, we must increase $\rho_t$ by the factor $1+0.608q_v$ (note that it is always $\geq 1$!), as we did in eq. {eq}``gaslaw-virt``. By using $T_v$, we choose to account for this effect not by changing the density (where the difference resides), but by changing the temperature [^fntvirt]. This leads to an often-used definition for $T_v$: It is the higher temperature that a mass of dry air (with $\rho_t$ and $R_d$) would need to have to compensate for the fact that it is heavier than moist air, to exert the same pressure as that moist air. -->
+<!-- (sec:qlvol)=
+### Bonus (not part of the course) - what if there is condensed water in the volume?
+
+If water vapour condenses into liquid water, or liquid water freezes, things get harder, because:
+1. We have a number of molecules in the liquid ($n_l$) and frozen ($n_i$) phases, so now $n = n_d + n_v + n_l + n_i$, or converting to mass with $n = mN_A/M_m$: $n = N_A\left(\frac{m_d}{M_{m_d}} + \frac{m_v}{M_{v_m}} + \frac{m_l}{M_{v_m}} + \frac{m_i}{M_{v_m}}\right)$ (the molar mass of water is the same regardless of its phase). Do we include the liquid and ice masses in the pressure of the volume?
+2. Condensed and frozen water particles are no longer really part of the same "continuum" as the "moist air" gas phase around it. Therefore, we need to decompose the volume by phase, i.e. into the part occupied by the moist air ($V_a$), by liquid particles ($V_l$) and by frozen particles ($V_i$): $V = V_a + V_l + V_i$. With which volume do we choose to work, $V_a$ or $V$?
+
+The usual approach is to say: "We will only focus on the moist air" (without liquid and ice in it), and try as best we can to include the effects of liquid/ice on this moist air. Let us first insert everything above in the gas law, and deal with question 2.:
+
+$$
+p & = \frac{n}{V}k_bT \\
+  & = \left(\frac{m_d}{M_{m_d}(V_a + V_l + V_i)} + \frac{m_v}{M_{v_m}(V_a + V_l + V_i)} + \frac{m_l}{M_{v_m}(V_a + V_l + V_i)} + \frac{m_i}{M_{v_m}(V_a + V_l + V_i)}\right)N_Ak_bT \\
+  & = \left(\frac{m_dR_d}{V_a + V_l + V_i} + R_v\left(\frac{m_v}{V_a + V_l + V_i} + \frac{m_l}{V_a + V_l + V_i} + \frac{m_i}{V_a + V_l + V_i}\right)\right)T
+$$
+
+If you assemble the same mass of water molecules in liquid droplets (or in any liquid form) or ice, they take up three orders of magnitude less space; that is: $V_l \sim 10^{-3} V_a$ and $V_i \sim 10^{-3} V_a$. Therefore, the volume we divide over in the equation above is, to very close approximation, the volume of the air ($V_a \approx V$):
+
+$$
+p = \left(\frac{m_dR_d}{V_a} + R_v\left(\frac{m_v}{V_a} + \frac{m_l}{V_a} + \frac{m_i}{V_a}\right)\right)T
+$$
+
+It is common to rewrite this a little before continuing. We make the following definitions:
+
+$$
+  q_v & = \frac{m_v}{m} \\
+  q_l & = \frac{m_l}{m} \\
+  q_i & = \frac{m_i}{m} \\
+  q_t & = \frac{m_v+m_l+m_i}{m} = q_v + q_l + q_i \\
+$$
+
+and rewrite the densities of dry mass, water vapour, liquid water and ice as:
+
+$$
+  \frac{m_d}{V_a} & = \rho_d = \frac{m-m_v-m_l-m_i}{V_a} = \rho_t(1 - q_t) \\
+  \frac{m_v}{V_a} & = \frac{m_v}{m}\frac{m}{V_a} = q_v\rho_t \\
+  \frac{m_l}{V_a} & = \frac{m_l}{m}\frac{m}{V_a} = q_l\rho_t \\
+  \frac{m_i}{V_a} & = \frac{m_i}{m}\frac{m}{V_a} = q_i\rho_t \\
+$$
+
+Then we get a form similar to what we got in eq.{eq}`gaslaw-virt`:
+
+$$
+p & = \left(R_d\rho_t(1-q_t) + R_v\rho_t\left(q_v + q_l + q_i\right)\right)T \\
+  & = \left(1 - q_t + \frac{R_v}{R_d}q_t\right)R_d\rho_tT \\
+  & = \left(1 + q_t \left(\frac{1}{\varepsilon} - 1\right)\right)R_d\rho_tT
+$$
+
+From which one might define another version of the virtual temperature, which includes the partial pressures exerted by the water when it changes phase. However, we have just said that we will try to focus on the moist air only. If you do that, i.e. we say the partial pressures exerted by the liquid and ice phase are zero, then:
+
+$$
+p & = \left(R_d\rho_t(1-q_t) + R_v\rho_tq_v\right)T \\
+  & = \left(1 - q_t + \frac{R_v}{R_d}q_t\right)R_d\rho_tT \\
+  & = \left(1 + \left(\frac{1}{\varepsilon}-1\right)q_t - \frac{1}{\varepsilon}\left(q_l+q_i\right)\right)R_d\rho_tT \\
+  & = \left(1 + \left(\frac{1}{\varepsilon}-1\right)q_v - q_l - q_i\right)R_d\rho_tT
+$$
+
+And both versions on the last two lines lead to definitions of the virtual temperature (sometimes it's called the density temperature) that appear in the literature:
+
+$$
+  T_\rho = T\left(1 + \left(\frac{1}{\varepsilon}-1\right)q_v - q_l - q_i\right)
+$$
+
+It is supposed to denote the temperature that dry air would need to have to attain the same density as moist, cloudy air, at the same pressure, if there is no partial pressure from the liquid/ice phases. But what is the point of making this definition? Why is it useful? Here it gets harder.
+
+At the centre of the question, is how the condensed water influences the momentum of a cloudy air volume, i.e. how it affects the motion of the moist air continuum within which the droplets/ice particles live. But if you survey the literature, you will find both different interpretations and different definitions, all of which lead to slightly different equations of motion. Yet all of them roughly agree on this: Because the liquid/ice phases are heavier than the moist air in the parcel, they should reduce the parcel "lightness", which buoyancy tries to measure. So the droplets will begin to fall with respect to the moist air, and exert a drag force on the air. This drag force reduces the moist air's upwards acceleration due to buoyancy. The effect, the "liquid-water loading", is accounted for in almost all quantitative treatments of buoyancy, by adding the negative force, proportional to $T(q_l + q_i)$ to $T_v$ (several other, smaller effects from droplet/air interaction are usually ignored).
+
+[^fndebate] 
+[^fnemanuel]: For example, in the classical text book by Emanuel on p.113
+
+<!-- Above we argued that liquid (and to a lesser extent frozen) water is much denser than air. But this equation just says that if you add an equal amount of liquid mass and water vapour, they will exert the same partial pressure, through the same $R_v$. Where does the density of liquid water come from, then? It resides in the volume that the liquid takes up. --> --><!-- Ideas for exercises:
 - How big is the effect of ignoring liquid water loading on the local pressure? (btw, I think we include this effect in DALES??)
 - Estimating the error of a GCM that doesn't include water vapour in its buoyancy calculations
 - Estimating the warming from the lightness of water vapour.
@@ -575,7 +661,7 @@ p &amp; = \left(R_d \rho_t(1-q_v) + R_v\rho_t q_v\right)T \\
 </aside>
 <aside class="footnote brackets" id="fnt" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p><span class="math notranslate nohighlight">\(t\)</span> is then the avreage time before a particle encoutners a boundary.</p>
+<p><span class="math notranslate nohighlight">\(t\)</span> is then the average time before a particle encounters a boundary.</p>
 </aside>
 <aside class="footnote brackets" id="fnw" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
@@ -583,36 +669,27 @@ p &amp; = \left(R_d \rho_t(1-q_v) + R_v\rho_t q_v\right)T \\
 </aside>
 <aside class="footnote brackets" id="fnbol" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
-<p>Called the Boltzmann constant</p>
+<p>Called the Boltzmann constant.</p>
 </aside>
 <aside class="footnote brackets" id="fndal" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
 <p>This is called Dalton’s law of partial pressures.</p>
 </aside>
-<aside class="footnote brackets" id="fndry" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
-<p>Because dry air is a lumped sum over all <span class="math notranslate nohighlight">\(N\)</span> molecule types in the atmosphere, each with its own molar mass, <span class="math notranslate nohighlight">\(M_d\)</span> is a composite value. It has to satisfy <span class="math notranslate nohighlight">\(m_d = n_d \frac{M_d}{N_A}\)</span>. But, we can also break <span class="math notranslate nohighlight">\(m_d\)</span> down into all its constituents: <span class="math notranslate nohighlight">\(m_d = \sum_i^N n_i m_i=\frac{1}{N_A} \sum_i^N n_i M_i\)</span>, where <span class="math notranslate nohighlight">\(n_i\)</span>, <span class="math notranslate nohighlight">\(m_i\)</span> and <span class="math notranslate nohighlight">\(M_i\)</span> are the number molecular mass and molar mass of the i<sup>th</sup> constituents, respectively. Equating these expressions and solving for <span class="math notranslate nohighlight">\(M_d\)</span> gives <span class="math notranslate nohighlight">\(M_d = \frac{\sum_i n_iM_i}{n_d}\)</span>, i.e. it is a number-weighted average of the constituent-specifc molar masses. Hence, if the atmospheric air composition varies, so does <span class="math notranslate nohighlight">\(M_d\)</span>. <span class="math notranslate nohighlight">\(M_d=28.97\)</span> g/mol is thus a value for “standard air”; in this course we consider it constant.</p>
-</aside>
 <aside class="footnote brackets" id="fnvap" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>Here we have assumed that all the water molecules are present in vapour form. This is quite a subtle, but important distinction, because <span class="math notranslate nohighlight">\(n\)</span> water molecules in vapour form occupy a volume about 1000 times larger than <span class="math notranslate nohighlight">\(n\)</span> molecules in liquid form (put differently, a cubic metre of water vapour weighs more than 1000 times less than a cubic metre of liquid water). We would therefore have to modify <span class="math notranslate nohighlight">\(V\)</span> in this relation. To emphasise this difference, we continue the development with the subscript <span class="math notranslate nohighlight">\(_v\)</span> instead of <span class="math notranslate nohighlight">\(_{H_2O}\)</span>. If you want to know how the gas law is affected by liquid and ice water, see the bonus notes below the next section.</p>
+</aside>
+<aside class="footnote brackets" id="fndry" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
-<p>Here we have assumed that all the water molecules are present in vapour form. This is quite a subtle, but important distinction, because water in vapour form is about 1000 times lighter than water in liquid form (i.e. its molar mass is 1000 times less than of liquid water), and both forms are present in the atmosphere. To emphasise this difference, we continue the development with the symbol <span class="math notranslate nohighlight">\(M_v\)</span> instead of <span class="math notranslate nohighlight">\(M_{H_2O}\)</span>.</p>
+<p>Because dry air is a lumped sum over all <span class="math notranslate nohighlight">\(N\)</span> molecule types in the atmosphere, each with its own molar mass, <span class="math notranslate nohighlight">\(M_d\)</span> is a composite value. It has to satisfy <span class="math notranslate nohighlight">\(m_d = n_d \frac{M_d}{N_A}\)</span>. But, we can also break <span class="math notranslate nohighlight">\(m_d\)</span> down into all its constituents: <span class="math notranslate nohighlight">\(m_d = \sum_i^N n_i m_i=\frac{1}{N_A} \sum_i^N n_i M_i\)</span>, where <span class="math notranslate nohighlight">\(n_i\)</span>, <span class="math notranslate nohighlight">\(m_i\)</span> and <span class="math notranslate nohighlight">\(M_i\)</span> are the number molecular mass and molar mass of the i<sup>th</sup> constituents, respectively. Equating these expressions and solving for <span class="math notranslate nohighlight">\(M_d\)</span> gives <span class="math notranslate nohighlight">\(M_d = \frac{\sum_i n_iM_i}{n_d}\)</span>, i.e. it is a number-weighted average of the constituent-specifc molar masses. Hence, if the atmospheric air composition varies, so does <span class="math notranslate nohighlight">\(M_d\)</span>. <span class="math notranslate nohighlight">\(M_d=28.97\)</span> g/mol is thus a value for “standard air”; in this course we consider it constant. If you want to study all sorts of exchanges between these constituents, consider following the course on <a class="reference external" href="https://studyhandbook.wur.nl/modules/MAQ34806?type=Cursory">atmospheric composition and air quality</a>.</p>
 </aside>
 <aside class="footnote brackets" id="fnyang" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">9</a><span class="fn-bracket">]</span></span>
 <p>See <a class="reference external" href="https://doi.org/10.1038/s41561-022-01033-x">Yang et al., 2022</a> for a nice recent discussion on the effect of ignoring this effect in global climate models</p>
 </aside>
-<aside class="footnote brackets" id="fnrho" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">10</a><span class="fn-bracket">]</span></span>
-<p>For reasons we will touch on later in the course, <span class="math notranslate nohighlight">\(q_v \sim 0-0.03\)</span> kg/kg, so for <span class="math notranslate nohighlight">\(\rho_t\sim 1\)</span> kg/m<span class="math notranslate nohighlight">\(^3\)</span> (like at sea level), making the assumption</p>
-<div class="math notranslate nohighlight">
-\[
-    \rho_t = \rho_d/(1-q_v) \approx \rho_d
-    \]</div>
-<p>is usually justified.</p>
-</aside>
 <aside class="footnote brackets" id="fntvirt" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">11</a><span class="fn-bracket">]</span></span>
-<p>In terms of the kinetic theory, we pretend that when using the dry gas constant for a mass of moist air, thus underestimating the number of particles <span class="math notranslate nohighlight">\(n_0\)</span> we actually have in the volume (because we actually need more light water vapour molecules to produce that mass), we can correct for this effect by giving the fewer particles more kinetic energy. In this sense, using <span class="math notranslate nohighlight">\(T_v\)</span> is a true trick that gives the right ideal gas description, but the wrong molecular-level description.</p>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">10</a><span class="fn-bracket">]</span></span>
+<p>In terms of the kinetic theory, when using the dry gas constant for a mass of moist air, we are underestimating the number of particles <span class="math notranslate nohighlight">\(n_0\)</span> we actually have in the volume, because we actually need more light water vapour molecules to produce that mass. When using <span class="math notranslate nohighlight">\(T_v\)</span>, we correct for this effect not by adding the missing water molecules back in, but by giving the fewer dry air moelcules more kinetic energy, until we have the same pressure we would have had if we had just counted the actual molecules in the volume. In this sense, using <span class="math notranslate nohighlight">\(T_v\)</span> is a true trick that gives the right ideal gas description, but the wrong molecular-level description.</p>
 </aside>
 </aside>
 </section>
@@ -628,16 +705,16 @@ p &amp; = \left(R_d \rho_t(1-q_v) + R_v\rho_t q_v\right)T \\
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: ""
+            mode: "python"
         },
         kernelOptions: {
-            name: "",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = ''</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -655,8 +732,17 @@ p &amp; = \left(R_d \rho_t(1-q_v) + R_v\rho_t q_v\right)T \\
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to Meteorology &amp; Climate</p>
+        <p class="prev-next-title">Welcome</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="2.%20Thermodynamics%20%28i%29.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2. Thermodynamics (i)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -674,7 +760,7 @@ p &amp; = \left(R_d \rho_t(1-q_v) + R_v\rho_t q_v\right)T \\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideal-gases-the-kinetic-theory">Ideal gases - the kinetic theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-ideal-gases">Ideal gases - the kinetic theory</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature">Temperature</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pressure">Pressure</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gas-law">The gas law</a></li>

@@ -1,0 +1,1319 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. Thermodynamics (ii) - Moist thermodynamics &#8212; Lecture notes - Meteorology &amp; Climate</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3. Thermodynamics (ii)';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="2. Thermodynamics (i)" href="2.%20Thermodynamics%20%28i%29.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Lecture notes - Meteorology & Climate</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1.%20Gas%20laws.html">1. Gas laws</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2.%20Thermodynamics%20%28i%29.html">2. Thermodynamics (i)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Thermodynamics (ii) - Moist thermodynamics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F3. Thermodynamics (ii).html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/3. Thermodynamics (ii).ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3. Thermodynamics (ii) - Moist thermodynamics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-flows-in-moist-air">Energy flows in moist air</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-will-water-begin-to-condensate">When will water begin to condensate?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saturation">Saturation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-clausius-clapeyron-equation">The Clausius-Clapeyron equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-temperature-and-specific-humidity-of-saturated-air">The temperature and specific humidity of saturated air</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lifting-condensation-level">The lifting condensation level</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moist-adiabatic-lapse-rate">Moist adiabatic lapse rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-stability-of-condensating-parcels">Static stability of condensating parcels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moist-adiabatic-motion-in-pressure-coordinates-equivalent-potential-temperature">Moist adiabatic motion in pressure coordinates - equivalent potential temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-not-part-of-the-course">Bonus (not part of the course)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-have-ignored-and-the-extent-to-which-it-matters">What we have ignored, and the extent to which it matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy">Bonus (not part of the course) - a full derivation of the moist air parcel’s internal energy and enthalpy</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="thermodynamics-ii-moist-thermodynamics">
+<h1>3. Thermodynamics (ii) - Moist thermodynamics<a class="headerlink" href="#thermodynamics-ii-moist-thermodynamics" title="Link to this heading">#</a></h1>
+<p>Our main conclusions from the last lecture were:</p>
+<ul class="simple">
+<li><p>that hydrostatic force balance gives an excellent approximation to the observed global pressure dropoff with height</p></li>
+<li><p>that dry adiabatic energy exchange as we lift a parcel from the surface temperature can only explain dropoff of temperature (with about 10 K/km) in the atmosphere’s lowest couple hundred metres.</p></li>
+</ul>
+<p>We also argued that the premise that the vertical temperature distribution is set by the vertical mixing of air parcels is not the problem. Rather, we argued that we were missing some physics in our highly simplified, dry adiabatic situation. It turns out that to truly understand the vertical structure of temperature, we can’t assume the atmosphere is dry.</p>
+<!-- , and that the system is adiabatic: First, there must be some external heating to make a parcel at the surface warmer than its environment, to make it rise. And second, it turns out that we need to know about moisture. --><!-- **This is a recap of the rising through the BL**
+So let's return to our attempt to make that air parcel rise from the surface. Let's say we add some heat to it (e.g. from the sun heating the surface, and that heat diffusing into the atmosphere). Because it is warmer than the boundary layer, it will rise. If the parcel cannot exchange any further energy with its environment (adiabatic ascent), it will maintain its potential temperature $\theta$, or its dry static energy. Because pressure reduces with height, it will expend some of its enthalpy, just like the environment. At some point, however, the environment loses temperature less fast than the dry parcel, and it becomes neutrally buoyant. It stops rising. **Should visualise this on a thermodynamic diagram, next to a plot in potential temperature** -->
+<section id="energy-flows-in-moist-air">
+<h2>Energy flows in moist air<a class="headerlink" href="#energy-flows-in-moist-air" title="Link to this heading">#</a></h2>
+<p>How is moisture an energy source for a parcel which is trying to rise? We said last lecture that for a parcel of mass <span class="math notranslate nohighlight">\(m\)</span>, the energy could be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+E/m = gz + \frac{1}{2}u^2 + U/m
+\]</div>
+<p>This is still true for moist air. But the internal energy <span class="math notranslate nohighlight">\(U/m\)</span> of moist air is different than that of dry air. How? First, let’s recognise that because we are interested in the <em>change</em> of temperature (while an air parcel is moving), we are again interested in the <em>flow</em> of internal energy <span class="math notranslate nohighlight">\(dU/m\)</span>. So, let’s first revisit the conservation law we wrote down for <span class="math notranslate nohighlight">\(dU/m\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+  dU/m = Q_{a,E}/m dt + Q_r/m dt - pdV/m,
+\]</div>
+<p>and express it in terms of enthalpy <span class="math notranslate nohighlight">\(H/m\)</span> by using its definition <span class="math notranslate nohighlight">\(dH/m = dU/m + d(pV)/m\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-dh-sources">
+<span class="eqno">(28)<a class="headerlink" href="#equation-dh-sources" title="Link to this equation">#</a></span>\[
+  dH/m = Q_{a,E}/m dt + Q_r/m dt + dp/\rho,
+\]</div>
+<p>For dry air, <span class="math notranslate nohighlight">\(dH/m = c_{p_d} dT\)</span>, so we could directly relate <span class="math notranslate nohighlight">\(dT\)</span> to <span class="math notranslate nohighlight">\(dp\)</span>, and (through hydrostatic balance), <span class="math notranslate nohighlight">\(dp\)</span> to <span class="math notranslate nohighlight">\(dz\)</span>. But for moist air, we have to:</p>
+<ol class="arabic simple">
+<li><p>Partition <span class="math notranslate nohighlight">\(H/m\)</span> across the dry air and water molecules, and</p></li>
+<li><p>Account for the fact that heating the parcel does not always just increase its temperature. Specifcally, when the water in the parcel changes phase, applying a heating or a cooling to the parcel, will not go into increasing or decreasing the temperature. It will go into changing the phase of the water.</p></li>
+</ol>
+<p>We can express this mathematically as follows. First, we split the composition of <span class="math notranslate nohighlight">\(m\)</span> into contributions from dry air (subscript <span class="math notranslate nohighlight">\(d\)</span>), water vapour (subscript <span class="math notranslate nohighlight">\(v\)</span>), liquid water (subscript <span class="math notranslate nohighlight">\(l\)</span>) and solid water (ice, subscript <span class="math notranslate nohighlight">\(i\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+ m &amp; = m_d + m_v + m_l + m_s \\
+ 1 &amp; = \frac{m_d}{m} + \frac{m_v}{m} + \frac{m_l}{m} + \frac{m_s}{m} \\
+   &amp; = q_d + q_v + q_l + q_s \\
+\end{split}\]</div>
+<p>In the last line, we defined the “mass fractions” <span class="math notranslate nohighlight">\(q_x\)</span><a class="footnote-reference brackets" href="#fnq" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> of dry air (<span class="math notranslate nohighlight">\(q_d\)</span>), water vapour (<span class="math notranslate nohighlight">\(q_v\)</span>), liquid water (<span class="math notranslate nohighlight">\(q_l\)</span>) and ice water (<span class="math notranslate nohighlight">\(q_i\)</span>)<a class="footnote-reference brackets" href="#fnmixingratio" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. For this air mixture, changes in <span class="math notranslate nohighlight">\(H/m\)</span> satisfy:</p>
+<div class="math notranslate nohighlight" id="equation-dh-moist">
+<span class="eqno">(29)<a class="headerlink" href="#equation-dh-moist" title="Link to this equation">#</a></span>\[
+  dH/m = c_{p_m}dT + L_vdq_v - L_fdq_i,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c_{p_m}\)</span> is the specific heat at constant pressure of moist air in J/kg/K (we will assume <span class="math notranslate nohighlight">\(c_{p_m} \approx c_{p_d}\)</span>, which is reasonable for what we’re trying to do here). <span class="math notranslate nohighlight">\(c_{p_m}dT\)</span> expresses changes in heat through the moist air’s temperature. This is therefore called “sensible heat”.</p></li>
+<li><p><span class="math notranslate nohighlight">\(dq_v\)</span> expresses a positive phase change into water vapour (and <span class="math notranslate nohighlight">\(d q_i\)</span> into ice). The “latent heat of vaporisation” <span class="math notranslate nohighlight">\(L_v\)</span> (in J/kg) tells us how much energy is expended to condensate 1 kg of water vapour into liquid water, or evaporate 1 kg of liquid into vapour (similarly, <span class="math notranslate nohighlight">\(dq_i\)</span> scales the “latent heat of fusion” <span class="math notranslate nohighlight">\(L_f\)</span>). This heat is called “latent” (meaning “hidden”), because it’s hidden until the phase of water changes.</p></li>
+</ul>
+<p>For this course, we take eq. <a class="reference internal" href="#equation-dh-moist">(29)</a> as given. However, it involves several non-trivial choices and approximations, which affect our further work (for example, why doesn’t <span class="math notranslate nohighlight">\(dq_l\)</span> appear?). It can also be derived quite generally from rather simple principles, which gives a lot more insight into the moist thermodynamics. Therefore, if you’re interested, have a look at the bonus material at the end of this section.</p>
+<p>Putting together eqs. <a class="reference internal" href="#equation-dh-sources">(28)</a> and <a class="reference internal" href="#equation-dh-moist">(29)</a>, the new energy conservation equation for our moist air parcel states:</p>
+<div class="math notranslate nohighlight" id="equation-dh-conservation-p">
+<span class="eqno">(30)<a class="headerlink" href="#equation-dh-conservation-p" title="Link to this equation">#</a></span>\[
+  c_{p_m}dT + L_vdq_v - L_fdq_i &amp; = Q_{a,E}/m dt + Q_r/m dt + dp/\rho.
+\]</div>
+<!-- ## Raising a moist parcel
+
+To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/rho$ as in the previous lecture
+ -->
+<p>If we raise the parcel adiabatically (<span class="math notranslate nohighlight">\(Q_{a,E} = Q_r = 0\)</span>) and assume it is in the same hydrostatic equilibrium as its environment (<span class="math notranslate nohighlight">\(dp/\rho=dp_e/\rho_e=-gdz\)</span>):</p>
+<div class="math notranslate nohighlight" id="equation-adiab-energy">
+<span class="eqno">(31)<a class="headerlink" href="#equation-adiab-energy" title="Link to this equation">#</a></span>\[
+  -c_{p_m}dT - L_vdq_v + L_fdq_i = gdz.
+\]</div>
+<p>So, to give the parcel potential energy <span class="math notranslate nohighlight">\(gdz\)</span> in a situation without phase change, we have to expend <span class="math notranslate nohighlight">\(-c_{p_m}dT\approx-c_{p_d}dT\)</span> of its sensible heat. This gives us the result from last time: <span class="math notranslate nohighlight">\(dT/dz = -c_{p_d}/g \approx 10\)</span> K/km for such a parcel. But if <span class="math notranslate nohighlight">\(-dq_v\)</span> of the parcel’s water vapour condenses over <span class="math notranslate nohighlight">\(dz\)</span> (<span class="math notranslate nohighlight">\(-dq_v\)</span> is a sink of water vapour, so it denotes condensation into liquid water), we can also invest the latent energy <span class="math notranslate nohighlight">\(-L_vdq_v\)</span> into giving the parcel its potential energy (similarly, freezing <span class="math notranslate nohighlight">\(dq_i\)</span> of the water gives another heat source). That is, for condensating parcels, the temperature drops off with height less rapidly. And that is exactly what we observe in the global troposphere: It is determined by rising motion in cloudy parcels.</p>
+<p>To turn these observations into a quantitative estimate for the tropospheric lapse rate, we have to answer two questions:</p>
+<ol class="arabic simple">
+<li><p>When will water begin to condensate (or freeze)?</p></li>
+<li><p>How much water will actually condensate and heat the parcel, when raising it a distance <span class="math notranslate nohighlight">\(dz\)</span>?</p></li>
+</ol>
+</section>
+<section id="when-will-water-begin-to-condensate">
+<h2>When will water begin to condensate?<a class="headerlink" href="#when-will-water-begin-to-condensate" title="Link to this heading">#</a></h2>
+<section id="saturation">
+<h3>Saturation<a class="headerlink" href="#saturation" title="Link to this heading">#</a></h3>
+<p>Let’s put a dry parcel directly on top of the ocean, close it off on all sides, and hold it at a pressure <span class="math notranslate nohighlight">\(p\)</span> and temperature <span class="math notranslate nohighlight">\(T\)</span>. Water molecules will now evaporate into the parcel (e.g. through diffusion). In turn, some of the molecules will condensate back to the ocean. The parcel will get a vapour density <span class="math notranslate nohighlight">\(\rho_{v}\)</span>, exerting a partial “vapour pressure” <span class="math notranslate nohighlight">\(e=\rho_vR_vT\)</span>. If we wait long enough, the rates of condensation and evaporation from the surface will come in balance. The parcel is now “in equilibrium”, or “at saturation” with respect to the ocean surface: <span class="math notranslate nohighlight">\(\rho_v=\rho_{vs}\)</span>, and <span class="math notranslate nohighlight">\(e=e_s\)</span>: The relative humidty <span class="math notranslate nohighlight">\(e/e_s=\rho_v/\rho_{vs}\equiv{RH}=1\)</span>.</p>
+<!-- If we somehow raised the evaporation further, the parcel would eventually become filled with liquid. Maybe the notion of a parcel at saturation sounds a bit strange, because we associate "air at saturation" with condensate, and the ocean isn't usually covered by cloudy parcels. But intuitively, it must be true that there is a point between the atmosphere and the ocean, where we encounter a phase boundary, and the air directly in contact with this boundary is exactly at saturation. -->
+<p>When we raise our parcel higher in the atmosphere, where we aren’t next to the ocean, it no longer has to be at saturation, i.e. <span class="math notranslate nohighlight">\(\text{RH}\leq 1\)</span>. But if it has <span class="math notranslate nohighlight">\(q_v\)</span> kg water vapour per kg air, we can make it saturate, by lowering its temperature until <span class="math notranslate nohighlight">\(e=e_s\)</span>. We all know this intuitively, because cooling the near-surface air at night can condensate water vapour into dew on the grass. And going the other way, we’ve all seen how heating water in a pan makes it evaporate (at 100<span class="math notranslate nohighlight">\(^\circ\)</span>C at surface pressure, to be precise).</p>
+</section>
+<section id="the-clausius-clapeyron-equation">
+<h3>The Clausius-Clapeyron equation<a class="headerlink" href="#the-clausius-clapeyron-equation" title="Link to this heading">#</a></h3>
+<p>This relationship between the vapour pressure at which the air saturates <span class="math notranslate nohighlight">\(e_s\)</span> and temperature, is given by the “Clausius-Clapeyron” equation:</p>
+<div class="math notranslate nohighlight" id="equation-clausius">
+<span class="eqno">(32)<a class="headerlink" href="#equation-clausius" title="Link to this equation">#</a></span>\[
+  \frac{1}{e_s}\frac{de_s}{dT} = \frac{L_v}{R_vT^2}.
+\]</div>
+<p>This equation tells us something pretty fundamental about water in the atmosphere: At typical atmospheric temperatures (<span class="math notranslate nohighlight">\(T=288\)</span> K), the fractional increase in water vapour the air can hold before it saturates <span class="math notranslate nohighlight">\(de_s/e_s\)</span>, increases with an increase in temperature <span class="math notranslate nohighlight">\(dT\)</span> at a rate of <span class="math notranslate nohighlight">\(\frac{L_v}{R_vT^2}\approx\frac{2500\cdot 10^3}{461.5 \cdot 288^2}=0.0653\)</span>, or about 6.5 percent per K. This is called “Clausius-Claperyon scaling”. Put differently, the atmosphere’s capacity to hold water vapour before it condensates increases exponentially with temperature, and it does so pretty fast.</p>
+<p>To solve eq. <a class="reference internal" href="#equation-clausius">(32)</a> for <span class="math notranslate nohighlight">\(e_s\)</span>, we have to integrate it, and to do that, we must make an assumption on <span class="math notranslate nohighlight">\(L_v\)</span>’s temperature dependence (have a look at the bonus material if you want to see how <span class="math notranslate nohighlight">\(L_v\)</span> relates to <span class="math notranslate nohighlight">\(T\)</span>). If we just approximate it as a constant <span class="math notranslate nohighlight">\(L_v\approx 2500\)</span> J/K at a reference temperature <span class="math notranslate nohighlight">\(T_0\)</span>, it can be solved by integrating away from that point:</p>
+<div class="math notranslate nohighlight" id="equation-cc-approx">
+<span class="eqno">(33)<a class="headerlink" href="#equation-cc-approx" title="Link to this equation">#</a></span>\[\begin{split}
+  \int_{e_{s0}}^{e_s} \frac{de_s'}{e_s} &amp; = \frac{L_v}{R_v}\int_{T_0}^{T}\frac{dT'}{T^2} \\
+  \ln \frac{e_s}{e_{s0}} &amp; = -\frac{L_v}{R_v}\left( \frac{1}{T} - \frac{1}{T_0} \right) \\
+  e_s(T) &amp; = e_{s0}\exp\left({-\frac{L_v}{R_v}\left(\frac{1}{T} - \frac{1}{T_0} \right)}\right)
+\end{split}\]</div>
+<p>Let’s plot this over the range of temperatures that occurs in the troposphere, around <span class="math notranslate nohighlight">\(T_0=273,15\)</span> K, and <span class="math notranslate nohighlight">\(p=1000\)</span> hPa (we also plot a slightly better approximation, called the August-Roche-Magnus formula, sometimes known as Tetens’ formula, to convince you that we’re capturing the basics):</p>
+<!-- The exponential form of this equation, with a large exponent $\frac{L_v}{R_v}=\frac{2.5\cdot 10^6}{461.5}\approx 5420 K$ means that warmer air can rapidly hold more water vapour when $T>T_0$ (because of the minus in the exponent, $T$), which is, for example why Earth's tropics are much moister than the poles. --><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">),</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book-square&quot;</span><span class="p">)])</span>
+
+<span class="n">T_trip</span> <span class="o">=</span> <span class="mf">273.15</span> <span class="c1"># K, Temperature for triple point of water at 1000 hPa air pressure</span>
+<span class="n">es_trip</span> <span class="o">=</span> <span class="mf">610.94</span> <span class="c1"># Pa, equilibrium vapour pressure at triple point of water</span>
+<span class="n">lv_trip</span> <span class="o">=</span> <span class="mf">2500e3</span> <span class="c1"># J/kg, latent heat of vaporisation at the triple point of water</span>
+<span class="n">Rv</span> <span class="o">=</span> <span class="mf">461.5</span> <span class="c1"># J/kg/K, gas constant of water</span>
+
+<span class="c1"># Roughly the temperature range of the troposphere</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">210</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Our approximation</span>
+<span class="k">def</span> <span class="nf">e_s</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">es_trip</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lv_trip</span><span class="o">/</span><span class="n">Rv</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">T_trip</span><span class="p">))</span>
+
+<span class="c1"># Tetens&#39; approximation</span>
+<span class="k">def</span> <span class="nf">e_st</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">es_trip</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">17.625</span><span class="o">*</span><span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T_trip</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T_trip</span> <span class="o">+</span> <span class="mf">243.04</span><span class="p">))</span>
+
+<span class="c1"># Typical polar T</span>
+<span class="n">es_polar</span> <span class="o">=</span> <span class="n">e_s</span><span class="p">(</span><span class="mi">275</span><span class="p">)</span>
+
+<span class="c1"># Tropical tropical T</span>
+<span class="n">es_trop</span> <span class="o">=</span> <span class="n">e_s</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">e_s</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;Constant $L_v$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">e_st</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Tetens&#39; formula&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">210</span><span class="p">,</span> <span class="mi">275</span><span class="p">],[</span><span class="n">es_polar</span><span class="p">,</span> <span class="n">es_polar</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">210</span><span class="p">,</span> <span class="mi">300</span><span class="p">],[</span><span class="n">es_trop</span><span class="p">,</span> <span class="n">es_trop</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">1e4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [K]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Saturation vapour pressure $e_s$ [Pa]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$e_s$: %0.f Pa&#39;</span><span class="o">%</span><span class="k">es_polar</span>, (240, es_polar+100))
+<span class="n">_</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$e_s$: %0.f Pa&#39;</span><span class="o">%</span><span class="k">es_trop</span>, (240, es_trop+100))
+
+<span class="c1"># ax.plot(T-273.15, e_st(T)/1000)</span>
+<span class="c1"># ax.set_xlabel(&#39;Temperature [C]&#39;)</span>
+<span class="c1"># ax.set_ylabel(&#39;Pressure [hPa]&#39;)</span>
+<span class="c1"># plt.savefig(&#39;Figures/esat-T.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/f1248a90b0f1b7b422e3c697874a40160dc93d0e32bf64e230163cd8fa5fe336.png" src="_images/f1248a90b0f1b7b422e3c697874a40160dc93d0e32bf64e230163cd8fa5fe336.png" />
+</div>
+</div>
+<p><span class="math notranslate nohighlight">\(e_s\)</span> varies by almost four orders of magnitude over the troposphere! And the horizontal lines in the plot show that even for near-surface air, between the tropics (<span class="math notranslate nohighlight">\(T\sim 300\)</span> K, <span class="math notranslate nohighlight">\(e_s \sim 3600\)</span> Pa) and near the poles (<span class="math notranslate nohighlight">\(T\sim 275\)</span> K, <span class="math notranslate nohighlight">\(e_s \sim 700\)</span> Pa) there is a factor <span class="math notranslate nohighlight">\(3600/700\approx 5.1\)</span> difference in how much water it can hold, before condensating it and raining it back down to the surface. This gives us intuition both for why near-surface air is moist and tropopause air is dry, and why the tropics are moist and the poles are dry. But it doesn’t tell us the balance of processes which achieve this yet.</p>
+</section>
+<section id="the-temperature-and-specific-humidity-of-saturated-air">
+<h3>The temperature and specific humidity of saturated air<a class="headerlink" href="#the-temperature-and-specific-humidity-of-saturated-air" title="Link to this heading">#</a></h3>
+<p>A different way to say all the above, is that for a parcel with vapour pressure <span class="math notranslate nohighlight">\(e\)</span>, we can define a temperature <span class="math notranslate nohighlight">\(T_d\)</span> at which <span class="math notranslate nohighlight">\(e=e_s(T_d)\)</span> (<span class="math notranslate nohighlight">\(RH=1\)</span>). <span class="math notranslate nohighlight">\(T_d\)</span> is called the <em>dew-point temperature</em>. That is, if we know how much water there is in the parcel (<span class="math notranslate nohighlight">\(e\)</span>), we can solve eq. <a class="reference internal" href="#equation-cc-approx">(33)</a> to tell us at which temperature that water vapour will condensate. This is another way to express “how far we are from saturation”. We have plotted it for the average <span class="math notranslate nohighlight">\(e\)</span> measured over the IGRA archive below, to confirm that on average, the global atmosphere is unsaturated: <span class="math notranslate nohighlight">\(T &gt; T_d\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+
+<span class="n">ds_temp</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;data/ptmean.nc&#39;</span><span class="p">)</span>
+
+<span class="c1"># Load vapour pressure (water vapour content)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/vapr_00z-mly.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;pvap&quot;</span><span class="p">})</span>
+<span class="n">df_vap</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="s2">&quot;pvap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;pres&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+
+<span class="c1"># It is stored in 0.1 Pa, so need to multiply by 10 to convert to Pa</span>
+<span class="n">df_vap</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vap</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span>
+
+<span class="c1"># Add to dataset</span>
+<span class="n">ds_vap</span> <span class="o">=</span> <span class="n">df_vap</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+<span class="n">ds_vap</span> <span class="o">=</span> <span class="n">ds_vap</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">pres</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">ds_vap</span><span class="o">.</span><span class="n">pres</span><span class="p">)))</span>
+<span class="n">ds_ther</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">ds_temp</span><span class="p">,</span> <span class="n">ds_vap</span><span class="p">])</span>
+<span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s1">&#39;pres&#39;</span><span class="p">:</span><span class="s1">&#39;hgeo&#39;</span><span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">Tdew</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T_trip</span> <span class="o">-</span> <span class="n">Rv</span><span class="o">/</span><span class="n">lv_trip</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">es_trip</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Convert to dew point temperature</span>
+<span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;Tdew&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Tdew</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">])</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span><span class="o">-</span><span class="mf">273.155</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;salmon&#39;</span><span class="p">)</span>
+<span class="c1"># skew.plot(e_s(ds_temp[&#39;temp&#39;]), ds_temp[&#39;temp&#39;]-273.15)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;Tdew&#39;</span><span class="p">]</span><span class="o">-</span><span class="mf">273.15</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Dew-point temperature&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [C]&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/686584eae11373bcc32e26373aa5fe7439c7860d051835e0518499921bbff5e9.png" src="_images/686584eae11373bcc32e26373aa5fe7439c7860d051835e0518499921bbff5e9.png" />
+</div>
+</div>
+<p>Often, the water vapour content is expressed not in vapour pressure <span class="math notranslate nohighlight">\(e\)</span>, but in fractions of the total mass (<span class="math notranslate nohighlight">\(q_v=m_v/m\)</span>). For those situations, we have to relate <span class="math notranslate nohighlight">\(e\)</span> to <span class="math notranslate nohighlight">\(q_v\)</span>. We can do this using i) the gas law of the dry and moist phases (<span class="math notranslate nohighlight">\(p_d = \rho_d R_d T\)</span>, <span class="math notranslate nohighlight">\(e = \rho_v R_v T\)</span>) and ii) <span class="math notranslate nohighlight">\(p = p_d + e\)</span> (Dalton’s law of partial pressures):</p>
+<div class="math notranslate nohighlight" id="equation-qv">
+<span class="eqno">(34)<a class="headerlink" href="#equation-qv" title="Link to this equation">#</a></span>\[\begin{split}
+  q_v &amp; = \frac{\rho_v}{\rho_d + \rho_v} = \frac{\frac{e}{R_vT}}{\frac{p-e}{R_dT} + \frac{e}{R_vT}} = \frac{e}{\frac{R_v}{R_d}(p-e) + e} = \frac{R_d}{R_v}\frac{e}{p + e(R_d/R_v - 1)} \\
+\end{split}\]</div>
+<p>At saturation, <span class="math notranslate nohighlight">\(q_v \equiv q_s\)</span>, so:</p>
+<div class="math notranslate nohighlight" id="equation-qsat">
+<span class="eqno">(35)<a class="headerlink" href="#equation-qsat" title="Link to this equation">#</a></span>\[
+  q_s(p, T) &amp; = \frac{R_d}{R_v}\frac{e_s(T)}{p + e_s(T)(R_d/R_v - 1)}
+\]</div>
+<p>We can see from this relation that to determine <span class="math notranslate nohighlight">\(q_s\)</span>, we need to know both <span class="math notranslate nohighlight">\(e_s(T)\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Still, the key point is that this relationship defines the dew-point temperature, so that <span class="math notranslate nohighlight">\(q_v = q_s(p, e_s(T_d))\)</span>: At a given pressure, if we know a parcel’s <span class="math notranslate nohighlight">\(q_v\)</span>, we can figure out at which temperature it saturates.</p>
+<p>Because <span class="math notranslate nohighlight">\(p\)</span> is usually 1-2 orders of magnitude greater than <span class="math notranslate nohighlight">\(e_s\)</span> at the same <span class="math notranslate nohighlight">\(T\)</span>, we can to great approximation write<a class="footnote-reference brackets" href="#fnmrs" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<div class="math notranslate nohighlight" id="equation-qsat-approx">
+<span class="eqno">(36)<a class="headerlink" href="#equation-qsat-approx" title="Link to this equation">#</a></span>\[
+q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
+\]</div>
+</section>
+<section id="the-lifting-condensation-level">
+<h3>The lifting condensation level<a class="headerlink" href="#the-lifting-condensation-level" title="Link to this heading">#</a></h3>
+<p>So, if we start to lift our parcel with <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(q_v\)</span> along a dry adiabat from a height <span class="math notranslate nohighlight">\(z_0\)</span> while keeping <span class="math notranslate nohighlight">\(q_v\)</span> constant, at what height will we reach <span class="math notranslate nohighlight">\(q_v=q_s\)</span>? This height is called the “lifting condensation level”, <span class="math notranslate nohighlight">\(z_{lcl}\)</span>. <a class="reference external" href="https://doi.org/10.1175/JAS-D-17-0102.1">Although possible</a>, writing an exact expression for <span class="math notranslate nohighlight">\(z_{lcl}\)</span> is a bit beyond our course. But we can do it graphically in a skew <span class="math notranslate nohighlight">\(T\)</span> - ln <span class="math notranslate nohighlight">\(p\)</span> chart, using the following steps (see also the code and plot below):</p>
+<ol class="arabic simple">
+<li><p>Determine <span class="math notranslate nohighlight">\(T_d(q_v,p)\)</span>, by solving eq. <a class="reference internal" href="#equation-qsat">(35)</a> for <span class="math notranslate nohighlight">\(e_s(q_v, p)\)</span>, and then solving eq. <a class="reference internal" href="#equation-cc-approx">(33)</a> for <span class="math notranslate nohighlight">\(T_d\)</span>.</p></li>
+<li><p>Repeat this calculation for <span class="math notranslate nohighlight">\(T_d\)</span> for each <span class="math notranslate nohighlight">\(p\)</span> we plan to lift the parcel to. If our parcel hits this line, we know that <span class="math notranslate nohighlight">\(q_v=q_s\)</span>, and we have saturation.</p></li>
+<li><p>Actually move the parcel along a line of constant potential temperature <span class="math notranslate nohighlight">\(\theta\)</span> (i.e. lift it dry adiabatically), until we hit the <span class="math notranslate nohighlight">\(q_s\)</span> line.</p></li>
+<li><p>That intersection is the pressure of the lifting condensation level. And in an atmosphere in hydrostatic balance, we can relate it to <span class="math notranslate nohighlight">\(z\)</span> with the hydrostatic equation.</p></li>
+</ol>
+<p>We have calculated these lines for a theoretical parcel below:</p>
+<!-- The key point here is that if we know $e_s$ and $p$, we know how much water the parcel can hold before it saturates. And since $e_s$ depends only on $T$ through the Clausius-Claperyon equation, really $q_s$ is a function *only* of $p$ and $T$. -->
+<!-- The height at which we reach it, is called the lifting condensation level. --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parcel properties at its outset</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="c1"># Pa</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># K</span>
+<span class="n">qv</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># kg/kg</span>
+
+<span class="c1"># Pressures we will lift the parcel to</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">Rd</span> <span class="o">=</span> <span class="mf">287.05</span> <span class="c1"># Dry air gas constant, J / kg / K</span>
+<span class="n">cpd</span> <span class="o">=</span> <span class="mi">1004</span> <span class="c1"># Dry air heat capacity at constant pressure, J / kg / K</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="c1"># 0. Initial parcel T and p</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;0. Initial $T$ and $p$&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+            <span class="n">c</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">)</span>
+
+<span class="c1"># 1. Initial dew-point temperature</span>
+
+<span class="c1"># With full definition for qs</span>
+<span class="k">def</span> <span class="nf">e_sq</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">qs</span> <span class="o">*</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="n">qs</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">Rd</span><span class="o">/</span><span class="n">Rv</span><span class="p">)</span> <span class="o">+</span> <span class="n">Rd</span><span class="o">/</span><span class="n">Rv</span><span class="p">)</span>
+
+<span class="c1"># With approximate definition for qs</span>
+<span class="k">def</span> <span class="nf">e_sq_approx</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">qs</span> <span class="o">*</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">Rv</span><span class="p">)</span>
+
+<span class="n">Tdew0</span> <span class="o">=</span> <span class="n">Tdew</span><span class="p">(</span><span class="n">e_sq</span><span class="p">(</span><span class="n">qv</span><span class="p">,</span> <span class="n">p0</span><span class="p">))</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;1. $T_d$ at $q_v$ and initial $p$&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+            <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Tdew, as the parcel is lifted to lower p at constant qv</span>
+<span class="n">Tdew_qscst</span> <span class="o">=</span> <span class="n">Tdew</span><span class="p">(</span><span class="n">e_sq</span><span class="p">(</span><span class="n">qv</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+<span class="n">Tdew_qscst_approx</span> <span class="o">=</span> <span class="n">Tdew</span><span class="p">(</span><span class="n">e_sq_approx</span><span class="p">(</span><span class="n">qv</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">Tdew_qscst</span><span class="o">-</span><span class="n">T_trip</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">Tdew_qscst_approx</span><span class="o">-</span><span class="n">T_trip</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.62</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;2. $T_d$ at conserved $q_v$, as $p$ reduces&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
+
+<span class="c1"># 3. Line of constant potential temperature</span>
+<span class="k">def</span> <span class="nf">Tpot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">T</span><span class="o">*</span><span class="p">(</span><span class="mf">1e5</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
+<span class="n">Tpot0</span> <span class="o">=</span> <span class="n">Tpot</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">p0</span><span class="p">)</span>
+<span class="n">T_tpotcst</span> <span class="o">=</span> <span class="n">Tpot0</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mf">1e5</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">T_tpotcst</span><span class="o">-</span><span class="n">T_trip</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;3. $T$ at conserved $\theta$, as $p$ reduces&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">54</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4. Lifting condensation level, at the p where T_tpotcst and Tdew_qscst intersect</span>
+<span class="n">p_lcl</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">T_tpotcst</span> <span class="o">-</span> <span class="n">Tdew_qscst</span><span class="p">))]</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">p_lcl</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lifting condensation level&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;4. Lifting condensation level&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [C]&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+<span class="c1"># plt.savefig(&#39;Figures/lcl-4.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01ef3d6704f31abc9af54f72b59f44a25031c509ba37c34dfe52c021dd6dc804.png" src="_images/01ef3d6704f31abc9af54f72b59f44a25031c509ba37c34dfe52c021dd6dc804.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="moist-adiabatic-lapse-rate">
+<h2>Moist adiabatic lapse rate<a class="headerlink" href="#moist-adiabatic-lapse-rate" title="Link to this heading">#</a></h2>
+<p>Beyond the LCL, the parcel will condensate water vapour if we raise it further. So, if there are no external heat sources (<span class="math notranslate nohighlight">\(Q_{a,E}/m dt + Q_r/m dt=0\)</span>), the parcel is in perfect hydrostatic equilibrium with its environment (<span class="math notranslate nohighlight">\(dp/\rho=gdz\)</span>), and we ignore ice (<span class="math notranslate nohighlight">\(L_fdq_i=0\)</span>), we will have to spend some combination of <span class="math notranslate nohighlight">\(c_{p_m}dT\)</span> and <span class="math notranslate nohighlight">\(L_vdq_v\)</span> to raise the parcel:</p>
+<div class="math notranslate nohighlight" id="equation-moist-adiabat-start">
+<span class="eqno">(37)<a class="headerlink" href="#equation-moist-adiabat-start" title="Link to this equation">#</a></span>\[\begin{split}
+  c_{p_m}dT + L_vdq_v - L_fdq_i &amp; = Q_{a,E}/m dt + Q_r/m dt + dp/\rho \\
+  c_{p_m}dT + L_vdq_v &amp; = dp/\rho, \\
+  -c_{p_m}dT - L_vdq_v = gdz.
+\end{split}\]</div>
+<p>In this situation, we can define an energy, called the <em>moist-static energy</em> (MSE), which remains conserved:</p>
+<div class="math notranslate nohighlight" id="equation-mse">
+<span class="eqno">(38)<a class="headerlink" href="#equation-mse" title="Link to this equation">#</a></span>\[\begin{split}
+  d\left(c_{p_m}T + L_vq_v + gz\right) = 0, \\
+  d \text{MSE} = 0.
+\end{split}\]</div>
+<p>It is the moist analog of the dry-static energy <span class="math notranslate nohighlight">\(c_{p_d} + gz\)</span>, which we defined last time to be conserved over dry-adiabatic ascent at zero buoyancy. Our goal all along has been to find <span class="math notranslate nohighlight">\(dT/dz\)</span> in the global atmosphere. Can we get it from this moist-adiabatically lifted parcel? Looking at eq. <a class="reference internal" href="#equation-mse">(38)</a>, it seems like we could, if we could relate the amount of water vapour condesated (<span class="math notranslate nohighlight">\(-dq_v\)</span>) in eq. <a class="reference internal" href="#equation-moist-adiabat-start">(37)</a> to the reduction in temperature (<span class="math notranslate nohighlight">\(-dT\)</span>) when we raise the parcel, and to <span class="math notranslate nohighlight">\(dz\)</span>. And since we are keeping the parcel in hydrostatic balance, we really want to relate it to <span class="math notranslate nohighlight">\(dT\)</span> and <span class="math notranslate nohighlight">\(dz=-g/\rho dp\)</span>.</p>
+<p>We know this is possible, because we just spent a lot of effort to convince ourselves that if the parcel is kept <em>at</em> saturation, i.e. <span class="math notranslate nohighlight">\(q_v = q_s\)</span>, then eq. <a class="reference internal" href="#equation-qsat-approx">(36)</a> tells us that <span class="math notranslate nohighlight">\(q_s(T,p)\)</span> only. So, as long as we are rising through a cloud, where <span class="math notranslate nohighlight">\(q_v=q_s\)</span>, <span class="math notranslate nohighlight">\(dq_v = dq_s\)</span>, which we can relate to <span class="math notranslate nohighlight">\(dp\)</span> and <span class="math notranslate nohighlight">\(dT\)</span> with the chain rule:</p>
+<div class="math notranslate nohighlight">
+\[
+  dq_s = \frac{\partial q_s}{\partial p}dp + \frac{\partial q_s}{\partial T}dT
+\]</div>
+<p>We next need to work out these two derivatives:</p>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(\partial q_s/\partial p\)</span> at constant <span class="math notranslate nohighlight">\(T\)</span>, we can just use the definition <span class="math notranslate nohighlight">\(q_s \approx \frac{R_de_s}{R_vp}\)</span> (notice we use it twice!):
+$<span class="math notranslate nohighlight">\(
+\frac{\partial q_s}{\partial p} = -\frac{R_v}{R_d}\frac{e_s}{p^2} = -\frac{q_s}{p}
+\)</span>$</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(\partial q_s/\partial T\)</span> at constant <span class="math notranslate nohighlight">\(p\)</span>, we have to take another step, because we know that it’s actually <span class="math notranslate nohighlight">\(e_s\)</span> that depends on <span class="math notranslate nohighlight">\(T\)</span> through the Clausius-Clapeyron equation (eq. <a class="reference internal" href="#equation-clausius">(32)</a>). We insert this, and get:
+$<span class="math notranslate nohighlight">\(
+\frac{\partial q_s}{\partial T} &amp; = \frac{R_d}{R_vp}\frac{d e_s}{dT} \\
+&amp; = \frac{R_d}{R_vp}\frac{L_ve_s}{R_vT^2} \\
+&amp; = \frac{R_de_s}{R_vp}\frac{L_v}{R_vT^2} \\
+&amp; = \frac{q_sL_v}{R_vT^2} \\
+\)</span>$</p></li>
+</ul>
+<p>So:</p>
+<div class="math notranslate nohighlight">
+\[
+  dq_s = -\frac{q_s}{p}dp + \frac{q_sL_v}{R_vT^2}dT
+\]</div>
+<p>We can plug this into our energy conservation statement <span class="math notranslate nohighlight">\(c_{p_m}dT + L_vdq_v = dp/\rho\)</span>, gather terms, use hydrostatic equilibrium to relate <span class="math notranslate nohighlight">\(dp\)</span> to <span class="math notranslate nohighlight">\(dz\)</span>, and solve for <span class="math notranslate nohighlight">\(dT/dz\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-moist-adiabat">
+<span class="eqno">(39)<a class="headerlink" href="#equation-moist-adiabat" title="Link to this equation">#</a></span>\[\begin{split}
+  c_{p_m}dT - dp/\rho  + L_v\left(-\frac{q_s}{p}dp + \frac{q_sL_v}{R_vT^2}dT\right) &amp; = 0 \\
+  \left(c_{p_m} + \frac{q_sL_v^2}{R_vT^2}\right)dT &amp; = \frac{dp}{\rho}\left(1 + \frac{q_sL_v\rho}{p}\right) \\
+  \left(c_{p_m} + \frac{q_sL_v^2}{R_vT^2}\right)dT &amp; = -gdz\left(1 + \frac{q_sL_v}{R_dT_v}\right) \\
+  \frac{dT}{dz} &amp; = -\frac{g\left(1 + \frac{q_sL_v}{R_dT_v}\right)}{c_{p_m} + \frac{q_sL_v^2}{R_vT^2}} \\
+\end{split}\]</div>
+<p>And this has given us a new lapse rate, the <em>moist adiabatic lapse rate</em>.</p>
+<p>Let us evaluate this lapse rate and compare it to our global radiosonde archive, and the dry adiabatic lapse rate we derived last lecture.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">))</span>
+
+<span class="n">grav</span> <span class="o">=</span> <span class="mf">9.81</span>
+
+<span class="k">def</span> <span class="nf">q_s</span><span class="p">(</span><span class="n">es</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Rd</span> <span class="o">/</span> <span class="n">Rv</span> <span class="o">*</span> <span class="n">es</span> <span class="o">/</span> <span class="n">p</span>
+    
+<span class="c1"># Parcel temperatures initialised to zero</span>
+<span class="n">T_pd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">T_pm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+<span class="c1"># Starting temperature of the parcels (d - dry, m - moist)</span>
+<span class="n">T_pd</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span>
+<span class="n">T_pm</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span>
+
+<span class="c1"># Lift the parcel through the atmosphere, conserving DSE</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">T_pd</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_pd</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">grav</span><span class="o">/</span><span class="n">cpd</span><span class="o">*</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+
+
+<span class="c1"># Lift the parcel upwards through the atmosphere, conserving MSE at saturation</span>
+<span class="c1"># Store dT/dz so we can calculate an average</span>
+<span class="n">dTdz_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+
+    <span class="c1"># Calculate the saturation specific humidity at this height&#39;s temperature and the atmosphere&#39;s pressure</span>
+    <span class="n">esi</span>  <span class="o">=</span> <span class="n">e_s</span><span class="p">(</span><span class="n">T_pm</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">qsi</span> <span class="o">=</span> <span class="n">q_s</span><span class="p">(</span><span class="n">esi</span><span class="p">,</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># Moist adiabatic temperature gradient at this level, assuming T=Tv</span>
+    <span class="n">dTdz</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">grav</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">qsi</span><span class="o">*</span><span class="n">lv_trip</span><span class="o">/</span><span class="p">(</span><span class="n">Rd</span><span class="o">*</span><span class="n">T_pm</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">cpd</span> <span class="o">+</span> <span class="n">qsi</span><span class="o">*</span><span class="n">lv_trip</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">Rv</span><span class="o">*</span><span class="n">T_pm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+
+    <span class="c1"># Lift it to the next level</span>
+    <span class="n">T_pm</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">T_pm</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">dTdz</span><span class="o">*</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="n">dTdz_h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dTdz</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Mean dT/dz for moist adiabatic ascent:&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dTdz_h</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">],</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_pd</span><span class="p">,</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Dry adiabatic ascent&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T_pm</span><span class="p">,</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Moist adiabatic ascent&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [K]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15000</span><span class="p">)</span>
+<span class="n">_</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1"># plt.savefig(&#39;Figures/t-moiad-av-height.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
+<span class="c1"># plt.plot(T_pd, ds_ther[&#39;hgeo&#39;])</span>
+<span class="c1"># plt.plot(T_pm, ds_ther[&#39;hgeo&#39;])</span>
+<span class="c1"># plt.plot(ds_ther[&#39;temp&#39;], ds_ther[&#39;hgeo&#39;])</span>
+<span class="c1"># plt.ylim(0,15000)</span>
+<span class="c1"># plt.xlim(200,300)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean dT/dz for moist adiabatic ascent: -0.007089509492679575
+</pre></div>
+</div>
+<img alt="_images/b67d49ec22373fb5292ceb2334cdc3a3c6f38acc465523875d0d879089bc2bcb.png" src="_images/b67d49ec22373fb5292ceb2334cdc3a3c6f38acc465523875d0d879089bc2bcb.png" />
+</div>
+</div>
+<p>This is not bad! The tropospheric temperature structure looks very much like that of a parcel lifted adiabatically from the surface at saturation with respect to liquid water.</p>
+</section>
+<section id="static-stability-of-condensating-parcels">
+<h2>Static stability of condensating parcels<a class="headerlink" href="#static-stability-of-condensating-parcels" title="Link to this heading">#</a></h2>
+<p>The argument for why it looks like this relies on buoyancy and mixing. To see it, we return to the vertical momentum equation we derived last time for a dry parcel. We say that a moist parcel (underscore <span class="math notranslate nohighlight">\(p\)</span>) ascending through a moist atmosphere (underscore <span class="math notranslate nohighlight">\(e\)</span>), using <span class="math notranslate nohighlight">\(p=\rho R_dT_v\)</span> under the assumption that <span class="math notranslate nohighlight">\(p=p_e\)</span>, but <span class="math notranslate nohighlight">\(\rho\neq\rho_e\)</span> satisfies:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{dw}{dt} &amp; = - \frac{\rho_p - \rho_e}{\rho_p}g = \frac{T_{v_p} - T_{v_e}}{T_{v_e}}g \\
+              &amp; \approx \frac{T_{p} - T_{e}}{T_{e}}g.
+\end{split}\]</div>
+<p>That is, we ignore the lightness of the water vapour in this approximation of the buoyancy<a class="footnote-reference brackets" href="#fnignoringqv" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<p>Suppose we had a troposphere where the temperature reduced more quickly than a dry adiabat. Then parcels moving along a dry adiabat would be warmer than the atmosphere (<span class="math notranslate nohighlight">\(T_p &gt; T_e\)</span>) at any height above the surface. We say that the atmosphere is <em>statically unstable</em>: The parcel would accelerate upwards until the tropopause, where it would quickly become negatively buoyant. We call the ascent of such parcels “dry convection”.</p>
+<p>In a real atmosphere, the air parcels don’t ascend adiabatically, but actually mix some of their warm air into the environment. So, dry convection would warm the atmosphere, until it looks exactly like a dry adiabat (<span class="math notranslate nohighlight">\(dT/dz\approx-10\)</span> K/km). Now, the atmosphere is <em>neutrally stable</em> to dry adiabatic ascent - if you warm a parcel by 1K at the surface and move it along a dry adiabat, it will always be 1K warmer. This is often the situation in the atmospheric boundary layer, as we discussed last lecture.</p>
+<p>However, when temperature drops off less quickly than a dry adiabat (<span class="math notranslate nohighlight">\(dT/dz&gt;-10\)</span>), we can still make parcels positively buoyant, <em>if</em> we warm them just enough to take them to the LCL: From there on, they saturate and lose temperature moist adiabatically (<span class="math notranslate nohighlight">\(dT/dz_m\)</span>). What is <span class="math notranslate nohighlight">\(dT/dz_m\)</span>? Eq. <a class="reference internal" href="#equation-moist-adiabat">(39)</a> shows that it actually depends on <span class="math notranslate nohighlight">\(T\)</span>, so it’s not constant with height. In fact, because <span class="math notranslate nohighlight">\(q_s\)</span> becomes very small at the low temperatures high in the troposphere, <span class="math notranslate nohighlight">\(dT/dz_m\approx -g/c_p \equiv -dT/dz_d\)</span> at high altitudes (you can see the lines orange and green lines become parallel in the plot above). However, a good average over the troposphere is <span class="math notranslate nohighlight">\(\Gamma_m\approx-7\)</span> K/km. So an atmosphere where temperature drops off more quickly than <span class="math notranslate nohighlight">\(\sim\)</span>7 K/km is statically unstable to moist adiabatic, cloudy updrafts, called “moist convection”. These moist convective storms have <span class="math notranslate nohighlight">\(T_p&gt;T_e\)</span> over a large range of the troposphere. The temperature drops of at a rate between <span class="math notranslate nohighlight">\(dT/dz_d\)</span> and <span class="math notranslate nohighlight">\(dT/dz_m\)</span> (roughly 10 and 7 K/km), we say that the atmosphere is <em>conditionally unstable</em>, i.e. it is unstable, <em>if</em> the parcels are condensating.</p>
+<p>As we will see in later lectures, radiation tends to cool the atmosphere, and pulls its temperature profile towards a dry adiabat. So, we often observe a conditionally unstable atmosphere, with lots of deep convection (especially in the tropics). By raining their condensed water vapour back to the surface, these storms heat the atmosphere, bringing the troposphere’s temperature profile towards that of the moist adiabat we observe in the global mean. There is no big energy source left in our atmosphere’s updrafts that could make the parcels much warmer than a moist adiabatic troposphere. Therefore, that is the temperature profile we observe.</p>
+<p>If temperatures begin to drop off at an even slower rate than 7 K/km (and all the processes we have ignored could make that happen locally), parcels will always have <span class="math notranslate nohighlight">\(T_p&lt;T_e\)</span>, and never rise on their own. We say that the atmosphere is <em>statically stable</em> in such a situation: There will be no convection, until other processes cool the atmosphere, or we put a giant heat source at the surface.</p>
+<p>To illustrate all this, we have drawn a parcel ascent in the plot below. If we imagine atmospheric temperature profiles varying away from the same surface temperature, we can identify which of these atmospheres would be unstable, conditionally stable and stable to our parcel’s adiabatic ascent.</p>
+<!-- we have got a very basic model of the global troposphere's vertical pressure and temperature structure, which isn't too far from what is observed. The picture is: --><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parcel properties at its outset</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="c1"># Pa</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># K</span>
+<span class="n">qv</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># kg/kg</span>
+
+<span class="c1"># Pressures we will lift the parcel to</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e5</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">Rd</span> <span class="o">=</span> <span class="mf">287.05</span> <span class="c1"># Dry air gas constant, J / kg / K</span>
+<span class="n">cpd</span> <span class="o">=</span> <span class="mi">1004</span> <span class="c1"># Dry air heat capacity at constant pressure, J / kg / K</span>
+
+<span class="c1"># Plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="c1"># 2. Tdew, as the parcel is lifted to lower p at constant qv</span>
+<span class="n">Tdew_qscst</span> <span class="o">=</span> <span class="n">Tdew</span><span class="p">(</span><span class="n">e_sq</span><span class="p">(</span><span class="n">qv</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+<span class="n">Tdew_qscst_approx</span> <span class="o">=</span> <span class="n">Tdew</span><span class="p">(</span><span class="n">e_sq_approx</span><span class="p">(</span><span class="n">qv</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">Tdew_qscst</span><span class="o">-</span><span class="n">T_trip</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">Tdew_qscst_approx</span><span class="o">-</span><span class="n">T_trip</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;2. $T_d$ at conserved $q_v$&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
+
+<span class="c1"># 3. Line of constant potential temperature</span>
+<span class="k">def</span> <span class="nf">Tpot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">T</span><span class="o">*</span><span class="p">(</span><span class="mf">1e5</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
+<span class="n">Tpot0</span> <span class="o">=</span> <span class="n">Tpot</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">p0</span><span class="p">)</span>
+<span class="n">T_tpotcst</span> <span class="o">=</span> <span class="n">Tpot0</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mf">1e5</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">T_tpotcst</span><span class="o">-</span><span class="n">T_trip</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;3. $T$ at conserved $\theta$&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">60</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;maroon&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4. Lifting condensation level, at the p where T_tpotcst and Tdew_qscst intersect</span>
+<span class="n">index_lcl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">T_tpotcst</span> <span class="o">-</span> <span class="n">Tdew_qscst</span><span class="p">))</span>
+<span class="n">p_lcl</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">index_lcl</span><span class="p">]</span>
+<span class="n">T_lcl</span> <span class="o">=</span> <span class="n">T_tpotcst</span><span class="p">[</span><span class="n">index_lcl</span><span class="p">]</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">p_lcl</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Lifting condensation level&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;4. LCL&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="c1"># 5. Line of constant equivalent potential temperature, at saturation, from the LCL</span>
+<span class="c1"># Let metpy figure this out, because inverting equivalent potential temperature so it </span>
+<span class="c1"># expresses temperature in terms of pressure requires a root solver</span>
+<span class="kn">from</span> <span class="nn">metpy.calc</span> <span class="kn">import</span> <span class="n">moist_lapse</span>
+<span class="kn">from</span> <span class="nn">metpy.units</span> <span class="kn">import</span> <span class="n">units</span>
+<span class="n">T_ma</span> <span class="o">=</span> <span class="n">moist_lapse</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">index_lcl</span><span class="p">:]</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">Pa</span> <span class="p">,</span> <span class="n">T_lcl</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">index_lcl</span><span class="p">:]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">T_ma</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;5. T at conserved $\theta_e$ at saturation&#39;</span><span class="p">,</span> 
+             <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">55</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Where is the atmosphere stable, conditionally stable, or unstable?</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Unstable atmosphere&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Conditionally unstable atmosphere&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">rotation</span><span class="o">=-</span><span class="mi">60</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Stable atmosphere&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature [C]&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Figures/lcl-final.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/982599db7e17f1254fd21bbb303895666c3411c5e5e5d4ec2dfccc2113c0e0c5.png" src="_images/982599db7e17f1254fd21bbb303895666c3411c5e5e5d4ec2dfccc2113c0e0c5.png" />
+</div>
+</div>
+</section>
+<section id="moist-adiabatic-motion-in-pressure-coordinates-equivalent-potential-temperature">
+<h2>Moist adiabatic motion in pressure coordinates - equivalent potential temperature<a class="headerlink" href="#moist-adiabatic-motion-in-pressure-coordinates-equivalent-potential-temperature" title="Link to this heading">#</a></h2>
+<p>When we drew the line of moist adiabatic ascent in pressure coordinates in the skew T - log p diagram above, we have actually not needed to assume the parcel is in hydrostatic equilibrium with the atmosphere, because we don’t have to invoke <span class="math notranslate nohighlight">\(dp=-\rho gdz\)</span>. This assumption was necessary to conserve MSE over the ascent. If we instead just integrate our energy equation (second line of eq. <a class="reference internal" href="#equation-moist-adiabat-start">(37)</a>) directly, from a reference temperature <span class="math notranslate nohighlight">\(\theta_e\)</span> (called the <em>equivalent potential temperature</em>), a reference pressure <span class="math notranslate nohighlight">\(p_0\)</span> and a reference <span class="math notranslate nohighlight">\(q_v=0\)</span>, the we get:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  c_{p_m}dT + L_vdq_v &amp; = dp/\rho, \\
+  \frac{dT}{T} &amp; = \frac{R_d}{c_{p_m}}\frac{dp}{p} - \frac{L_vdq_v}{c_{p_m}T} \\
+  \int_{\theta_e}^{T}\frac{dT}{T} &amp; \approx \frac{R_d}{c_{p_m}}\int_{p_0}^{p}\frac{dp}{p} - \frac{L_v}{c_{p_m}T}\int_{0}^{q_v}dq_v \\
+  \ln \left(\frac{T}{\theta_e}\right) &amp; = \frac{R_d}{c_{p_m}}\ln\left(\frac{p}{p_0}\right) - \frac{L_vq_v}{c_{p_m}T} \\
+  \frac{T}{\theta_e} &amp; = \left(\frac{p}{p_0}\right)^{\frac{R_d}{c_{p_m}}}\exp\left(-\frac{L_vq_v}{c_{p_m}T}\right) \\
+  \theta_e &amp; = T\left(\frac{p_0}{p}\right)^{\frac{R_d}{c_{p_m}}}\exp\left(\frac{L_vq_v}{c_{p_m}T}\right) \\
+           &amp; = \theta\exp\left(\frac{L_vq_v}{c_{p_m}T}\right)
+\end{split}\]</div>
+<p>Here, in the second line we assume that <span class="math notranslate nohighlight">\(L_v\)</span> and <span class="math notranslate nohighlight">\(T\)</span> are constant when <span class="math notranslate nohighlight">\(dq_v\)</span> changes, and we have used logarithm rules. We have also again neglected the virtual effect of water vapour. Also, <span class="math notranslate nohighlight">\(\theta_e\)</span> has an analogous meaning for moist air as <span class="math notranslate nohighlight">\(\theta\)</span> did for dry air in the previous lecture: It is the temperature you’d get if you brought an air parcel adiabatically from pressure <span class="math notranslate nohighlight">\(p\)</span> to <span class="math notranslate nohighlight">\(p_0\)</span>, and brought its water vapour from <span class="math notranslate nohighlight">\(q_v\)</span> to zero (e.g. by condensating all of it).</p>
+<p>If we keep our air parcel at saturation when raising it adiabatically (i.e. with <span class="math notranslate nohighlight">\(-dp\)</span>), then <span class="math notranslate nohighlight">\(\theta_e\)</span> remains conserved, for the same reason that MSE (kept at saturation) remained conserved with <span class="math notranslate nohighlight">\(dz\)</span> when it is in hydrostatic equilibrium: We are simply converting latent energy into potential energy. So long as you keep the assumptions under this hydrostatic conversion in mind (see the next section if you’re interested), you can actually just think of <span class="math notranslate nohighlight">\(\theta_e\)</span> as measuring the same as MSE<span class="math notranslate nohighlight">\(/c_{p_m}\)</span>.</p>
+</section>
+<section id="bonus-not-part-of-the-course">
+<h2>Bonus (not part of the course)<a class="headerlink" href="#bonus-not-part-of-the-course" title="Link to this heading">#</a></h2>
+<section id="what-we-have-ignored-and-the-extent-to-which-it-matters">
+<h3>What we have ignored, and the extent to which it matters<a class="headerlink" href="#what-we-have-ignored-and-the-extent-to-which-it-matters" title="Link to this heading">#</a></h3>
+<p>In the above, we made the following simplification of our general statement of an atmospheric energy flow:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  c_{p_m}dT + L_vdq_v - L_fdq_i &amp; = Q_{a,E}/m dt + Q_r/m dt + dp/\rho \\
+  c_{p_m}dT + L_vdq_v &amp; = dp/\rho.
+\end{split}\]</div>
+<p>What about the terms we ignored? Do they matter? For actual ascending parcels in the atmosphere:</p>
+<ul class="simple">
+<li><p>It remains reasonable to assume radiation doesn’t heat or cool the parcel. The globally avereaged atmosphere cools radiatively at a pretty constant rate of around 2.5 K/day, which in energetic terms is <span class="math notranslate nohighlight">\(2.5\cdot c_{p_m}/(24\cdot 3600)=0.02\)</span> W/kg. Air ascending through the atmosophere, even at 1 m/s (which is typical for turbulent overturning in the boundary layer), gains potential energy at <span class="math notranslate nohighlight">\(gdz/dt=10\)</span> W/kg, so on the order of 100 times faster. Radiation does matter in clear skies, where the air descends at speeds which match the energy from this radiative cooling, while conserving dry-static energy.</p></li>
+<li><p>We can often not ignore sinks of <span class="math notranslate nohighlight">\(H/m\)</span> from mixing the parcel with the environment. Real parcels <em>entrain</em> air from their environment as they ascend, through turbulent mixing. The <span class="math notranslate nohighlight">\(q_v\)</span> of this environmental air <span class="math notranslate nohighlight">\(q_{v_e}\)</span> is usually lower than the <span class="math notranslate nohighlight">\(q_{v}\)</span> of the parcel, <span class="math notranslate nohighlight">\(q_{v_p}\)</span> (this is true by definition if the parcel is saturated and the environment isn’t, at the same <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span>). Therefore, over a distance <span class="math notranslate nohighlight">\(dz\)</span>, entrainment with a rate <span class="math notranslate nohighlight">\(\epsilon\)</span> (in 1/m) reduces the parcel’s <span class="math notranslate nohighlight">\(q_v\)</span> by <span class="math notranslate nohighlight">\(dq_{v_e} = (q_{v_e} - q_{v_p})\epsilon dz\)</span>. This reduction in <span class="math notranslate nohighlight">\(q_v\)</span> can now not be spent on releasing heat through condensation, i.e. it reduces <span class="math notranslate nohighlight">\(L_v dq_v\)</span> to <span class="math notranslate nohighlight">\(L_v(d q_v - dq_{v_e})\)</span>, and there is less energy available to lift the parcel. This matters when trying to predict e.g. how vigorous a thunderstorm will become, or if you want to predict the real lapse rate of the atmosphere.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_fdq_i\approx0\)</span>, which is exactly true if we remain above the <em>frost-point temperature</em> <span class="math notranslate nohighlight">\(T_f\)</span>, but is actually not a crazy first-order approximation even below <span class="math notranslate nohighlight">\(T_f\)</span>, since <span class="math notranslate nohighlight">\(Lf&lt;Lv\)</span>. It does matter crucially for the growth of ice-phase particles that end up producing rain, of course.</p></li>
+</ul>
+<p>We should also consider the <span class="math notranslate nohighlight">\(dp/\rho\)</span> term a bit more carefully. Last lecture, we saw that ignoring buoyancy <span class="math notranslate nohighlight">\(b\)</span> had some serious consequences on this term. So, we assume the parcel’s environment is in hydrostatic equilibrium, <span class="math notranslate nohighlight">\(dp_{e}/\rho_e = -gdz\)</span>, that parcel’s pressure very quickly adjusts to the environment’s pressure, so <span class="math notranslate nohighlight">\(dp=dp_e\)</span>, but that <span class="math notranslate nohighlight">\(\rho_p\)</span> doesn’t also need to to adjust to the environment’s <span class="math notranslate nohighlight">\(\rho\)</span> over the same time. Then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \frac{dp}{\rho} &amp; = \frac{dp}{\rho_e}\frac{\rho_e}{\rho} \\
+                  &amp; = \frac{dp_e}{\rho_e}\frac{\rho_e}{\rho} \\
+                  &amp; = -gdz\frac{\rho_e}{\rho} + gdz - gdz \\
+                  &amp; = gdz\left(1 - \frac{\rho_e}{\rho}\right) - gdz \\
+                  &amp; = g\left(\frac{\rho - \rho_e}{\rho}\right)dz - gdz \\
+                  &amp; = -bdz - gdz.
+\end{split}\]</div>
+<p>That is, doing pressure work <span class="math notranslate nohighlight">\(-dp/\rho\)</span> when raising the parcel a distance <span class="math notranslate nohighlight">\(dz\)</span> can either go into giving the parcel potential energy <span class="math notranslate nohighlight">\(gdz\)</span>, or into giving it “buoyant energy” <span class="math notranslate nohighlight">\(bdz\)</span>. In fact, if buoyancy is the only force in the parcel’s vertical momentum equation, <span class="math notranslate nohighlight">\(dw/dt = b\)</span>, then <span class="math notranslate nohighlight">\(bdz=dw/dt dz = dw\cdot w = \frac{1}{2}dw^2\)</span>: <span class="math notranslate nohighlight">\(bdz\)</span> quantifies the amount of energy that could be converted into <em>kinetic energy</em>.</p>
+<p>This gives us one of the more general ways in which we can express atmospheric energy flows:</p>
+<div class="math notranslate nohighlight" id="equation-dh-conservation">
+<span class="eqno">(40)<a class="headerlink" href="#equation-dh-conservation" title="Link to this equation">#</a></span>\[\begin{split}
+  c_{p_m}dT + L_vdq_v - L_fdq_i &amp; = Q_{a,E}/m dt + Q_r/m dt - bdz - gdz \\
+  bdz + gdz = Q_{a,E}/m dt + Q_r/m dt - c_{p_m}dT - L_vdq_v + L_fdq_i
+\end{split}\]</div>
+<p>That is, if you heat a parcel externally, consume some of its enthalpy, condensate some of its water vapour, or freeze some if its liquid water, you can invest that energy into potential energy, or into “buoyant energy”, which would become kinetic energy.</p>
+<p>Another way of saying this is that raising a parcel adiabatically from a current level <span class="math notranslate nohighlight">\(z\)</span> to a fixed top level conserves MSE, plus the vertical integral of its buoyancy, which is called Convective Available Potential Energy (CAPE) (multiplied by -1):</p>
+<div class="math notranslate nohighlight">
+\[
+\text{CAPE} = \int_z^{z_{ref}}bdz' = -\int_{z_{ref}}^zbdz'.
+\]</div>
+<p>CAPE is the portion of the energy which can be converted into kinetic energy in actual storms. I.e. in all, recognising the definition of MSE in the expression below:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \int_{z}^{z_{ref}} \left(c_{p_m}dT + gdz + L_vdq_v - L_fdq_i\right)dz' + \int_z^{z_{ref}}bdz' &amp; = 0 \\
+  - \text{MSE} + \text{CAPE} &amp; = 0 \\
+  \text{MSE} - \text{CAPE} &amp; = 0 \\
+\end{split}\]</div>
+<!-- $$
+U/m = c_{v_d}T + \left(U_v-U_l\right)q_v + \left(U_i - U_l\right)q_i + c.
+$$
+
+$$
+U/m(T_0) = c_{v_d}T_0 + \left(U_v(T_0)-U_l(T_0)\right)q_v + \left(U_i(T_0) - U_l(T_0)\right)q_i + c =  c_{v_d}T_0 + q_tc_lT_0
+$$
+
+So, by equating, it means:
+
+$$
+  c & = q_tc_lT_0 - \left(U_v(T_0)-U_l(T_0)\right)q_v - \left(U_i(T_0) - U_l(T_0)\right)q_i \\
+    & = q_tc_lT_0 - \left(c_{v_v}T_0 - c_{l}T_0\right)q_v - \left(c_iT_0 - c_lT_0\right)q_i \\
+    & = q_tc_lT_0 - q_vc_{v_v}T_0 + q_vc_lT_0 - q_ic_iT_0 + q_ic_lT_0 \\
+    & = q_tc_lT_0 - q_vc_{v_v}T_0 + c_lT_0(q_v + q_i) - q_ic_iT_0 \\
+    & = q_tc_lT_0 - q_vc_{v_v}T_0 + c_lT_0(q_t - q_l) - q_ic_iT_0 \\
+    & = q_tc_lT_0 - q_vc_{v_v}T_0 + c_lT_0q_t - c_lT_0q_l - q_ic_iT_0 \\
+$$
+
+That can't be right. I still don't see it.
+ -->
+<!-- 
+Upon integrating:
+$$
+\Delta U/m & = c_{v_d}(T-T_0) + \left(U_v(T-T_0)-U_l(T-T_0)\right)q_v + \left(U_i(T-T_0) - U_l(T-T_0)\right)q_i \\
+    & = c_{v_d}(T-T_0) + \left(c_{v_v}(T-T_0)-c_{l}(T-T_0)\right)q_v + \left(c_{i}(T-T_0) - c_{l}(T-T_0)\right)q_i \\
+    & = c_{v_d}(T-T_0) + \left((c_{v_v}-c_l)T - (c_{v_v} - c_l)T_0\right)q_v + \left((c_{i}-c_l)T - (c_i - c_{l})T_0\right)q_i \\
+$$
+
+With the definitions of David Romps, "$E_{0v}$ is the difference in speciﬁc internal energy between water vapor and liquid at the triple-point temperature and $E_{0s}$ is the difference in speciﬁc internal energy between liquid and solid at the triple-point temperature." So if $T_0$ is taken at the triple point, then we have to assume he means $E_{0v} = (c_{v_v} - c_l)T_0$. Yes, and he says that the $T$-scaling terms should just go into the (moist) specific energy. -->
+<!-- I think the thing is, that the terms that scale the mass fractions explicitly no longer depend on $T$, so they shouldn't go into the integral!! I.e. you *only* are left with a dependence at the starting point, the reference point. If you do it that way, you will get exactly that.  -->
+</section>
+</section>
+<section id="bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy">
+<h2>Bonus (not part of the course) - a full derivation of the moist air parcel’s internal energy and enthalpy<a class="headerlink" href="#bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy" title="Link to this heading">#</a></h2>
+<p>We start considering internal energy <span class="math notranslate nohighlight">\(U/m\)</span>. Dividing <span class="math notranslate nohighlight">\(U/m\)</span> over the contributions from all its constituents gives:</p>
+<div class="math notranslate nohighlight">
+\[
+  U/m &amp; = u_dq_d + u_vq_v + u_lq_l + u_iq_i,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(h_d\)</span>, <span class="math notranslate nohighlight">\(h_v\)</span>, <span class="math notranslate nohighlight">\(h_l\)</span> and <span class="math notranslate nohighlight">\(h_i\)</span> give the internal energy per unit pass of dry air, pure water vapour, liquid water and ice. So <span class="math notranslate nohighlight">\(dU/m\)</span>, becomes, using the product rule and the definition <span class="math notranslate nohighlight">\(dU_x = c_{v_x}dT\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-dum-exp">
+<span class="eqno">(41)<a class="headerlink" href="#equation-dum-exp" title="Link to this equation">#</a></span>\[\begin{split}
+  dU/m &amp; = d(u_d q_d) + d(u_v q_v) + d(u_l q_l) + d(u_i q_i) \\
+       &amp; = du_d q_d + u_d dq_d + du_v q_v + u_v dq_v + du_l q_l + u_l dq_l + u_i dq_i + du_i q_i \\
+       &amp; = \underbrace{\left(c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i\right)dT}_{\text{1. Sensible heat changes}} + \underbrace{u_d dq_d + u_v dq_v + u_l dq_l + u_i dq_i}_{\text{2. Latent heat changes}}
+\end{split}\]</div>
+<!-- & = \left(c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i\right)T. -->
+<!-- 
+
+$$
+  dU/m & = d(U_d q_d) + d(U_v q_v) + d(U_l q_l) + d(U_i q_i) \\
+       & = dU_d q_d + U_d dq_d + dU_v q_v + U_v dq_v + dU_l q_l + U_l dq_l + U_i dq_i + dU_i q_i
+$$
+ -->
+<p>So relative to a dry parcel, where <span class="math notranslate nohighlight">\(dU/m=c_{v_d}dT\)</span>, a lot of things can now change the total internal energy! We can distinguish between two types of changes:</p>
+<ol class="arabic simple">
+<li><p>When <span class="math notranslate nohighlight">\(dq_x=0\)</span>, changes in internal energy still scale changes in temperature. These heat changes are “sensible heat”. However, compared to our dry situation, the sensible heating must now be distributed over different substances with different heat capacities: <span class="math notranslate nohighlight">\(c_{v_d}=717\)</span> J/kg/K, but <span class="math notranslate nohighlight">\(c_{v_v}\approx 1422\)</span> J/kg/K, <span class="math notranslate nohighlight">\(c_l \approx 4220\)</span> J/kg/K and <span class="math notranslate nohighlight">\(c_i \approx 2097\)</span> J/kg/K<a class="footnote-reference brackets" href="#fnclci" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. So in general, our parcel’s “moist <span class="math notranslate nohighlight">\(c_v\)</span>”, <span class="math notranslate nohighlight">\(c_{v_m} = c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i \neq c_{v_d}\)</span>. However, since <span class="math notranslate nohighlight">\(q_v\)</span>, <span class="math notranslate nohighlight">\(q_l\)</span>, <span class="math notranslate nohighlight">\(q_i\)</span> are all usually small, it’s often fine to assume <span class="math notranslate nohighlight">\(c_{v_m}\approx c_{v_d}\)</span> in order of magnitude calculations<a class="footnote-reference brackets" href="#fnsmall" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>When the temperature is constant, heat can be added to the parcel by changing the mass fractions. Why would these change? Well, not all of them do. So long as we don’t add any external air to the parcel, <span class="math notranslate nohighlight">\(d q_d = 0\)</span>, because we cannot convert dry air molecules into water molecules. For the same reason, the total mass fraction of moisture
+$<span class="math notranslate nohighlight">\(
+q_t = q_v + q_l + q_i
+\)</span><span class="math notranslate nohighlight">\(
+cannot change: \)</span>dq_t = dq_v + dq_l + dq_i = 0<span class="math notranslate nohighlight">\([^fnchangingq]. What *can* change, is the phase of the water mass. That is, \)</span>dq_l = -dq_v - dq_i<span class="math notranslate nohighlight">\(: Liquid water can increase from a loss of water vapour (\)</span>-dq_v<span class="math notranslate nohighlight">\(, condensation) or ice (\)</span>-dq_i<span class="math notranslate nohighlight">\(, melting). Similarly, \)</span>dq_v = -dq_l - dq_i<span class="math notranslate nohighlight">\( (water vapour can increase from evaporation of liquid water and so-called &quot;sublimation&quot; of ice), or \)</span>dq_i = -dq_l - dq_v<span class="math notranslate nohighlight">\( (ice can increase from the freezing of liquid and the deposition of water vapour). We can insert these definitions in eq. {eq}`dum-exp` to get rid of one of \)</span>u_v dq_v<span class="math notranslate nohighlight">\(, \)</span>u_l dq_l<span class="math notranslate nohighlight">\( or \)</span>u_i dq_i<span class="math notranslate nohighlight">\(. But which one do we choose? Often, atmospheric scientists choose \)</span>u_l dq_l$, so we do that here too. But all choices are legitimate<a class="footnote-reference brackets" href="#fnequivchoice" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p></li>
+</ol>
+<p>So, plugging <span class="math notranslate nohighlight">\(c_{v_m} = c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i\)</span>, <span class="math notranslate nohighlight">\(dq_d = 0\)</span> and <span class="math notranslate nohighlight">\(dq_l = -dq_v - dq_i\)</span> into eq. <a class="reference internal" href="#equation-dum-exp">(41)</a>, we get:</p>
+<div class="math notranslate nohighlight" id="equation-d-moist-internal-energy">
+<span class="eqno">(42)<a class="headerlink" href="#equation-d-moist-internal-energy" title="Link to this equation">#</a></span>\[\begin{split}
+  dU/m &amp; = c_{v_m}dT + u_v dq_v + u_l(-dq_v - dq_i) + u_idq_i \\
+       &amp; = c_{v_m}dT + \left(u_v-u_l\right)dq_v + \left(u_i - u_l\right)dq_i.
+\end{split}\]</div>
+<p>This expression tells us that phase changes affect the internal energy, because the different phases have different internal energies at the same temperature. Such impacts are called “latent” (hidden), because they’re hidden until we convert mass fractions into each other. Therefore, our total statement of internal energy conservation now becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+  dU/m &amp; = c_{v_m}dT + \left(u_v-u_l\right)dq_v + \left(u_i - u_l\right)dq_i = Q_{a,E}/m dt + Q_r/m dt - pdV/m.
+\]</div>
+<p>We saw last lecture that it’s often useful to combine <span class="math notranslate nohighlight">\(dU/m\)</span> with the part of the work <span class="math notranslate nohighlight">\(pdV/m\)</span> that changes the temperature. For moist air, we get, using the product rule, the gas law for moist air<a class="footnote-reference brackets" href="#fnqlzero" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>, and the chain rule (and <span class="math notranslate nohighlight">\(dq_d=0\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  pdV/m &amp; = \frac{d(pV)}{m} - \frac{Vdp}{m} \\
+      &amp; = \frac{d(m_dR_dT + m_vR_vT)}{m} - \frac{dp}{\rho}\\
+      &amp; = d((q_dR_d + q_vR_v)T) - \frac{dp}{\rho}\\
+      &amp; = (q_dR_d + q_vR_v)dT + R_vTdq_v - \frac{dp}{\rho}\\
+\end{split}\]</div>
+<p>Plugging this expression (times <span class="math notranslate nohighlight">\(-1\)</span>) into the conservation law, and moving the <span class="math notranslate nohighlight">\(dT\)</span> and <span class="math notranslate nohighlight">\(dq_v\)</span> terms to the left-hand side gives the same relationship, but now expressed for the moist <em>enthalpy</em> per unit mass:</p>
+<div class="math notranslate nohighlight">
+\[
+  dH/m &amp; = (c_{v_m} + q_dR_d + q_vR_v)dT + \left(u_v-u_l + R_vT\right)dq_v + \left(u_i - u_l\right)dq_i = Q_{a,E}/m dt + Q_r/m dt + dp/\rho.
+\]</div>
+<p>Where we can now make out the definition of the specific heat of moist air at constant pressure <span class="math notranslate nohighlight">\(c_{p_m} = (c_{v_m} + q_dR_d + q_vR_v)\)</span>. Again, at small moisture mass fractions, <span class="math notranslate nohighlight">\(q_vR_v\)</span> is small, <span class="math notranslate nohighlight">\(q_d\approx1\)</span>, and, if <span class="math notranslate nohighlight">\(c_{v_m}\approx c_{v_d}\)</span>, <span class="math notranslate nohighlight">\(c_{p_m}\approx c_{p_d}\)</span>. Now we can define the <em>latent heat of vaporisation</em> <span class="math notranslate nohighlight">\(L_v=u_v-u_l + R_vT\)</span> and the <em>latent heat of fusion</em> <span class="math notranslate nohighlight">\(L_f=u_l-u_i\)</span> (both in terms of J/kg) to measure enthalpy changes between states. Then the conservation law reads:</p>
+<div class="math notranslate nohighlight">
+\[
+  dH/m &amp; = c_{p_m}dT + L_vdq_v - L_fdq_i = Q_{a,E}/m dt + Q_r/m dt + dp/\rho,
+\]</div>
+<p>which is the conservation law we use in the course. Unfortunately, we are not actually done, because we have not given values to <span class="math notranslate nohighlight">\(L_v\)</span> and <span class="math notranslate nohighlight">\(L_f\)</span>. By their definitions, and assuming <span class="math notranslate nohighlight">\(c_{v_v}\)</span>, <span class="math notranslate nohighlight">\(c_l\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> are constants over the range of temperatures observed in the atmosphere:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  L_v = u_v - u_l + R_vT, \frac{dL_v}{dT} = c_{p_v} - c_l \\
+  L_f = u_l - u_i, \frac{dL_f}{dT} = c_l - c_i.
+\end{split}\]</div>
+<p>So they actually vary with temperature. In fact because <span class="math notranslate nohighlight">\(L_v\)</span> and <span class="math notranslate nohighlight">\(L_f\)</span> are energies, one needs to empirically measure them at a reference state, and scale them away from there, like we need to define a reference state for any other energy:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  L_v &amp; = L_{v_0} + (c_{p_v} - c_l)(T-T_0) \\
+  L_f &amp; = L_{f_0} + (c_l - c_i)(T-T_0) \\
+\end{split}\]</div>
+<p>Usually, the reference state for <span class="math notranslate nohighlight">\(L_v\)</span> and <span class="math notranslate nohighlight">\(L_i\)</span> is chosen to be <span class="math notranslate nohighlight">\(p=1000\)</span> hPa and <span class="math notranslate nohighlight">\(T=273.15\)</span> K. There, <span class="math notranslate nohighlight">\(L_v = 2.5\cdot10^{6}\)</span> J/kg and <span class="math notranslate nohighlight">\(L_f = 333\cdot 10^{6}\)</span> J/kg.</p>
+<!-- ## Reference states
+
+To define an actual internal energy and enthalpy at a given $T$, $q_v$ and $q_i$, we have to integrate eq. {eq}`d-moist-internal-energy`. To do that, we have to decide "from where" we start to integrate. This point is the reference state for the internal energy, like sea level might be the reference state for potential energy, or zero wind the reference state for kinetic energy. But, we are free to choose this state. For the dry-air part of $U/m$, let us keep it at 0 K. And, given that we have *chosen* to express eq. {eq}`d-moist-internal-energy` in terms of $q_v$ and $q_i$ (rather than $q_v$ and $q_l$, or $q_l$ and $q_i$), we might want to choose the reference state such that $q_v=0$ and $q_i=0$. This is possible, if we choose the reference state for the water substance to be the *triple point of water*. At that point, all phases of water can co-exist in equilibrium, i.e. we can convert between them without having to change the pressure or temperature (or internal energy!) of the parcel. So, if we pick the triple point to be the reference state, then $q_{v_0} = q_{i_0} = 0$ is possible even if our parcel actually has a non-zero amount of $q_v$ and $q_i$, by converting (for free!) all the water in the parcel at the triple point to liquid water: $q_{t_0} = q_{v_0} + q_{l_0} + q_{i_0} = q_{l_0}$ (of course, the reference state cannot be dry, $q_t=0$, because there doesn't exist a temperature and pressure at which we can convert dry air molecules to water molecules). 
+<!-- This choice of reference state means that we also evaluate the differences $u_v - u_l$ and $u_l - u_i$ at the triple point: $E_{0v} = u_{v_0} - u_{l_0}$ and $E_{0i} = u_{i_0} - u_{l_0}$. 
+With this definition for the reference state, we can now integrate: 
+
+$$
+\Delta U/m & = \int_{0}^{T}c_{v_m}dT' + \int_{0}^{q_v}\left(u_{v_0} - u_{l_0}\right)dq_v' + \int_{0}^{q_v}\left(u_{i_0} - u_{l_0}\right)dq_i' \\
+           & = c_{v_m}T + E_{0,v}q_v - E_{0,i}q_i. \\
+           & \equiv U/m
+$$
+
+Where we have defined $E_{0,v} = u_{v_0} - u_{l_0}$, and $E_{0,i} = u_{i_0} - u_{l_0}>0$. Making such a definition is necessary to get an actual value for $L_v$ and $L_f$,  -->
+<!-- 
+$$
+U_0/m & = \left(U_v(T_0)-U_l(T_0)\right)q_v + \left(U_i(T_0) - U_l(T_0)\right)q_i \\
+      & = U_v(T_0)q_v - U_l(T_0)q_v + U_i(T_0)q_i - U_l(T_0)q_i \\
+      & = U_v(T_0)q_v + U_i(T_0)q_i - (q_v + q_i)U_l(T_0) \\
+      & = U_v(T_0)q_v + U_i(T_0)q_i - (q_t - q_l)U_l(T_0) \\
+      & = U_v(T_0)q_v + U_i(T_0)q_i + U_l(T_0)q_l - U_l(T_0)q_t \\
+$$
+
+Compare this with the general expression of $U/m$:.
+
+$$
+  U_0/m & = U_{d_0}dq_d + U_{v_0}q_v + U_{l_0}q_l + U_{i_0}q_i
+$$
+
+And it's clear that we have essentially said:
+
+$$
+  U_{d_0}dq_d = U_l(T_0)q_t
+$$
+
+I.e. we have chosen the reference point such that the dry air internal energy is the same as the total moisture internal energy, converted to liquid. This is all possible at the triple point. -->
+<!-- [^fnlatentdef]: $L_v$ and $L_f$ are energies per unit mass. So to write down numbers for them, we have to define a reference state for them, just like any other energy. Have a look at ... if you want to know what we have set this reference state to. -->
+<!-- All of these terms would disappear if you go $T=T_0$, i.e. $U/m(T_0) = 0$. The point is, I think, that you can define:
+
+$$
+U/m = U_0/m + \Delta U/m
+$$
+From any reference state. So since $\Delta U/m$ comes from the actual integration, as you wrote above, you would have to add this reference state to it, to get the "actual" U/m that we work with. At the reference state, $T=T_0$. So, $\Delta U/m = 0$, i.e.:
+
+$$
+U/m(T=T_0) = U_0/m
+$$
+
+Then we make the *choice*:
+
+$$
+U_0/m = c_{v_d}T_0 + U_lq_t \\
+    & = c_{v_d}T_0 + c_lq_tT_0
+$$
+
+That is, at the reference state, all water is converted to liquid water. There are better ways to express this, which might help? If you take David Romps' words literally, it should be at $T_0$:
+
+$$
+  U_0/m & = c_{v_d}T_0 + U_{0v}(T_0)q_v - U_{0i} q_i \\
+        & = c_{v_d}T_0 + (U_v(T_0) - U_l(T_0))q_v - (U_l(T_0) - U_i(T_0)) q_i
+$$
+
+So if you add that to the equation you already had, what will you get?
+
+This is the same choice we have already made. Why? Insert and gather all terms that scale $q_v$ and $q_i$:
+
+$$
+U/m &= U_0/m + \Delta U/m \\
+  & = c_{v_d}T_0 + c_lq_tT_0 + c_{v_d}(T-T_0) + \left(c_{v_v}(T-T_0)-c_{l}(T-T_0)\right)q_v + \left(c_{i}(T-T_0) - c_{l}(T-T_0)\right)q_i \\
+  & = c_{v_d}(T + T_0 - T_0) + c_lq_tT_0 + c_{v_v}(T-T_0)q_v - c_{l}(T-T_0)q_v + c_{i}(T-T_0)q_i - c_{l}(T-T_0)q_i \\
+  & = c_{v_d}T + c_{v_v}(T-T_0)q_v - c_lTq_v - c_lTq_i + c_i(T-T_0)q_i + c_lT_0q_t - c_lT_0q_v - c_lT_0q_i \\
+  & = c_{v_d}T + c_{v_v}(T-T_0)q_v - c_lTq_v - c_lTq_i + c_i(T-T_0)q_i + c_lT_0(q_t - q_v - q_i) \\
+  & = c_{v_d}T + c_{v_v}(T-T_0)q_v - c_lTq_v - c_lTq_i + c_i(T-T_0)q_i + c_lT_0q_l \\
+  & = c_{v_d}T + Tq_v(c_{v_v} - c_l) - c_{v_v}T_0q_v + Tq_i(c_i - c_l) - c_iT_0q_i + c_lT_0q_l \\
+  & = c_{v_d}T + Tq_v(c_{v_v} - c_l) + Tq_i(c_i - c_l) + T_0(c_lq_l - c_{v_v}q_v - c_iq_i) \\
+  & = c_{v_d}T + q_v(T(c_{v_v} - c_l) - T_0c_{v_v}) + q_i(T(c_i - c_l) - c_iT_0) + T_0c_lq_l \\
+$$ --><!-- Moisture touches on almost every part of atmospheric science. It is extremely good at absorbing longwave radiation (as we will see in module 6), making it a potent greenhouse gas. It is lighter than dry air, thus influencing the buoyancy (as we saw in lecture 1). But most crucially for our understanding of the atmosphere, it changes phase - twice! - at atmospheric temperatures, and falls out of the atmosphere through precipitation. Today, we will talk about this last effect. --><!-- ## Ideas for questions
+1. Given the Clausius-Claperyon equation, what is the fractional rate (in percent per K) at which air can hold more water vapour before condensing it? What is it in our current climate, and what is it if global temperatures increase by 10 K? --><hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="fnq" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>For the water substances, these are often referred to as “specific”, i.e. <span class="math notranslate nohighlight">\(q_v\)</span> is called “specific humidity”, <span class="math notranslate nohighlight">\(q_l\)</span> is the “liquid-water specific humidity”, <span class="math notranslate nohighlight">\(q_i\)</span> is the “ice-water specific humidity”.</p>
+</aside>
+<aside class="footnote brackets" id="fnmixingratio" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Sometimes people define these fractions with respect to the dry air mass in the parcel, giving so-called “mixing ratios” <span class="math notranslate nohighlight">\(r_x = m_x/m_d\)</span>. If there is only water vapour in the parcel, then these relate through:
+$<span class="math notranslate nohighlight">\(
+q_v = \frac{m_v}{m_v+m_d} = \frac{m_v/m_d}{m_v/m_d+m_d/m_d} = \frac{r_v}{1+r_v} \approx r_v
+\)</span><span class="math notranslate nohighlight">\(
+I.e., these quantities are almost the same, so long as \)</span>r_v&lt;&lt;1$, which is usually a good approximation.</p>
+</aside>
+<aside class="footnote brackets" id="fnmrs" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>We could alternatively have chosen to work with a <em>saturation mixing ratio</em> <span class="math notranslate nohighlight">\(r_s\)</span>, which, since <span class="math notranslate nohighlight">\(r = m_v/m_d\)</span> equals:
+$<span class="math notranslate nohighlight">\(
+ r_s = \frac{\rho_{s}}{\rho_d} = \frac{\frac{e_s}{R_vT}}{\frac{p_d}{R_dT}} = \frac{R_d}{R_v}\frac{e_s}{p - e_s}.
+\)</span><span class="math notranslate nohighlight">\(
+Because this expression is easier to write down than eq. {eq}`qsat` for \)</span>q_s<span class="math notranslate nohighlight">\(, you will often see saturation quantities expressed in mixing ratios. Still, when \)</span>p&gt;&gt;e_s<span class="math notranslate nohighlight">\(, this again reduces to eq. {eq}`qsat-approx`, so in most practical settings \)</span>q_s\approx r_s$. Since we have been working in mass fractions all along, we will therefore continue with that choice. We verify this approximation in the example calculation coded below.</p>
+</aside>
+<aside class="footnote brackets" id="fnignoringqv" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>This is a bad approximation in many updrafts in the atmosophere, so we just make it for illustrative purposes here.</p>
+</aside>
+<aside class="footnote brackets" id="fnclci" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Note that we consider the liquid and solid phases to be “perfect”. That is, we consider them to have a homogeneous, unchangeable density, so that their heat capacities at constant volume are the same as at constant pressure.</p>
+</aside>
+<aside class="footnote brackets" id="fnsmall" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>In most situations, <span class="math notranslate nohighlight">\(q_v\sim 0.01\)</span> kg/kg, while <span class="math notranslate nohighlight">\(q_l &lt; 0.0001\)</span>, i.e. <span class="math notranslate nohighlight">\(q_v c_v \sim 0.01 \times 1422 = 14.22\)</span> J/kg/K and <span class="math notranslate nohighlight">\(q_l c_l \sim 0.001 \times 4220 = 0.422\)</span> J/kg/K, while <span class="math notranslate nohighlight">\(c_{v_d} q_d \sim 717 \times 1 = 700 \)</span> J/kg/K. So we can’t assume <span class="math notranslate nohighlight">\(c_{v_m}=c_{v_d}\)</span> in quantitative models of the atmosphere, but for our course, it’s fine.</p>
+</aside>
+<aside class="footnote brackets" id="fnequivchoice" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>In a situation without ice, there is a conceptual advantage to choose to keep the changes in terms of <span class="math notranslate nohighlight">\(d q_v\)</span>, but generally, it doesn’t matter. So, you will likely encounter the different variables associated with the different choices out in the world. The definition we work with here is called “equivalent” moist internal energy/enthalply/potential temperature. But it’s also common to take the water vapour state as a reference (eliminating <span class="math notranslate nohighlight">\(dq_v\)</span>). This leads to variables called “liquid-water” moist internal energy/enthalpy/potential temperature. The two differ from each other by a constant, which, as we will see later, just reflects freedom in choosing a “reference state” for our parcel’s energy.</p>
+</aside>
+<aside class="footnote brackets" id="fnqlzero" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
+<p>We have assumed here that liquid and ice water do not contribute partial pressures (see section <span class="xref std std-ref">sec:qlvol</span>).</p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "metclim_env"
+        },
+        kernelOptions: {
+            name: "metclim_env",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'metclim_env'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2.%20Thermodynamics%20%28i%29.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2. Thermodynamics (i)</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-flows-in-moist-air">Energy flows in moist air</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-will-water-begin-to-condensate">When will water begin to condensate?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saturation">Saturation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-clausius-clapeyron-equation">The Clausius-Clapeyron equation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-temperature-and-specific-humidity-of-saturated-air">The temperature and specific humidity of saturated air</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-lifting-condensation-level">The lifting condensation level</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moist-adiabatic-lapse-rate">Moist adiabatic lapse rate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-stability-of-condensating-parcels">Static stability of condensating parcels</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moist-adiabatic-motion-in-pressure-coordinates-equivalent-potential-temperature">Moist adiabatic motion in pressure coordinates - equivalent potential temperature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-not-part-of-the-course">Bonus (not part of the course)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-have-ignored-and-the-extent-to-which-it-matters">What we have ignored, and the extent to which it matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy">Bonus (not part of the course) - a full derivation of the moist air parcel’s internal energy and enthalpy</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Martin Janssens
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
