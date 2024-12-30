@@ -388,7 +388,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-have-ignored-and-the-extent-to-which-it-matters">What we have ignored, and the extent to which it matters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy">Bonus (not part of the course) - a full derivation of the moist air parcel’s internal energy and enthalpy</a></li>
 </ul>
             </nav>
         </div>
@@ -449,11 +448,12 @@ E/m = gz + \frac{1}{2}u^2 + U/m
 <li><p><span class="math notranslate nohighlight">\(c_{p_m}\)</span> is the specific heat at constant pressure of moist air in J/kg/K (we will assume <span class="math notranslate nohighlight">\(c_{p_m} \approx c_{p_d}\)</span>, which is reasonable for what we’re trying to do here). <span class="math notranslate nohighlight">\(c_{p_m}dT\)</span> expresses changes in heat through the moist air’s temperature. This is therefore called “sensible heat”.</p></li>
 <li><p><span class="math notranslate nohighlight">\(dq_v\)</span> expresses a positive phase change into water vapour (and <span class="math notranslate nohighlight">\(d q_i\)</span> into ice). The “latent heat of vaporisation” <span class="math notranslate nohighlight">\(L_v\)</span> (in J/kg) tells us how much energy is expended to condensate 1 kg of water vapour into liquid water, or evaporate 1 kg of liquid into vapour (similarly, <span class="math notranslate nohighlight">\(dq_i\)</span> scales the “latent heat of fusion” <span class="math notranslate nohighlight">\(L_f\)</span>). This heat is called “latent” (meaning “hidden”), because it’s hidden until the phase of water changes.</p></li>
 </ul>
-<p>For this course, we take eq. <a class="reference internal" href="#equation-dh-moist">(29)</a> as given. However, it involves several non-trivial choices and approximations, which affect our further work (for example, why doesn’t <span class="math notranslate nohighlight">\(dq_l\)</span> appear?). It can also be derived quite generally from rather simple principles, which gives a lot more insight into the moist thermodynamics. Therefore, if you’re interested, have a look at the bonus material at the end of this section.</p>
+<p>For this course, we take eq. <a class="reference internal" href="#equation-dh-moist">(29)</a> as given. However, it involves several non-trivial choices and approximations, which affect our further work (for example, why doesn’t <span class="math notranslate nohighlight">\(dq_l\)</span> appear?). Ask me after the lecture if you are interested in knowing more about these fundamental thermodynamics.</p>
+<!-- It can also be derived quite generally from rather simple principles, which gives a lot more insight into the moist thermodynamics. Therefore, if you're interested, have a look at the bonus material at the end of this section. -->
 <p>Putting together eqs. <a class="reference internal" href="#equation-dh-sources">(28)</a> and <a class="reference internal" href="#equation-dh-moist">(29)</a>, the new energy conservation equation for our moist air parcel states:</p>
 <div class="math notranslate nohighlight" id="equation-dh-conservation-p">
 <span class="eqno">(30)<a class="headerlink" href="#equation-dh-conservation-p" title="Link to this equation">#</a></span>\[
-  c_{p_m}dT + L_vdq_v - L_fdq_i &amp; = Q_{a,E}/m dt + Q_r/m dt + dp/\rho.
+  c_{p_m}dT + L_vdq_v - L_fdq_i = Q_{a,E}/m dt + Q_r/m dt + dp/\rho.
 \]</div>
 <!-- ## Raising a moist parcel
 
@@ -611,7 +611,7 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 <p>At saturation, <span class="math notranslate nohighlight">\(q_v \equiv q_s\)</span>, so:</p>
 <div class="math notranslate nohighlight" id="equation-qsat">
 <span class="eqno">(35)<a class="headerlink" href="#equation-qsat" title="Link to this equation">#</a></span>\[
-  q_s(p, T) &amp; = \frac{R_d}{R_v}\frac{e_s(T)}{p + e_s(T)(R_d/R_v - 1)}
+  q_s(p, T) = \frac{R_d}{R_v}\frac{e_s(T)}{p + e_s(T)(R_d/R_v - 1)}
 \]</div>
 <p>We can see from this relation that to determine <span class="math notranslate nohighlight">\(q_s\)</span>, we need to know both <span class="math notranslate nohighlight">\(e_s(T)\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Still, the key point is that this relationship defines the dew-point temperature, so that <span class="math notranslate nohighlight">\(q_v = q_s(p, e_s(T_d))\)</span>: At a given pressure, if we know a parcel’s <span class="math notranslate nohighlight">\(q_v\)</span>, we can figure out at which temperature it saturates.</p>
 <p>Because <span class="math notranslate nohighlight">\(p\)</span> is usually 1-2 orders of magnitude greater than <span class="math notranslate nohighlight">\(e_s\)</span> at the same <span class="math notranslate nohighlight">\(T\)</span>, we can to great approximation write<a class="footnote-reference brackets" href="#fnmrs" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
@@ -727,14 +727,15 @@ q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
 $<span class="math notranslate nohighlight">\(
 \frac{\partial q_s}{\partial p} = -\frac{R_v}{R_d}\frac{e_s}{p^2} = -\frac{q_s}{p}
 \)</span>$</p></li>
-<li><p>For <span class="math notranslate nohighlight">\(\partial q_s/\partial T\)</span> at constant <span class="math notranslate nohighlight">\(p\)</span>, we have to take another step, because we know that it’s actually <span class="math notranslate nohighlight">\(e_s\)</span> that depends on <span class="math notranslate nohighlight">\(T\)</span> through the Clausius-Clapeyron equation (eq. <a class="reference internal" href="#equation-clausius">(32)</a>). We insert this, and get:
-$<span class="math notranslate nohighlight">\(
-\frac{\partial q_s}{\partial T} &amp; = \frac{R_d}{R_vp}\frac{d e_s}{dT} \\
-&amp; = \frac{R_d}{R_vp}\frac{L_ve_s}{R_vT^2} \\
-&amp; = \frac{R_de_s}{R_vp}\frac{L_v}{R_vT^2} \\
-&amp; = \frac{q_sL_v}{R_vT^2} \\
-\)</span>$</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(\partial q_s/\partial T\)</span> at constant <span class="math notranslate nohighlight">\(p\)</span>, we have to take another step, because we know that it’s actually <span class="math notranslate nohighlight">\(e_s\)</span> that depends on <span class="math notranslate nohighlight">\(T\)</span> through the Clausius-Clapeyron equation (eq. <a class="reference internal" href="#equation-clausius">(32)</a>). We insert this, and get:</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \frac{\partial q_s}{\partial T} &amp; = \frac{R_d}{R_vp}\frac{d e_s}{dT} \\
+  &amp; = \frac{R_d}{R_vp}\frac{L_ve_s}{R_vT^2} \\
+  &amp; = \frac{R_de_s}{R_vp}\frac{L_v}{R_vT^2} \\
+  &amp; = \frac{q_sL_v}{R_vT^2} \\
+\end{split}\]</div>
 <p>So:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -963,188 +964,7 @@ $<span class="math notranslate nohighlight">\(
   - \text{MSE} + \text{CAPE} &amp; = 0 \\
   \text{MSE} - \text{CAPE} &amp; = 0 \\
 \end{split}\]</div>
-<!-- $$
-U/m = c_{v_d}T + \left(U_v-U_l\right)q_v + \left(U_i - U_l\right)q_i + c.
-$$
-
-$$
-U/m(T_0) = c_{v_d}T_0 + \left(U_v(T_0)-U_l(T_0)\right)q_v + \left(U_i(T_0) - U_l(T_0)\right)q_i + c =  c_{v_d}T_0 + q_tc_lT_0
-$$
-
-So, by equating, it means:
-
-$$
-  c & = q_tc_lT_0 - \left(U_v(T_0)-U_l(T_0)\right)q_v - \left(U_i(T_0) - U_l(T_0)\right)q_i \\
-    & = q_tc_lT_0 - \left(c_{v_v}T_0 - c_{l}T_0\right)q_v - \left(c_iT_0 - c_lT_0\right)q_i \\
-    & = q_tc_lT_0 - q_vc_{v_v}T_0 + q_vc_lT_0 - q_ic_iT_0 + q_ic_lT_0 \\
-    & = q_tc_lT_0 - q_vc_{v_v}T_0 + c_lT_0(q_v + q_i) - q_ic_iT_0 \\
-    & = q_tc_lT_0 - q_vc_{v_v}T_0 + c_lT_0(q_t - q_l) - q_ic_iT_0 \\
-    & = q_tc_lT_0 - q_vc_{v_v}T_0 + c_lT_0q_t - c_lT_0q_l - q_ic_iT_0 \\
-$$
-
-That can't be right. I still don't see it.
- -->
-<!-- 
-Upon integrating:
-$$
-\Delta U/m & = c_{v_d}(T-T_0) + \left(U_v(T-T_0)-U_l(T-T_0)\right)q_v + \left(U_i(T-T_0) - U_l(T-T_0)\right)q_i \\
-    & = c_{v_d}(T-T_0) + \left(c_{v_v}(T-T_0)-c_{l}(T-T_0)\right)q_v + \left(c_{i}(T-T_0) - c_{l}(T-T_0)\right)q_i \\
-    & = c_{v_d}(T-T_0) + \left((c_{v_v}-c_l)T - (c_{v_v} - c_l)T_0\right)q_v + \left((c_{i}-c_l)T - (c_i - c_{l})T_0\right)q_i \\
-$$
-
-With the definitions of David Romps, "$E_{0v}$ is the difference in speciﬁc internal energy between water vapor and liquid at the triple-point temperature and $E_{0s}$ is the difference in speciﬁc internal energy between liquid and solid at the triple-point temperature." So if $T_0$ is taken at the triple point, then we have to assume he means $E_{0v} = (c_{v_v} - c_l)T_0$. Yes, and he says that the $T$-scaling terms should just go into the (moist) specific energy. -->
-<!-- I think the thing is, that the terms that scale the mass fractions explicitly no longer depend on $T$, so they shouldn't go into the integral!! I.e. you *only* are left with a dependence at the starting point, the reference point. If you do it that way, you will get exactly that.  -->
-</section>
-</section>
-<section id="bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy">
-<h2>Bonus (not part of the course) - a full derivation of the moist air parcel’s internal energy and enthalpy<a class="headerlink" href="#bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy" title="Link to this heading">#</a></h2>
-<p>We start considering internal energy <span class="math notranslate nohighlight">\(U/m\)</span>. Dividing <span class="math notranslate nohighlight">\(U/m\)</span> over the contributions from all its constituents gives:</p>
-<div class="math notranslate nohighlight">
-\[
-  U/m &amp; = u_dq_d + u_vq_v + u_lq_l + u_iq_i,
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(h_d\)</span>, <span class="math notranslate nohighlight">\(h_v\)</span>, <span class="math notranslate nohighlight">\(h_l\)</span> and <span class="math notranslate nohighlight">\(h_i\)</span> give the internal energy per unit pass of dry air, pure water vapour, liquid water and ice. So <span class="math notranslate nohighlight">\(dU/m\)</span>, becomes, using the product rule and the definition <span class="math notranslate nohighlight">\(dU_x = c_{v_x}dT\)</span>:</p>
-<div class="math notranslate nohighlight" id="equation-dum-exp">
-<span class="eqno">(41)<a class="headerlink" href="#equation-dum-exp" title="Link to this equation">#</a></span>\[\begin{split}
-  dU/m &amp; = d(u_d q_d) + d(u_v q_v) + d(u_l q_l) + d(u_i q_i) \\
-       &amp; = du_d q_d + u_d dq_d + du_v q_v + u_v dq_v + du_l q_l + u_l dq_l + u_i dq_i + du_i q_i \\
-       &amp; = \underbrace{\left(c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i\right)dT}_{\text{1. Sensible heat changes}} + \underbrace{u_d dq_d + u_v dq_v + u_l dq_l + u_i dq_i}_{\text{2. Latent heat changes}}
-\end{split}\]</div>
-<!-- & = \left(c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i\right)T. -->
-<!-- 
-
-$$
-  dU/m & = d(U_d q_d) + d(U_v q_v) + d(U_l q_l) + d(U_i q_i) \\
-       & = dU_d q_d + U_d dq_d + dU_v q_v + U_v dq_v + dU_l q_l + U_l dq_l + U_i dq_i + dU_i q_i
-$$
- -->
-<p>So relative to a dry parcel, where <span class="math notranslate nohighlight">\(dU/m=c_{v_d}dT\)</span>, a lot of things can now change the total internal energy! We can distinguish between two types of changes:</p>
-<ol class="arabic simple">
-<li><p>When <span class="math notranslate nohighlight">\(dq_x=0\)</span>, changes in internal energy still scale changes in temperature. These heat changes are “sensible heat”. However, compared to our dry situation, the sensible heating must now be distributed over different substances with different heat capacities: <span class="math notranslate nohighlight">\(c_{v_d}=717\)</span> J/kg/K, but <span class="math notranslate nohighlight">\(c_{v_v}\approx 1422\)</span> J/kg/K, <span class="math notranslate nohighlight">\(c_l \approx 4220\)</span> J/kg/K and <span class="math notranslate nohighlight">\(c_i \approx 2097\)</span> J/kg/K<a class="footnote-reference brackets" href="#fnclci" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. So in general, our parcel’s “moist <span class="math notranslate nohighlight">\(c_v\)</span>”, <span class="math notranslate nohighlight">\(c_{v_m} = c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i \neq c_{v_d}\)</span>. However, since <span class="math notranslate nohighlight">\(q_v\)</span>, <span class="math notranslate nohighlight">\(q_l\)</span>, <span class="math notranslate nohighlight">\(q_i\)</span> are all usually small, it’s often fine to assume <span class="math notranslate nohighlight">\(c_{v_m}\approx c_{v_d}\)</span> in order of magnitude calculations<a class="footnote-reference brackets" href="#fnsmall" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p></li>
-<li><p>When the temperature is constant, heat can be added to the parcel by changing the mass fractions. Why would these change? Well, not all of them do. So long as we don’t add any external air to the parcel, <span class="math notranslate nohighlight">\(d q_d = 0\)</span>, because we cannot convert dry air molecules into water molecules. For the same reason, the total mass fraction of moisture
-$<span class="math notranslate nohighlight">\(
-q_t = q_v + q_l + q_i
-\)</span><span class="math notranslate nohighlight">\(
-cannot change: \)</span>dq_t = dq_v + dq_l + dq_i = 0<span class="math notranslate nohighlight">\([^fnchangingq]. What *can* change, is the phase of the water mass. That is, \)</span>dq_l = -dq_v - dq_i<span class="math notranslate nohighlight">\(: Liquid water can increase from a loss of water vapour (\)</span>-dq_v<span class="math notranslate nohighlight">\(, condensation) or ice (\)</span>-dq_i<span class="math notranslate nohighlight">\(, melting). Similarly, \)</span>dq_v = -dq_l - dq_i<span class="math notranslate nohighlight">\( (water vapour can increase from evaporation of liquid water and so-called &quot;sublimation&quot; of ice), or \)</span>dq_i = -dq_l - dq_v<span class="math notranslate nohighlight">\( (ice can increase from the freezing of liquid and the deposition of water vapour). We can insert these definitions in eq. {eq}`dum-exp` to get rid of one of \)</span>u_v dq_v<span class="math notranslate nohighlight">\(, \)</span>u_l dq_l<span class="math notranslate nohighlight">\( or \)</span>u_i dq_i<span class="math notranslate nohighlight">\(. But which one do we choose? Often, atmospheric scientists choose \)</span>u_l dq_l$, so we do that here too. But all choices are legitimate<a class="footnote-reference brackets" href="#fnequivchoice" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>.</p></li>
-</ol>
-<p>So, plugging <span class="math notranslate nohighlight">\(c_{v_m} = c_{v_d}q_d + c_{v_v}q_v + c_{v_l}q_l + c_{v_i}q_i\)</span>, <span class="math notranslate nohighlight">\(dq_d = 0\)</span> and <span class="math notranslate nohighlight">\(dq_l = -dq_v - dq_i\)</span> into eq. <a class="reference internal" href="#equation-dum-exp">(41)</a>, we get:</p>
-<div class="math notranslate nohighlight" id="equation-d-moist-internal-energy">
-<span class="eqno">(42)<a class="headerlink" href="#equation-d-moist-internal-energy" title="Link to this equation">#</a></span>\[\begin{split}
-  dU/m &amp; = c_{v_m}dT + u_v dq_v + u_l(-dq_v - dq_i) + u_idq_i \\
-       &amp; = c_{v_m}dT + \left(u_v-u_l\right)dq_v + \left(u_i - u_l\right)dq_i.
-\end{split}\]</div>
-<p>This expression tells us that phase changes affect the internal energy, because the different phases have different internal energies at the same temperature. Such impacts are called “latent” (hidden), because they’re hidden until we convert mass fractions into each other. Therefore, our total statement of internal energy conservation now becomes:</p>
-<div class="math notranslate nohighlight">
-\[
-  dU/m &amp; = c_{v_m}dT + \left(u_v-u_l\right)dq_v + \left(u_i - u_l\right)dq_i = Q_{a,E}/m dt + Q_r/m dt - pdV/m.
-\]</div>
-<p>We saw last lecture that it’s often useful to combine <span class="math notranslate nohighlight">\(dU/m\)</span> with the part of the work <span class="math notranslate nohighlight">\(pdV/m\)</span> that changes the temperature. For moist air, we get, using the product rule, the gas law for moist air<a class="footnote-reference brackets" href="#fnqlzero" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>, and the chain rule (and <span class="math notranslate nohighlight">\(dq_d=0\)</span>):</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-  pdV/m &amp; = \frac{d(pV)}{m} - \frac{Vdp}{m} \\
-      &amp; = \frac{d(m_dR_dT + m_vR_vT)}{m} - \frac{dp}{\rho}\\
-      &amp; = d((q_dR_d + q_vR_v)T) - \frac{dp}{\rho}\\
-      &amp; = (q_dR_d + q_vR_v)dT + R_vTdq_v - \frac{dp}{\rho}\\
-\end{split}\]</div>
-<p>Plugging this expression (times <span class="math notranslate nohighlight">\(-1\)</span>) into the conservation law, and moving the <span class="math notranslate nohighlight">\(dT\)</span> and <span class="math notranslate nohighlight">\(dq_v\)</span> terms to the left-hand side gives the same relationship, but now expressed for the moist <em>enthalpy</em> per unit mass:</p>
-<div class="math notranslate nohighlight">
-\[
-  dH/m &amp; = (c_{v_m} + q_dR_d + q_vR_v)dT + \left(u_v-u_l + R_vT\right)dq_v + \left(u_i - u_l\right)dq_i = Q_{a,E}/m dt + Q_r/m dt + dp/\rho.
-\]</div>
-<p>Where we can now make out the definition of the specific heat of moist air at constant pressure <span class="math notranslate nohighlight">\(c_{p_m} = (c_{v_m} + q_dR_d + q_vR_v)\)</span>. Again, at small moisture mass fractions, <span class="math notranslate nohighlight">\(q_vR_v\)</span> is small, <span class="math notranslate nohighlight">\(q_d\approx1\)</span>, and, if <span class="math notranslate nohighlight">\(c_{v_m}\approx c_{v_d}\)</span>, <span class="math notranslate nohighlight">\(c_{p_m}\approx c_{p_d}\)</span>. Now we can define the <em>latent heat of vaporisation</em> <span class="math notranslate nohighlight">\(L_v=u_v-u_l + R_vT\)</span> and the <em>latent heat of fusion</em> <span class="math notranslate nohighlight">\(L_f=u_l-u_i\)</span> (both in terms of J/kg) to measure enthalpy changes between states. Then the conservation law reads:</p>
-<div class="math notranslate nohighlight">
-\[
-  dH/m &amp; = c_{p_m}dT + L_vdq_v - L_fdq_i = Q_{a,E}/m dt + Q_r/m dt + dp/\rho,
-\]</div>
-<p>which is the conservation law we use in the course. Unfortunately, we are not actually done, because we have not given values to <span class="math notranslate nohighlight">\(L_v\)</span> and <span class="math notranslate nohighlight">\(L_f\)</span>. By their definitions, and assuming <span class="math notranslate nohighlight">\(c_{v_v}\)</span>, <span class="math notranslate nohighlight">\(c_l\)</span> and <span class="math notranslate nohighlight">\(c_i\)</span> are constants over the range of temperatures observed in the atmosphere:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-  L_v = u_v - u_l + R_vT, \frac{dL_v}{dT} = c_{p_v} - c_l \\
-  L_f = u_l - u_i, \frac{dL_f}{dT} = c_l - c_i.
-\end{split}\]</div>
-<p>So they actually vary with temperature. In fact because <span class="math notranslate nohighlight">\(L_v\)</span> and <span class="math notranslate nohighlight">\(L_f\)</span> are energies, one needs to empirically measure them at a reference state, and scale them away from there, like we need to define a reference state for any other energy:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-  L_v &amp; = L_{v_0} + (c_{p_v} - c_l)(T-T_0) \\
-  L_f &amp; = L_{f_0} + (c_l - c_i)(T-T_0) \\
-\end{split}\]</div>
-<p>Usually, the reference state for <span class="math notranslate nohighlight">\(L_v\)</span> and <span class="math notranslate nohighlight">\(L_i\)</span> is chosen to be <span class="math notranslate nohighlight">\(p=1000\)</span> hPa and <span class="math notranslate nohighlight">\(T=273.15\)</span> K. There, <span class="math notranslate nohighlight">\(L_v = 2.5\cdot10^{6}\)</span> J/kg and <span class="math notranslate nohighlight">\(L_f = 333\cdot 10^{6}\)</span> J/kg.</p>
-<!-- ## Reference states
-
-To define an actual internal energy and enthalpy at a given $T$, $q_v$ and $q_i$, we have to integrate eq. {eq}`d-moist-internal-energy`. To do that, we have to decide "from where" we start to integrate. This point is the reference state for the internal energy, like sea level might be the reference state for potential energy, or zero wind the reference state for kinetic energy. But, we are free to choose this state. For the dry-air part of $U/m$, let us keep it at 0 K. And, given that we have *chosen* to express eq. {eq}`d-moist-internal-energy` in terms of $q_v$ and $q_i$ (rather than $q_v$ and $q_l$, or $q_l$ and $q_i$), we might want to choose the reference state such that $q_v=0$ and $q_i=0$. This is possible, if we choose the reference state for the water substance to be the *triple point of water*. At that point, all phases of water can co-exist in equilibrium, i.e. we can convert between them without having to change the pressure or temperature (or internal energy!) of the parcel. So, if we pick the triple point to be the reference state, then $q_{v_0} = q_{i_0} = 0$ is possible even if our parcel actually has a non-zero amount of $q_v$ and $q_i$, by converting (for free!) all the water in the parcel at the triple point to liquid water: $q_{t_0} = q_{v_0} + q_{l_0} + q_{i_0} = q_{l_0}$ (of course, the reference state cannot be dry, $q_t=0$, because there doesn't exist a temperature and pressure at which we can convert dry air molecules to water molecules). 
-<!-- This choice of reference state means that we also evaluate the differences $u_v - u_l$ and $u_l - u_i$ at the triple point: $E_{0v} = u_{v_0} - u_{l_0}$ and $E_{0i} = u_{i_0} - u_{l_0}$. 
-With this definition for the reference state, we can now integrate: 
-
-$$
-\Delta U/m & = \int_{0}^{T}c_{v_m}dT' + \int_{0}^{q_v}\left(u_{v_0} - u_{l_0}\right)dq_v' + \int_{0}^{q_v}\left(u_{i_0} - u_{l_0}\right)dq_i' \\
-           & = c_{v_m}T + E_{0,v}q_v - E_{0,i}q_i. \\
-           & \equiv U/m
-$$
-
-Where we have defined $E_{0,v} = u_{v_0} - u_{l_0}$, and $E_{0,i} = u_{i_0} - u_{l_0}>0$. Making such a definition is necessary to get an actual value for $L_v$ and $L_f$,  -->
-<!-- 
-$$
-U_0/m & = \left(U_v(T_0)-U_l(T_0)\right)q_v + \left(U_i(T_0) - U_l(T_0)\right)q_i \\
-      & = U_v(T_0)q_v - U_l(T_0)q_v + U_i(T_0)q_i - U_l(T_0)q_i \\
-      & = U_v(T_0)q_v + U_i(T_0)q_i - (q_v + q_i)U_l(T_0) \\
-      & = U_v(T_0)q_v + U_i(T_0)q_i - (q_t - q_l)U_l(T_0) \\
-      & = U_v(T_0)q_v + U_i(T_0)q_i + U_l(T_0)q_l - U_l(T_0)q_t \\
-$$
-
-Compare this with the general expression of $U/m$:.
-
-$$
-  U_0/m & = U_{d_0}dq_d + U_{v_0}q_v + U_{l_0}q_l + U_{i_0}q_i
-$$
-
-And it's clear that we have essentially said:
-
-$$
-  U_{d_0}dq_d = U_l(T_0)q_t
-$$
-
-I.e. we have chosen the reference point such that the dry air internal energy is the same as the total moisture internal energy, converted to liquid. This is all possible at the triple point. -->
-<!-- [^fnlatentdef]: $L_v$ and $L_f$ are energies per unit mass. So to write down numbers for them, we have to define a reference state for them, just like any other energy. Have a look at ... if you want to know what we have set this reference state to. -->
-<!-- All of these terms would disappear if you go $T=T_0$, i.e. $U/m(T_0) = 0$. The point is, I think, that you can define:
-
-$$
-U/m = U_0/m + \Delta U/m
-$$
-From any reference state. So since $\Delta U/m$ comes from the actual integration, as you wrote above, you would have to add this reference state to it, to get the "actual" U/m that we work with. At the reference state, $T=T_0$. So, $\Delta U/m = 0$, i.e.:
-
-$$
-U/m(T=T_0) = U_0/m
-$$
-
-Then we make the *choice*:
-
-$$
-U_0/m = c_{v_d}T_0 + U_lq_t \\
-    & = c_{v_d}T_0 + c_lq_tT_0
-$$
-
-That is, at the reference state, all water is converted to liquid water. There are better ways to express this, which might help? If you take David Romps' words literally, it should be at $T_0$:
-
-$$
-  U_0/m & = c_{v_d}T_0 + U_{0v}(T_0)q_v - U_{0i} q_i \\
-        & = c_{v_d}T_0 + (U_v(T_0) - U_l(T_0))q_v - (U_l(T_0) - U_i(T_0)) q_i
-$$
-
-So if you add that to the equation you already had, what will you get?
-
-This is the same choice we have already made. Why? Insert and gather all terms that scale $q_v$ and $q_i$:
-
-$$
-U/m &= U_0/m + \Delta U/m \\
-  & = c_{v_d}T_0 + c_lq_tT_0 + c_{v_d}(T-T_0) + \left(c_{v_v}(T-T_0)-c_{l}(T-T_0)\right)q_v + \left(c_{i}(T-T_0) - c_{l}(T-T_0)\right)q_i \\
-  & = c_{v_d}(T + T_0 - T_0) + c_lq_tT_0 + c_{v_v}(T-T_0)q_v - c_{l}(T-T_0)q_v + c_{i}(T-T_0)q_i - c_{l}(T-T_0)q_i \\
-  & = c_{v_d}T + c_{v_v}(T-T_0)q_v - c_lTq_v - c_lTq_i + c_i(T-T_0)q_i + c_lT_0q_t - c_lT_0q_v - c_lT_0q_i \\
-  & = c_{v_d}T + c_{v_v}(T-T_0)q_v - c_lTq_v - c_lTq_i + c_i(T-T_0)q_i + c_lT_0(q_t - q_v - q_i) \\
-  & = c_{v_d}T + c_{v_v}(T-T_0)q_v - c_lTq_v - c_lTq_i + c_i(T-T_0)q_i + c_lT_0q_l \\
-  & = c_{v_d}T + Tq_v(c_{v_v} - c_l) - c_{v_v}T_0q_v + Tq_i(c_i - c_l) - c_iT_0q_i + c_lT_0q_l \\
-  & = c_{v_d}T + Tq_v(c_{v_v} - c_l) + Tq_i(c_i - c_l) + T_0(c_lq_l - c_{v_v}q_v - c_iq_i) \\
-  & = c_{v_d}T + q_v(T(c_{v_v} - c_l) - T_0c_{v_v}) + q_i(T(c_i - c_l) - c_iT_0) + T_0c_lq_l \\
-$$ --><!-- Moisture touches on almost every part of atmospheric science. It is extremely good at absorbing longwave radiation (as we will see in module 6), making it a potent greenhouse gas. It is lighter than dry air, thus influencing the buoyancy (as we saw in lecture 1). But most crucially for our understanding of the atmosphere, it changes phase - twice! - at atmospheric temperatures, and falls out of the atmosphere through precipitation. Today, we will talk about this last effect. --><!-- ## Ideas for questions
+<!-- Moisture touches on almost every part of atmospheric science. It is extremely good at absorbing longwave radiation (as we will see in module 6), making it a potent greenhouse gas. It is lighter than dry air, thus influencing the buoyancy (as we saw in lecture 1). But most crucially for our understanding of the atmosphere, it changes phase - twice! - at atmospheric temperatures, and falls out of the atmosphere through precipitation. Today, we will talk about this last effect. --><!-- ## Ideas for questions
 1. Given the Clausius-Claperyon equation, what is the fractional rate (in percent per K) at which air can hold more water vapour before condensing it? What is it in our current climate, and what is it if global temperatures increase by 10 K? --><hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="fnq" role="doc-footnote">
@@ -1171,23 +991,8 @@ Because this expression is easier to write down than eq. {eq}`qsat` for \)</span
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
 <p>This is a bad approximation in many updrafts in the atmosophere, so we just make it for illustrative purposes here.</p>
 </aside>
-<aside class="footnote brackets" id="fnclci" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
-<p>Note that we consider the liquid and solid phases to be “perfect”. That is, we consider them to have a homogeneous, unchangeable density, so that their heat capacities at constant volume are the same as at constant pressure.</p>
 </aside>
-<aside class="footnote brackets" id="fnsmall" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
-<p>In most situations, <span class="math notranslate nohighlight">\(q_v\sim 0.01\)</span> kg/kg, while <span class="math notranslate nohighlight">\(q_l &lt; 0.0001\)</span>, i.e. <span class="math notranslate nohighlight">\(q_v c_v \sim 0.01 \times 1422 = 14.22\)</span> J/kg/K and <span class="math notranslate nohighlight">\(q_l c_l \sim 0.001 \times 4220 = 0.422\)</span> J/kg/K, while <span class="math notranslate nohighlight">\(c_{v_d} q_d \sim 717 \times 1 = 700 \)</span> J/kg/K. So we can’t assume <span class="math notranslate nohighlight">\(c_{v_m}=c_{v_d}\)</span> in quantitative models of the atmosphere, but for our course, it’s fine.</p>
-</aside>
-<aside class="footnote brackets" id="fnequivchoice" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
-<p>In a situation without ice, there is a conceptual advantage to choose to keep the changes in terms of <span class="math notranslate nohighlight">\(d q_v\)</span>, but generally, it doesn’t matter. So, you will likely encounter the different variables associated with the different choices out in the world. The definition we work with here is called “equivalent” moist internal energy/enthalply/potential temperature. But it’s also common to take the water vapour state as a reference (eliminating <span class="math notranslate nohighlight">\(dq_v\)</span>). This leads to variables called “liquid-water” moist internal energy/enthalpy/potential temperature. The two differ from each other by a constant, which, as we will see later, just reflects freedom in choosing a “reference state” for our parcel’s energy.</p>
-</aside>
-<aside class="footnote brackets" id="fnqlzero" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
-<p>We have assumed here that liquid and ice water do not contribute partial pressures (see section <span class="xref std std-ref">sec:qlvol</span>).</p>
-</aside>
-</aside>
+</section>
 </section>
 </section>
 
@@ -1261,7 +1066,6 @@ Because this expression is easier to write down than eq. {eq}`qsat` for \)</span
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-have-ignored-and-the-extent-to-which-it-matters">What we have ignored, and the extent to which it matters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-not-part-of-the-course-a-full-derivation-of-the-moist-air-parcel-s-internal-energy-and-enthalpy">Bonus (not part of the course) - a full derivation of the moist air parcel’s internal energy and enthalpy</a></li>
 </ul>
   </nav></div>
 
