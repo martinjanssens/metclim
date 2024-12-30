@@ -1013,16 +1013,17 @@ $<span class="math notranslate nohighlight">\(
 <p>Sometimes people define these fractions with respect to the dry air mass in the parcel, giving so-called “mixing ratios” <span class="math notranslate nohighlight">\(r_x = m_x/m_d\)</span>. If there is only water vapour in the parcel, then these relate through:
 $<span class="math notranslate nohighlight">\(
 q_v = \frac{m_v}{m_v+m_d} = \frac{m_v/m_d}{m_v/m_d+m_d/m_d} = \frac{r_v}{1+r_v} \approx r_v
-\)</span><span class="math notranslate nohighlight">\(
-I.e., these quantities are almost the same, so long as \)</span>r_v&lt;&lt;1$, which is usually a good approximation.</p>
+\)</span>$</p>
+<p>I.e., these quantities are almost the same, so long as <span class="math notranslate nohighlight">\(r_v&lt;&lt;1\)</span>, which is usually a good approximation.</p>
 </aside>
 <aside class="footnote brackets" id="fnmrs" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
-<p>We could alternatively have chosen to work with a <em>saturation mixing ratio</em> <span class="math notranslate nohighlight">\(r_s\)</span>, which, since <span class="math notranslate nohighlight">\(r = m_v/m_d\)</span> equals:
-$<span class="math notranslate nohighlight">\(
- r_s = \frac{\rho_{s}}{\rho_d} = \frac{\frac{e_s}{R_vT}}{\frac{p_d}{R_dT}} = \frac{R_d}{R_v}\frac{e_s}{p - e_s}.
-\)</span><span class="math notranslate nohighlight">\(
-Because this expression is easier to write down than eq. {eq}`qsat` for \)</span>q_s<span class="math notranslate nohighlight">\(, you will often see saturation quantities expressed in mixing ratios. Still, when \)</span>p&gt;&gt;e_s<span class="math notranslate nohighlight">\(, this again reduces to eq. {eq}`qsat-approx`, so in most practical settings \)</span>q_s\approx r_s$. Since we have been working in mass fractions all along, we will therefore continue with that choice. We verify this approximation in the example calculation coded below.</p>
+<p>We could alternatively have chosen to work with a <em>saturation mixing ratio</em> <span class="math notranslate nohighlight">\(r_s\)</span>, which, since <span class="math notranslate nohighlight">\(r = m_v/m_d\)</span> equals:</p>
+<div class="math notranslate nohighlight">
+\[
+     r_s = \frac{\rho_{s}}{\rho_d} = \frac{\frac{e_s}{R_vT}}{\frac{p_d}{R_dT}} = \frac{R_d}{R_v}\frac{e_s}{p - e_s}.
+    \]</div>
+<p>Because this expression is easier to write down than eq. <a class="reference internal" href="#equation-qsat">(35)</a> for <span class="math notranslate nohighlight">\(q_s\)</span>, you will often see saturation quantities expressed in mixing ratios. Still, when <span class="math notranslate nohighlight">\(p&gt;&gt;e_s\)</span>, this again reduces to eq. <a class="reference internal" href="#equation-qsat-approx">(36)</a>, so in most practical settings <span class="math notranslate nohighlight">\(q_s\approx r_s\)</span>. Since we have been working in mass fractions all along, we will therefore continue with that choice. We verify this approximation in the example calculation coded below.</p>
 </aside>
 <aside class="footnote brackets" id="fnignoringqv" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
