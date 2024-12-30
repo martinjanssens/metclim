@@ -407,6 +407,19 @@ document.write(`
 <li><p>that dry adiabatic energy exchange as we lift a parcel from the surface temperature can only explain dropoff of temperature (with about 10 K/km) in the atmosphere’s lowest couple hundred metres.</p></li>
 </ul>
 <p>We also argued that the premise that the vertical temperature distribution is set by the vertical mixing of air parcels is not the problem. Rather, we argued that we were missing some physics in our highly simplified, dry adiabatic situation. It turns out that to truly understand the vertical structure of temperature, we can’t assume the atmosphere is dry.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Questions you should be able to answer at the end of this lecture:</p>
+<ul class="simple">
+<li><p>What is energetically different about moist air than dry air?</p></li>
+<li><p>Can I describe quantitatively when moist air saturates?</p></li>
+<li><p>Where does a parcel’s lifting condensation level lie?</p></li>
+<li><p>What is moist adiabatic ascent, and which variables are conserved in such a process?</p></li>
+<li><p>Do I understand which principles set the moist adiabatic lapse rate?</p></li>
+<li><p>Can I read a thermodynamic (skew T-log p) diagram, with moist processes?</p></li>
+<li><p>Why is the globally averaged lapse rate so close to the moist adiabat?</p></li>
+</ul>
+</div>
 <!-- , and that the system is adiabatic: First, there must be some external heating to make a parcel at the surface warmer than its environment, to make it rise. And second, it turns out that we need to know about moisture. --><!-- **This is a recap of the rising through the BL**
 So let's return to our attempt to make that air parcel rise from the surface. Let's say we add some heat to it (e.g. from the sun heating the surface, and that heat diffusing into the atmosphere). Because it is warmer than the boundary layer, it will rise. If the parcel cannot exchange any further energy with its environment (adiabatic ascent), it will maintain its potential temperature $\theta$, or its dry static energy. Because pressure reduces with height, it will expend some of its enthalpy, just like the environment. At some point, however, the environment loses temperature less fast than the dry parcel, and it becomes neutrally buoyant. It stops rising. **Should visualise this on a thermodynamic diagram, next to a plot in potential temperature** -->
 <section id="energy-flows-in-moist-air">
@@ -487,7 +500,7 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
   \frac{1}{e_s}\frac{de_s}{dT} = \frac{L_v}{R_vT^2}.
 \]</div>
 <p>This equation tells us something pretty fundamental about water in the atmosphere: At typical atmospheric temperatures (<span class="math notranslate nohighlight">\(T=288\)</span> K), the fractional increase in water vapour the air can hold before it saturates <span class="math notranslate nohighlight">\(de_s/e_s\)</span>, increases with an increase in temperature <span class="math notranslate nohighlight">\(dT\)</span> at a rate of <span class="math notranslate nohighlight">\(\frac{L_v}{R_vT^2}\approx\frac{2500\cdot 10^3}{461.5 \cdot 288^2}=0.0653\)</span>, or about 6.5 percent per K. This is called “Clausius-Claperyon scaling”. Put differently, the atmosphere’s capacity to hold water vapour before it condensates increases exponentially with temperature, and it does so pretty fast.</p>
-<p>To solve eq. <a class="reference internal" href="#equation-clausius">(32)</a> for <span class="math notranslate nohighlight">\(e_s\)</span>, we have to integrate it, and to do that, we must make an assumption on <span class="math notranslate nohighlight">\(L_v\)</span>’s temperature dependence (have a look at the bonus material if you want to see how <span class="math notranslate nohighlight">\(L_v\)</span> relates to <span class="math notranslate nohighlight">\(T\)</span>). If we just approximate it as a constant <span class="math notranslate nohighlight">\(L_v\approx 2500\)</span> J/K at a reference temperature <span class="math notranslate nohighlight">\(T_0\)</span>, it can be solved by integrating away from that point:</p>
+<p>To solve eq. <a class="reference internal" href="#equation-clausius">(32)</a> for <span class="math notranslate nohighlight">\(e_s\)</span>, we have to integrate it, and to do that, we must make an assumption on <span class="math notranslate nohighlight">\(L_v\)</span>’s temperature dependence. If we just approximate it as a constant <span class="math notranslate nohighlight">\(L_v\approx 2500\)</span> J/K at a reference temperature <span class="math notranslate nohighlight">\(T_0\)</span>, it can be solved by integrating away from that point:</p>
 <div class="math notranslate nohighlight" id="equation-cc-approx">
 <span class="eqno">(33)<a class="headerlink" href="#equation-cc-approx" title="Link to this equation">#</a></span>\[\begin{split}
   \int_{e_{s0}}^{e_s} \frac{de_s'}{e_s} &amp; = \frac{L_v}{R_v}\int_{T_0}^{T}\frac{dT'}{T^2} \\
@@ -559,7 +572,12 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 <section id="the-temperature-and-specific-humidity-of-saturated-air">
 <h3>The temperature and specific humidity of saturated air<a class="headerlink" href="#the-temperature-and-specific-humidity-of-saturated-air" title="Link to this heading">#</a></h3>
 <p>A different way to say all the above, is that for a parcel with vapour pressure <span class="math notranslate nohighlight">\(e\)</span>, we can define a temperature <span class="math notranslate nohighlight">\(T_d\)</span> at which <span class="math notranslate nohighlight">\(e=e_s(T_d)\)</span> (<span class="math notranslate nohighlight">\(RH=1\)</span>). <span class="math notranslate nohighlight">\(T_d\)</span> is called the <em>dew-point temperature</em>. That is, if we know how much water there is in the parcel (<span class="math notranslate nohighlight">\(e\)</span>), we can solve eq. <a class="reference internal" href="#equation-cc-approx">(33)</a> to tell us at which temperature that water vapour will condensate. This is another way to express “how far we are from saturation”. We have plotted it for the average <span class="math notranslate nohighlight">\(e\)</span> measured over the IGRA archive below, to confirm that on average, the global atmosphere is unsaturated: <span class="math notranslate nohighlight">\(T &gt; T_d\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -599,6 +617,7 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/686584eae11373bcc32e26373aa5fe7439c7860d051835e0518499921bbff5e9.png" src="_images/686584eae11373bcc32e26373aa5fe7439c7860d051835e0518499921bbff5e9.png" />
 </div>
@@ -631,7 +650,12 @@ q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
 </ol>
 <p>We have calculated these lines for a theoretical parcel below:</p>
 <!-- The key point here is that if we know $e_s$ and $p$, we know how much water the parcel can hold before it saturates. And since $e_s$ depends only on $T$ through the Clausius-Claperyon equation, really $q_s$ is a function *only* of $p$ and $T$. -->
-<!-- The height at which we reach it, is called the lifting condensation level. --><div class="cell docutils container">
+<!-- The height at which we reach it, is called the lifting condensation level. --><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parcel properties at its outset</span>
 <span class="n">p0</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="c1"># Pa</span>
@@ -694,6 +718,7 @@ q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/01ef3d6704f31abc9af54f72b59f44a25031c509ba37c34dfe52c021dd6dc804.png" src="_images/01ef3d6704f31abc9af54f72b59f44a25031c509ba37c34dfe52c021dd6dc804.png" />
 </div>
@@ -751,7 +776,12 @@ $<span class="math notranslate nohighlight">\(
 \end{split}\]</div>
 <p>And this has given us a new lapse rate, the <em>moist adiabatic lapse rate</em>.</p>
 <p>Let us evaluate this lapse rate and compare it to our global radiosonde archive, and the dry adiabatic lapse rate we derived last lecture.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">))</span>
 
@@ -810,6 +840,7 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean dT/dz for moist adiabatic ascent: -0.007089509492679575
 </pre></div>
@@ -834,7 +865,12 @@ $<span class="math notranslate nohighlight">\(
 <p>As we will see in later lectures, radiation tends to cool the atmosphere, and pulls its temperature profile towards a dry adiabat. So, we often observe a conditionally unstable atmosphere, with lots of deep convection (especially in the tropics). By raining their condensed water vapour back to the surface, these storms heat the atmosphere, bringing the troposphere’s temperature profile towards that of the moist adiabat we observe in the global mean. There is no big energy source left in our atmosphere’s updrafts that could make the parcels much warmer than a moist adiabatic troposphere. Therefore, that is the temperature profile we observe.</p>
 <p>If temperatures begin to drop off at an even slower rate than 7 K/km (and all the processes we have ignored could make that happen locally), parcels will always have <span class="math notranslate nohighlight">\(T_p&lt;T_e\)</span>, and never rise on their own. We say that the atmosphere is <em>statically stable</em> in such a situation: There will be no convection, until other processes cool the atmosphere, or we put a giant heat source at the surface.</p>
 <p>To illustrate all this, we have drawn a parcel ascent in the plot below. If we imagine atmospheric temperature profiles varying away from the same surface temperature, we can identify which of these atmospheres would be unstable, conditionally stable and stable to our parcel’s adiabatic ascent.</p>
-<!-- we have got a very basic model of the global troposphere's vertical pressure and temperature structure, which isn't too far from what is observed. The picture is: --><div class="cell docutils container">
+<!-- we have got a very basic model of the global troposphere's vertical pressure and temperature structure, which isn't too far from what is observed. The picture is: --><div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parcel properties at its outset</span>
 <span class="n">p0</span> <span class="o">=</span> <span class="mf">1e5</span> <span class="c1"># Pa</span>
@@ -897,6 +933,7 @@ $<span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="_images/982599db7e17f1254fd21bbb303895666c3411c5e5e5d4ec2dfccc2113c0e0c5.png" src="_images/982599db7e17f1254fd21bbb303895666c3411c5e5e5d4ec2dfccc2113c0e0c5.png" />
 </div>

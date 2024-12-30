@@ -416,6 +416,20 @@ document.write(`
 <section id="the-vertical-structure-of-the-troposphere">
 <h2>The vertical structure of the troposphere<a class="headerlink" href="#the-vertical-structure-of-the-troposphere" title="Link to this heading">#</a></h2>
 <p>Below, you can see a plot of pressure and temperature with “geopotenial height”<a class="footnote-reference brackets" href="#fngeo" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, from all radiosondes launched across the world, since 1947, up to November 2024<a class="footnote-reference brackets" href="#fnigra" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Why do they look like this? Let’s start with pressure, which is the simplest of the two.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -798,10 +812,6 @@ b = \frac{T_p - T_e}{T_e} ,
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/intake_xarray/base.py:21: FutureWarning: The return type of `Dataset.dims` will be changed to return a set of dimension names in future, in order to be more consistent with `DataArray.dims`. To access a mapping from dimension names to lengths, please use `Dataset.sizes`.
-  &#39;dims&#39;: dict(self._ds.dims),
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of sondes in dataset: 1068
 </pre></div>
 </div>
