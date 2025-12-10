@@ -3,6 +3,9 @@ matplotlib
 numpy
 pandas
 eurec4a
+"intake<2.0.0"
+intake-xarray
 metpy
 xarray
 netcdf4
+ghp-import
