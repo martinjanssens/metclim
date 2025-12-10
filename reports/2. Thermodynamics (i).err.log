@@ -1,170 +1,68 @@
 Traceback (most recent call last):
-  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 1319, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
     return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+           ~~~~~~~~~~~~~^^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/martinjanssens/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
-import matplotlib.pyplot as plt
-import pathlib
-plt.style.use([pathlib.Path("./mplstyle/book")])
+import numpy as np
 
-# Data from
-# https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/monthly-por/
-# All monthly-averaged temperature, pressure and geopotential, from all stations, since the start of the record (1947)
+grav = 9.81 # acceleration due to gravity [m/s^2]
+Rd = 287.05 # Dry air gas constant [J/kg/K]
 
-# Pressure
-df = pd.read_csv(r"data/ghgt_00z-mly.txt", sep=r'\s+', header=None).rename(columns={3: "pres", 4: "hgeo"})
-df_pres = df[["pres", "hgeo"]].groupby(["pres"]).mean().loc[3:1000]
+# Get the first pressure level in the radiosonde data, at 1000 hPa.
+# This is not exactly the surface pressure, but it is a good "reference" to start comparing from
+p0 = 1e3
 
-# Temperature
-df = pd.read_csv(r"data/temp_00z-mly.txt", sep=r'\s+', header=None).rename(columns={3: "pres", 4: "temp"})
-df_temp = df[["pres", "temp"]].groupby(["pres"]).mean().loc[3:1000]
+# Compute average temperature over ~the troposphere
+Tmn = ((ds_temp['hgeo'][-1] - ds_temp['hgeo'][0]) / (1./ds_temp['temp']).integrate('hgeo')).values
+H = Rd*Tmn/grav # Scale height
+pres_mod = p0*np.exp(-df_temp['hgeo'] / H)
 
-# Temperatures are stored in tenths of a deg C, so they need to be divided by 10 and converted to Kelvin for later calculations:
-df_temp['temp'] = df_temp['temp'] / 10 + 273.15
+fig, ax = plt.subplots(ncols=1)
+ax.plot(df_pres['pres'], df_pres['hgeo'], label='Radiosonde archive')
+ax.plot(pres_mod, df_pres['hgeo'], label='Isothermal, hydrostatic model')
+ax.set_xlabel('Pressure [hPa]')
+ax.set_ylabel('(Geopotential) height above sea level [m] ')
+_=ax.legend()
 
-# Set the height coordinates of temperature to the height coordinates of pressure
-df_temp = pd.concat([df_pres, df_temp], axis=1)
-
-# Make pressure just another column in df_pres
-df_pres = df_pres.reset_index()
-
-# Store as an xarray dataset
-ds_temp = df_temp.to_xarray().swap_dims({'pres':'hgeo'})
-ds_temp = ds_temp.reindex(hgeo=list(reversed(ds_temp.hgeo)))
-ds_temp.to_netcdf(r"data/ptmean.nc", 'w')
-
-# Plot
-fig, axs = plt.subplots(ncols=2, sharey=True)
-axs[0].plot(df_pres['pres'], df_pres['hgeo'])
-axs[0].set_xlabel('Pressure [hPa]')
-axs[0].set_ylabel('(Geopotential) height above sea level [m] ')
-
-axs[1].plot(df_temp['temp'] - 273.15, df_temp['hgeo'])
-_=axs[1].set_xlabel(r'Temperature [$\degree$C]')
-
-# plt.savefig('Figures/p-t-av-height.pdf',bbox_inches='tight')
+print(r"Average temperature between 0 and 40 km altitude: %.0f C" %(Tmn-273.15))
+print(r"Scale height: %.0f m" %H)
+# plt.savefig('Figures/p-piso-av-height.pdf',bbox_inches='tight')
 ------------------
 
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mKeyError[0m                                  Traceback (most recent call last)
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/file_manager.py:211[0m, in [0;36mCachingFileManager._acquire_with_cache_info[0;34m(self, needs_lock)[0m
-[1;32m    210[0m [38;5;28;01mtry[39;00m:
-[0;32m--> 211[0m     file [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cache[49m[43m[[49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_key[49m[43m][49m
-[1;32m    212[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m:
+[31m---------------------------------------------------------------------------[39m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 13[39m
+[32m     11[39m Tmn = ((ds_temp[[33m'[39m[33mhgeo[39m[33m'[39m][-[32m1[39m] - ds_temp[[33m'[39m[33mhgeo[39m[33m'[39m][[32m0[39m]) / ([32m1.[39m/ds_temp[[33m'[39m[33mtemp[39m[33m'[39m]).integrate([33m'[39m[33mhgeo[39m[33m'[39m)).values
+[32m     12[39m H = Rd*Tmn/grav [38;5;66;03m# Scale height[39;00m
+[32m---> [39m[32m13[39m pres_mod = p0*np.exp(-[43mdf_temp[49m[[33m'[39m[33mhgeo[39m[33m'[39m] / H)
+[32m     15[39m fig, ax = plt.subplots(ncols=[32m1[39m)
+[32m     16[39m ax.plot(df_pres[[33m'[39m[33mpres[39m[33m'[39m], df_pres[[33m'[39m[33mhgeo[39m[33m'[39m], label=[33m'[39m[33mRadiosonde archive[39m[33m'[39m)
 
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/lru_cache.py:56[0m, in [0;36mLRUCache.__getitem__[0;34m(self, key)[0m
-[1;32m     55[0m [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_lock:
-[0;32m---> 56[0m     value [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_cache[49m[43m[[49m[43mkey[49m[43m][49m
-[1;32m     57[0m     [38;5;28mself[39m[38;5;241m.[39m_cache[38;5;241m.[39mmove_to_end(key)
-
-[0;31mKeyError[0m: [<class 'netCDF4._netCDF4.Dataset'>, ('/Users/martinjanssens/Documents/Wageningen/Teaching/MeteorologyClimate/metclim/metclim-jupyter-book/data/ptmean.nc',), 'a', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '1541991d-b370-4058-9a3a-81c458373291']
-
-During handling of the above exception, another exception occurred:
-
-[0;31mPermissionError[0m                           Traceback (most recent call last)
-Cell [0;32mIn[1], line 30[0m
-[1;32m     28[0m ds_temp [38;5;241m=[39m df_temp[38;5;241m.[39mto_xarray()[38;5;241m.[39mswap_dims({[38;5;124m'[39m[38;5;124mpres[39m[38;5;124m'[39m:[38;5;124m'[39m[38;5;124mhgeo[39m[38;5;124m'[39m})
-[1;32m     29[0m ds_temp [38;5;241m=[39m ds_temp[38;5;241m.[39mreindex(hgeo[38;5;241m=[39m[38;5;28mlist[39m([38;5;28mreversed[39m(ds_temp[38;5;241m.[39mhgeo)))
-[0;32m---> 30[0m [43mds_temp[49m[38;5;241;43m.[39;49m[43mto_netcdf[49m[43m([49m[38;5;124;43mr[39;49m[38;5;124;43m"[39;49m[38;5;124;43mdata/ptmean.nc[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mw[39;49m[38;5;124;43m'[39;49m[43m)[49m
-[1;32m     32[0m [38;5;66;03m# Plot[39;00m
-[1;32m     33[0m fig, axs [38;5;241m=[39m plt[38;5;241m.[39msubplots(ncols[38;5;241m=[39m[38;5;241m2[39m, sharey[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/core/dataset.py:2338[0m, in [0;36mDataset.to_netcdf[0;34m(self, path, mode, format, group, engine, encoding, unlimited_dims, compute, invalid_netcdf)[0m
-[1;32m   2335[0m     encoding [38;5;241m=[39m {}
-[1;32m   2336[0m [38;5;28;01mfrom[39;00m [38;5;21;01mxarray[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackends[39;00m[38;5;21;01m.[39;00m[38;5;21;01mapi[39;00m [38;5;28;01mimport[39;00m to_netcdf
-[0;32m-> 2338[0m [38;5;28;01mreturn[39;00m [43mto_netcdf[49m[43m([49m[43m  [49m[38;5;66;43;03m# type: ignore[return-value]  # mypy cannot resolve the overloads:([39;49;00m
-[1;32m   2339[0m [43m    [49m[38;5;28;43mself[39;49m[43m,[49m
-[1;32m   2340[0m [43m    [49m[43mpath[49m[43m,[49m
-[1;32m   2341[0m [43m    [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m
-[1;32m   2342[0m [43m    [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[38;5;28;43mformat[39;49m[43m,[49m
-[1;32m   2343[0m [43m    [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m
-[1;32m   2344[0m [43m    [49m[43mengine[49m[38;5;241;43m=[39;49m[43mengine[49m[43m,[49m
-[1;32m   2345[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m,[49m
-[1;32m   2346[0m [43m    [49m[43munlimited_dims[49m[38;5;241;43m=[39;49m[43munlimited_dims[49m[43m,[49m
-[1;32m   2347[0m [43m    [49m[43mcompute[49m[38;5;241;43m=[39;49m[43mcompute[49m[43m,[49m
-[1;32m   2348[0m [43m    [49m[43mmultifile[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
-[1;32m   2349[0m [43m    [49m[43minvalid_netcdf[49m[38;5;241;43m=[39;49m[43minvalid_netcdf[49m[43m,[49m
-[1;32m   2350[0m [43m[49m[43m)[49m
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/api.py:1403[0m, in [0;36mto_netcdf[0;34m(dataset, path_or_file, mode, format, group, engine, encoding, unlimited_dims, compute, multifile, invalid_netcdf)[0m
-[1;32m   1399[0m     [38;5;28;01melse[39;00m:
-[1;32m   1400[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
-[1;32m   1401[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124munrecognized option [39m[38;5;124m'[39m[38;5;124minvalid_netcdf[39m[38;5;124m'[39m[38;5;124m for engine [39m[38;5;132;01m{[39;00mengine[38;5;132;01m}[39;00m[38;5;124m"[39m
-[1;32m   1402[0m         )
-[0;32m-> 1403[0m store [38;5;241m=[39m [43mstore_open[49m[43m([49m[43mtarget[49m[43m,[49m[43m [49m[43mmode[49m[43m,[49m[43m [49m[38;5;28;43mformat[39;49m[43m,[49m[43m [49m[43mgroup[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m   1405[0m [38;5;28;01mif[39;00m unlimited_dims [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[1;32m   1406[0m     unlimited_dims [38;5;241m=[39m dataset[38;5;241m.[39mencoding[38;5;241m.[39mget([38;5;124m"[39m[38;5;124munlimited_dims[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:410[0m, in [0;36mNetCDF4DataStore.open[0;34m(cls, filename, mode, format, group, clobber, diskless, persist, lock, lock_maker, autoclose)[0m
-[1;32m    404[0m kwargs [38;5;241m=[39m [38;5;28mdict[39m(
-[1;32m    405[0m     clobber[38;5;241m=[39mclobber, diskless[38;5;241m=[39mdiskless, persist[38;5;241m=[39mpersist, [38;5;28mformat[39m[38;5;241m=[39m[38;5;28mformat[39m
-[1;32m    406[0m )
-[1;32m    407[0m manager [38;5;241m=[39m CachingFileManager(
-[1;32m    408[0m     netCDF4[38;5;241m.[39mDataset, filename, mode[38;5;241m=[39mmode, kwargs[38;5;241m=[39mkwargs
-[1;32m    409[0m )
-[0;32m--> 410[0m [38;5;28;01mreturn[39;00m [38;5;28;43mcls[39;49m[43m([49m[43mmanager[49m[43m,[49m[43m [49m[43mgroup[49m[38;5;241;43m=[39;49m[43mgroup[49m[43m,[49m[43m [49m[43mmode[49m[38;5;241;43m=[39;49m[43mmode[49m[43m,[49m[43m [49m[43mlock[49m[38;5;241;43m=[39;49m[43mlock[49m[43m,[49m[43m [49m[43mautoclose[49m[38;5;241;43m=[39;49m[43mautoclose[49m[43m)[49m
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:357[0m, in [0;36mNetCDF4DataStore.__init__[0;34m(self, manager, group, mode, lock, autoclose)[0m
-[1;32m    355[0m [38;5;28mself[39m[38;5;241m.[39m_group [38;5;241m=[39m group
-[1;32m    356[0m [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m=[39m mode
-[0;32m--> 357[0m [38;5;28mself[39m[38;5;241m.[39mformat [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mds[49m[38;5;241m.[39mdata_model
-[1;32m    358[0m [38;5;28mself[39m[38;5;241m.[39m_filename [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mds[38;5;241m.[39mfilepath()
-[1;32m    359[0m [38;5;28mself[39m[38;5;241m.[39mis_remote [38;5;241m=[39m is_remote_uri([38;5;28mself[39m[38;5;241m.[39m_filename)
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:419[0m, in [0;36mNetCDF4DataStore.ds[0;34m(self)[0m
-[1;32m    417[0m [38;5;129m@property[39m
-[1;32m    418[0m [38;5;28;01mdef[39;00m [38;5;21mds[39m([38;5;28mself[39m):
-[0;32m--> 419[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_acquire[49m[43m([49m[43m)[49m
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/netCDF4_.py:413[0m, in [0;36mNetCDF4DataStore._acquire[0;34m(self, needs_lock)[0m
-[1;32m    412[0m [38;5;28;01mdef[39;00m [38;5;21m_acquire[39m([38;5;28mself[39m, needs_lock[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
-[0;32m--> 413[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_manager[38;5;241m.[39macquire_context(needs_lock) [38;5;28;01mas[39;00m root:
-[1;32m    414[0m         ds [38;5;241m=[39m _nc4_require_group(root, [38;5;28mself[39m[38;5;241m.[39m_group, [38;5;28mself[39m[38;5;241m.[39m_mode)
-[1;32m    415[0m     [38;5;28;01mreturn[39;00m ds
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/contextlib.py:137[0m, in [0;36m_GeneratorContextManager.__enter__[0;34m(self)[0m
-[1;32m    135[0m [38;5;28;01mdel[39;00m [38;5;28mself[39m[38;5;241m.[39margs, [38;5;28mself[39m[38;5;241m.[39mkwds, [38;5;28mself[39m[38;5;241m.[39mfunc
-[1;32m    136[0m [38;5;28;01mtry[39;00m:
-[0;32m--> 137[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mnext[39;49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mgen[49m[43m)[49m
-[1;32m    138[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
-[1;32m    139[0m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m"[39m[38;5;124mgenerator didn[39m[38;5;124m'[39m[38;5;124mt yield[39m[38;5;124m"[39m) [38;5;28;01mfrom[39;00m [38;5;28;01mNone[39;00m
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/file_manager.py:199[0m, in [0;36mCachingFileManager.acquire_context[0;34m(self, needs_lock)[0m
-[1;32m    196[0m [38;5;129m@contextlib[39m[38;5;241m.[39mcontextmanager
-[1;32m    197[0m [38;5;28;01mdef[39;00m [38;5;21macquire_context[39m([38;5;28mself[39m, needs_lock[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
-[1;32m    198[0m [38;5;250m    [39m[38;5;124;03m"""Context manager for acquiring a file."""[39;00m
-[0;32m--> 199[0m     file, cached [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_acquire_with_cache_info[49m[43m([49m[43mneeds_lock[49m[43m)[49m
-[1;32m    200[0m     [38;5;28;01mtry[39;00m:
-[1;32m    201[0m         [38;5;28;01myield[39;00m file
-
-File [0;32m~/opt/miniconda3/envs/metclim-jupyter-book/lib/python3.12/site-packages/xarray/backends/file_manager.py:217[0m, in [0;36mCachingFileManager._acquire_with_cache_info[0;34m(self, needs_lock)[0m
-[1;32m    215[0m     kwargs [38;5;241m=[39m kwargs[38;5;241m.[39mcopy()
-[1;32m    216[0m     kwargs[[38;5;124m"[39m[38;5;124mmode[39m[38;5;124m"[39m] [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_mode
-[0;32m--> 217[0m file [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_opener[49m[43m([49m[38;5;241;43m*[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_args[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
-[1;32m    218[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m==[39m [38;5;124m"[39m[38;5;124mw[39m[38;5;124m"[39m:
-[1;32m    219[0m     [38;5;66;03m# ensure file doesn't get overridden when opened again[39;00m
-[1;32m    220[0m     [38;5;28mself[39m[38;5;241m.[39m_mode [38;5;241m=[39m [38;5;124m"[39m[38;5;124ma[39m[38;5;124m"[39m
-
-File [0;32msrc/netCDF4/_netCDF4.pyx:2521[0m, in [0;36mnetCDF4._netCDF4.Dataset.__init__[0;34m()[0m
-
-File [0;32msrc/netCDF4/_netCDF4.pyx:2158[0m, in [0;36mnetCDF4._netCDF4._ensure_nc_success[0;34m()[0m
-
-[0;31mPermissionError[0m: [Errno 13] Permission denied: '/Users/martinjanssens/Documents/Wageningen/Teaching/MeteorologyClimate/metclim/metclim-jupyter-book/data/ptmean.nc'
+[31mNameError[39m: name 'df_temp' is not defined
 

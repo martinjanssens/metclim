@@ -1,0 +1,84 @@
+Traceback (most recent call last):
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/martinjanssens/miniconda3/envs/metclim-book-env/lib/python3.13/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import numpy as np
+
+proj=ccrs.Orthographic(central_longitude=35,central_latitude=40)
+proj._threshold = proj._threshold/25.
+
+fig,ax = plt.subplots(1, 1, subplot_kw={'projection': proj})
+
+# drawing lines.
+ax.plot([0,0], [90,30], transform=ccrs.Geodetic(), c='r', lw=2, zorder=5)
+ax.plot([90,90], [90, 0], transform=ccrs.Geodetic(), c='g', lw=2, zorder=5)
+ax.plot([0, 90], [30,0], transform=ccrs.Geodetic(), c='b', lw=2, zorder=5)
+ax.plot(np.arange(0,91,1),np.ones(91)*80, transform=ccrs.Geodetic(), lw=2, c='k', zorder=5)
+ax.plot(90, 0, transform=ccrs.Geodetic(), marker="o", c='yellow', zorder=5)
+ax.plot(0, 30, transform=ccrs.Geodetic(), marker="x", markersize=10, c='k', zorder=6)
+
+### adding text
+ax.text(90, 45, '$90-\delta$', transform=ccrs.Geodetic(), fontsize=10)
+ax.text(3, 45, r'$90-\theta$', transform=ccrs.Geodetic(), ha='left', fontsize=10 )
+ax.text(45, 23, r'$\alpha$', transform=ccrs.Geodetic(), ha='left', fontsize=10 )
+ax.text(0, 30, 'Observer', transform=ccrs.Geodetic(), ha='center', va='top',fontsize=10,rotation=-20 )
+ax.text(90, -2, 'Sun', transform=ccrs.Geodetic(), ha='right', va='top',fontsize=10 )
+ax.text(45, 79, 'h', transform=ccrs.Geodetic(), va='top',fontsize=10 )
+
+
+ax.coastlines(resolution='110m')
+ax.gridlines()
+ax.set_global()
+
+ax.set_title("Spherical law of cosines: "+ r"$\cos{\alpha}=\cos{(90-\theta)}\cos{(90-\delta)}+\sin{(90-\theta)}\sin{(90-\delta)}\cos{h}$"+"\n"+" "*48+\
+             r"=$\sin{\theta}\sin{\delta}$+$\cos{\theta}\cos{\delta}\cos{h}$".rjust(10))
+plt.show()
+------------------
+
+----- stderr -----
+<>:19: SyntaxWarning: invalid escape sequence '\d'
+<>:19: SyntaxWarning: invalid escape sequence '\d'
+/var/folders/3b/5n5xklhj5v384nytxt4zccym0000gn/T/ipykernel_44923/829833783.py:19: SyntaxWarning: invalid escape sequence '\d'
+  ax.text(90, 45, '$90-\delta$', transform=ccrs.Geodetic(), fontsize=10)
+/var/folders/3b/5n5xklhj5v384nytxt4zccym0000gn/T/ipykernel_44923/829833783.py:19: SyntaxWarning: invalid escape sequence '\d'
+  ax.text(90, 45, '$90-\delta$', transform=ccrs.Geodetic(), fontsize=10)
+------------------
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
+[32m----> [39m[32m2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mcartopy[39;00m[34;01m.[39;00m[34;01mcrs[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mccrs[39;00m
+[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[32m      5[39m proj=ccrs.Orthographic(central_longitude=[32m35[39m,central_latitude=[32m40[39m)
+
+[31mModuleNotFoundError[39m: No module named 'cartopy'
+

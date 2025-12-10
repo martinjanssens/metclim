@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -179,6 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="1.%20Gas%20laws.html">1. Gas laws</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Thermodynamics (i)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3.%20Thermodynamics%20%28ii%29.html">3. Thermodynamics (ii) - Moist thermodynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.%20Howto%20SkewT-LogP.html">4. Howto SkewT-LogP</a></li>
 </ul>
 
     </div>
@@ -385,7 +386,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-static-stability">Dry static stability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-dry-adiabatic-thinking-useful">When is dry adiabatic thinking useful?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature">Potential temperature</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skew-t-ln-p-chart">The skew T - ln p chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skewt-logp-diagram">The skewT-logP diagram</a></li>
 </ul>
             </nav>
         </div>
@@ -417,13 +418,13 @@ document.write(`
 <h2>The vertical structure of the troposphere<a class="headerlink" href="#the-vertical-structure-of-the-troposphere" title="Link to this heading">#</a></h2>
 <p>Below, you can see a plot of pressure and temperature with “geopotenial height”<a class="footnote-reference brackets" href="#fngeo" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>, from all radiosondes launched across the world, since 1947, up to November 2024<a class="footnote-reference brackets" href="#fnigra" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>. Why do they look like this? Let’s start with pressure, which is the simplest of the two.</p>
 <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -431,50 +432,56 @@ document.write(`
 </details>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pathlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">)])</span>
 
 <span class="c1"># Data from</span>
 <span class="c1"># https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/monthly-por/</span>
 <span class="c1"># All monthly-averaged temperature, pressure and geopotential, from all stations, since the start of the record (1947)</span>
 
+<span class="c1">## Having such a file, execute the following once to generate an average p/t profile</span>
+<span class="c1">## We have commented out the lines, to make the book a little more lightweight.</span>
+
 <span class="c1"># Pressure</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/ghgt_00z-mly.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;hgeo&quot;</span><span class="p">})</span>
-<span class="n">df_pres</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="s2">&quot;hgeo&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;pres&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="c1"># df = pd.read_csv(r&quot;data/ghgt_00z-mly.txt&quot;, sep=r&#39;\s+&#39;, header=None).rename(columns={3: &quot;pres&quot;, 4: &quot;hgeo&quot;})</span>
+<span class="c1"># df_pres = df[[&quot;pres&quot;, &quot;hgeo&quot;]].groupby([&quot;pres&quot;]).mean().loc[3:1000]</span>
 
-<span class="c1"># Temperature</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/temp_00z-mly.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;temp&quot;</span><span class="p">})</span>
-<span class="n">df_temp</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="s2">&quot;temp&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;pres&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="c1"># # Temperature</span>
+<span class="c1"># df = pd.read_csv(r&quot;data/temp_00z-mly.txt&quot;, sep=r&#39;\s+&#39;, header=None).rename(columns={3: &quot;pres&quot;, 4: &quot;temp&quot;})</span>
+<span class="c1"># df_temp = df[[&quot;pres&quot;, &quot;temp&quot;]].groupby([&quot;pres&quot;]).mean().loc[3:1000]</span>
 
-<span class="c1"># Temperatures are stored in tenths of a deg C, so they need to be divided by 10 and converted to Kelvin for later calculations:</span>
-<span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">+</span> <span class="mf">273.15</span>
+<span class="c1"># # Temperatures are stored in tenths of a deg C, so they need to be divided by 10 and converted to Kelvin for later calculations:</span>
+<span class="c1"># df_temp[&#39;temp&#39;] = df_temp[&#39;temp&#39;] / 10 + 273.15</span>
 
-<span class="c1"># Set the height coordinates of temperature to the height coordinates of pressure</span>
-<span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pres</span><span class="p">,</span> <span class="n">df_temp</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># # Set the height coordinates of temperature to the height coordinates of pressure</span>
+<span class="c1"># df_temp = pd.concat([df_pres, df_temp], axis=1)</span>
 
-<span class="c1"># Make pressure just another column in df_pres</span>
-<span class="n">df_pres</span> <span class="o">=</span> <span class="n">df_pres</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="c1"># # Make pressure just another column in df_pres</span>
+<span class="c1"># df_pres = df_pres.reset_index()</span>
 
-<span class="c1"># Store as an xarray dataset</span>
-<span class="n">ds_temp</span> <span class="o">=</span> <span class="n">df_temp</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s1">&#39;pres&#39;</span><span class="p">:</span><span class="s1">&#39;hgeo&#39;</span><span class="p">})</span>
-<span class="n">ds_temp</span> <span class="o">=</span> <span class="n">ds_temp</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">hgeo</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">ds_temp</span><span class="o">.</span><span class="n">hgeo</span><span class="p">)))</span>
-<span class="n">ds_temp</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/ptmean.nc&quot;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="c1"># # Store as an xarray dataset</span>
+<span class="c1"># ds_temp = df_temp.to_xarray().swap_dims({&#39;pres&#39;:&#39;hgeo&#39;})</span>
+<span class="c1"># ds_temp = ds_temp.reindex(hgeo=list(reversed(ds_temp.hgeo)))</span>
+<span class="c1"># ds_temp.to_netcdf(r&quot;data/ptmean.nc&quot;, &#39;w&#39;)</span>
+
+<span class="n">ds_temp</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/ptmean.nc&quot;</span><span class="p">)</span>
 
 <span class="c1"># Plot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
 
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span><span class="p">,</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">])</span>
 <span class="n">_</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Temperature [$\degree$C]&#39;</span><span class="p">)</span>
 
 <span class="c1"># plt.savefig(&#39;Figures/p-t-av-height.pdf&#39;,bbox_inches=&#39;tight&#39;)</span>
@@ -483,7 +490,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/341206ffb592bc30e1d7f17d344d71a2ea91f331f07ad6dc22be15439ba261f0.png" src="_images/341206ffb592bc30e1d7f17d344d71a2ea91f331f07ad6dc22be15439ba261f0.png" />
+<img alt="_images/d78697ee68bc87338800fec57d898b38a785d04bc6a6fd0ab76147ea359af9a7.png" src="_images/d78697ee68bc87338800fec57d898b38a785d04bc6a6fd0ab76147ea359af9a7.png" />
 </div>
 </div>
 </section>
@@ -533,13 +540,13 @@ document.write(`
 \]</div>
 <p>Knowing the surface pressure <span class="math notranslate nohighlight">\(p_0\)</span> and estimating <span class="math notranslate nohighlight">\(\overline{T_v}\approx \overline{T} \approx -43 ^{\circ}\)</span>C between the surface and the highest level in the radisonde archive (40 km, i.e. we assume the atmosphere is <em>isothermal</em>), eq.<a class="reference internal" href="#equation-phydro">(16)</a> models the observed pressure profile throughout the entire atmosphere pretty well (orange line below).</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">grav</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># acceleration due to gravity [m/s^2]</span>
 <span class="n">Rd</span> <span class="o">=</span> <span class="mf">287.05</span> <span class="c1"># Dry air gas constant [J/kg/K]</span>
@@ -551,11 +558,11 @@ document.write(`
 <span class="c1"># Compute average temperature over ~the troposphere</span>
 <span class="n">Tmn</span> <span class="o">=</span> <span class="p">((</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span><span class="o">/</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="s1">&#39;hgeo&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">values</span>
 <span class="n">H</span> <span class="o">=</span> <span class="n">Rd</span><span class="o">*</span><span class="n">Tmn</span><span class="o">/</span><span class="n">grav</span> <span class="c1"># Scale height</span>
-<span class="n">pres_mod</span> <span class="o">=</span> <span class="n">p0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">H</span><span class="p">)</span>
+<span class="n">pres_mod</span> <span class="o">=</span> <span class="n">p0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">H</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pres_mod</span><span class="p">,</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Isothermal, hydrostatic model&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pres_mod</span><span class="p">,</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Isothermal, hydrostatic model&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
 <span class="n">_</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -572,16 +579,16 @@ document.write(`
 Scale height: 6736 m
 </pre></div>
 </div>
-<img alt="_images/896e08882493fdd06cb18461f1716b082047bbd91c7a16e90fe86c0037262e58.png" src="_images/896e08882493fdd06cb18461f1716b082047bbd91c7a16e90fe86c0037262e58.png" />
+<img alt="_images/a0c155ec6c87089dfabb4c12ca88f5134c87c5e0ad7a164def24b4ba0d9b3c92.png" src="_images/a0c155ec6c87089dfabb4c12ca88f5134c87c5e0ad7a164def24b4ba0d9b3c92.png" />
 </div>
 </div>
 <p>The model is not super in the troposphere, because eq. <a class="reference internal" href="#equation-hypso">(15)</a> will only give you the right pressure at the end points of the layer over which it is estimated (the surface and 40 km). In the troposphere, the average temperature (<span class="math notranslate nohighlight">\(-14 ^{\circ}\)</span>C) is quite a bit higher than the <span class="math notranslate nohighlight">\(\overline{T}\)</span> we have used (and it is moister too, so <span class="math notranslate nohighlight">\(\overline{T_v}&gt;\overline{T}\)</span>), so <span class="math notranslate nohighlight">\(H\)</span> is larger and the pressure drops off less quickly than our first model.</p>
 <p>For a better model, it’s clear that we need to let go of the assumption that the atmosphere is isothermal. Indeed, if we use eq. <a class="reference internal" href="#equation-hypso">(15)</a> to iterate our way through the vertical, using the observed <span class="math notranslate nohighlight">\(\overline{T}\)</span> at each level, we get an almost exact reproduction of the observed pressure (orange line below). Let’s therefore move toward understanding this vertical structure.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pressure from iterating through the hypsometric equation layer by layer:</span>
@@ -591,7 +598,7 @@ Scale height: 6736 m
     <span class="n">pres_hyp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pres_hyp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">grav</span><span class="o">/</span><span class="n">Rd</span><span class="o">/</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;temp&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">][</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">df_pres</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;pres&#39;</span><span class="p">],</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Radiosonde archive&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pres_hyp</span><span class="p">,</span> <span class="n">ds_temp</span><span class="p">[</span><span class="s1">&#39;hgeo&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hypsometric equation, with vertically resolved temperature&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;(Geopotential) height above sea level [m] &#39;</span><span class="p">)</span>
@@ -602,7 +609,7 @@ Scale height: 6736 m
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/478bc9bf2b86231dba953ba3b20fbf3cc9a681ae9b90e06661e603176b116eb9.png" src="_images/478bc9bf2b86231dba953ba3b20fbf3cc9a681ae9b90e06661e603176b116eb9.png" />
+<img alt="_images/1f0c72c340047e55f16d48802915cdede6a0797d7b109ef4168184d70fe77d69.png" src="_images/1f0c72c340047e55f16d48802915cdede6a0797d7b109ef4168184d70fe77d69.png" />
 </div>
 </div>
 </section>
@@ -692,10 +699,10 @@ E/m = gz + \frac{1}{2}u^2 + U/m
 \]</div>
 <p><span class="math notranslate nohighlight">\(\Gamma_d\)</span> is called the “dry adiabatic lapse rate”. It predicts that to lift dry air parcels from the surface to the tropopause (around 15 km in the tropics), you’d have to reduce the temperature by around <span class="math notranslate nohighlight">\(-0.00978\times 15 \approx 150\)</span> K. It gives us our first shot at a model for the vertical temperature profile - it’s plotted below.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cpd</span> <span class="o">=</span> <span class="mf">1004.</span> <span class="c1"># Specific heat of dry air at constant pressure [J/kg/K]</span>
@@ -723,7 +730,7 @@ E/m = gz + \frac{1}{2}u^2 + U/m
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/e1930ccae9d6b9b7166deb1edd78b8c2937cd3ae8ba393ccc79b2a48119cf842.png" src="_images/e1930ccae9d6b9b7166deb1edd78b8c2937cd3ae8ba393ccc79b2a48119cf842.png" />
+<img alt="_images/c80f994b4d988690b81650d1970a31689537446895de29783c45dd6377c98716.png" src="_images/c80f994b4d988690b81650d1970a31689537446895de29783c45dd6377c98716.png" />
 </div>
 </div>
 <p>That’s not nothing, but it’s also not fantastic. In Earth’s troposphere, the temperature does drop off, but it does so less quickly than <span class="math notranslate nohighlight">\(-g/c_{p_d}\)</span>. Worse, if we keep on lifting into the stratosphere, where the actual temperatures increase with altitude, we even get temperatures below absoute zero! So where did this go wrong? The main problem with our development so far, is that we never answered the question “why would the atmosphere take on the temperature profile of dry-adiabatically lifted parcels?” This problem has two sub-problems:</p>
@@ -777,14 +784,14 @@ b = \frac{T_p - T_e}{T_e} ,
 <!-- **Use dry static stability to explain the structure of the mean BL. That is a dry proxy of what we will do moist for the entire atmosphere in the next lecture**
  -->
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the data - see https://howto.eurec4a.eu/dropsondes.html for details</span>
-<span class="kn">import</span> <span class="nn">eurec4a</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">eurec4a</span>
 <span class="n">cat</span> <span class="o">=</span> <span class="n">eurec4a</span><span class="o">.</span><span class="n">get_intake_catalog</span><span class="p">()</span>
 <span class="n">ds_dropsondes</span> <span class="o">=</span> <span class="n">cat</span><span class="o">.</span><span class="n">dropsondes</span><span class="o">.</span><span class="n">JOANNE</span><span class="o">.</span><span class="n">level3</span><span class="o">.</span><span class="n">to_dask</span><span class="p">()</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">alt</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1500</span><span class="p">))</span>
 
@@ -815,7 +822,7 @@ b = \frac{T_p - T_e}{T_e} ,
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of sondes in dataset: 1068
 </pre></div>
 </div>
-<img alt="_images/1b5fb13160e98ecea9f92ba6289e29660dc3708b2d801f5a94b394c5c51e2d23.png" src="_images/1b5fb13160e98ecea9f92ba6289e29660dc3708b2d801f5a94b394c5c51e2d23.png" />
+<img alt="_images/6581df73a8eba1926d30d3425b15cb0776c7415ef9f970cec51418fd7c3bf7c0.png" src="_images/6581df73a8eba1926d30d3425b15cb0776c7415ef9f970cec51418fd7c3bf7c0.png" />
 </div>
 </div>
 </section>
@@ -843,8 +850,8 @@ b = \frac{T_p - T_e}{T_e} ,
 \]</div>
 <p><span class="math notranslate nohighlight">\(\theta\)</span> is the potential temperature. It measures the temperature of a dry air parcel, if it is adiabatically compressed or expanded from its current pressure <span class="math notranslate nohighlight">\(p\)</span>, to a reference pressure <span class="math notranslate nohighlight">\(p_0\)</span>. For the atmosphere, where pressure drops off strongly with height, we often consider air parcels from a particular level higher in the atmosphere, and ask “what would its temperature be, if we brought it adiabatically to the surface, thus compressing it to the surface pressure?” Therefore, although we are free to choose it, <span class="math notranslate nohighlight">\(p_0=10^5\)</span> Pa<a class="footnote-reference brackets" href="#fnpzero" id="id16" role="doc-noteref"><span class="fn-bracket">[</span>16<span class="fn-bracket">]</span></a> across the atmospheric sciences.</p>
 </section>
-<section id="the-skew-t-ln-p-chart">
-<h2>The skew T - ln p chart<a class="headerlink" href="#the-skew-t-ln-p-chart" title="Link to this heading">#</a></h2>
+<section id="the-skewt-logp-diagram">
+<h2>The skewT-logP diagram<a class="headerlink" href="#the-skewt-logp-diagram" title="Link to this heading">#</a></h2>
 <!-- *Relate to dry adiabatic lapse rate?* Yes, through skew-T ln-P chart -->
 <p>Where <span class="math notranslate nohighlight">\(z\)</span> was a natural vertical coordinate to interpret DSE, <span class="math notranslate nohighlight">\(\theta\)</span> is a function of only <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(p\)</span>, and not of <span class="math notranslate nohighlight">\(z\)</span>. This is because we didn’t use hydrostatic balance to derive it, i.e. <span class="math notranslate nohighlight">\(\theta\)</span> is conserved over more general adiabatic energy exchange. So, if we want to study changes in <span class="math notranslate nohighlight">\(T\)</span> through <span class="math notranslate nohighlight">\(\theta\)</span>, our vertical coordinate must be <span class="math notranslate nohighlight">\(p\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -858,10 +865,10 @@ T = \theta \left(\frac{p}{p_0}\right)^{\frac{R_d}{c_p}}
 \]</div>
 <p>So, its very common to reinterpret the vertical coordinate <span class="math notranslate nohighlight">\(z\)</span> in terms of pressure <span class="math notranslate nohighlight">\(p\)</span>, or to get a coordinate which is linearly proportional to <span class="math notranslate nohighlight">\(z\)</span>, <span class="math notranslate nohighlight">\(\ln p\)</span>. To convince ourselves that nothing has really changed, let’s look at the vertical temperature profile as a function of <span class="math notranslate nohighlight">\(\ln p\)</span>, by making the y-axis scale logarithmic. Let’s also add a few lines of constant <span class="math notranslate nohighlight">\(\theta\)</span> (i.e. lines describing dry adiabatic energy exchange).</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pref</span> <span class="o">=</span> <span class="mf">1e3</span> <span class="c1"># Reference pressure, in hPa (which is what we have in ds_temp)</span>
@@ -894,19 +901,19 @@ T = \theta \left(\frac{p}{p_0}\right)^{\frac{R_d}{c_p}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/31134eaacc348fce117e2f9b2e91239c30a1622f870e84aba65026c67450e024.png" src="_images/31134eaacc348fce117e2f9b2e91239c30a1622f870e84aba65026c67450e024.png" />
+<img alt="_images/907c577c9d37903f4c7ca94d2abd8e332ab2e19dd4857f40edc66ba9ebb4a61f.png" src="_images/907c577c9d37903f4c7ca94d2abd8e332ab2e19dd4857f40edc66ba9ebb4a61f.png" />
 </div>
 </div>
 <p>Indeed, the two figures are similar. Note that lifting dry adiabatically along lines of constant <span class="math notranslate nohighlight">\(\theta\)</span> will never lead to negative temperatures, in contrast to what happened when we tried to conserve DSE along our ascent. Since we derived <span class="math notranslate nohighlight">\(\theta\)</span> directly from conservation energy (eq. <a class="reference internal" href="#equation-theta-dev">(27)</a>), it is clear that negative temperatures came from the additional assumptions (regarding hydrostatic balance) we made when deriving conservation of DSE. This is an advantage of using <span class="math notranslate nohighlight">\(\theta\)</span>. However, because we did not add any new physics, it still is a poor model of the vertical structure of the globally averaged atmosphere.</p>
-<p>Because temperature always reduces with <span class="math notranslate nohighlight">\(z\)</span> (or <span class="math notranslate nohighlight">\(\ln p\)</span>), we now need a very long x-axis to plot the entire temperature range for some of these <span class="math notranslate nohighlight">\(\theta\)</span> trajectories. This obscures smaller changes. Therefore, it’s common to just rotate the lines of constant temperature (the vertical lines in the figure above), usually by around 45 degrees, to make the <em>actual</em> temperature change with height look vertical. Such a plot is called a skew T - log p chart. We’ve drawn such a plot below, using the python package <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html">Metpy</a>.</p>
+<p>Because temperature always reduces with <span class="math notranslate nohighlight">\(z\)</span> (or <span class="math notranslate nohighlight">\(\ln p\)</span>), we now need a very long x-axis to plot the entire temperature range for some of these <span class="math notranslate nohighlight">\(\theta\)</span> trajectories. This obscures smaller changes. Therefore, it’s common to just rotate the lines of constant temperature (the vertical lines in the figure above), usually by around 45 degrees, to make the <em>actual</em> temperature change with height look vertical. Such a plot is called a skew T - log p chart (see section 4. of these notes for a <a class="reference internal" href="4.%20Howto%20SkewT-LogP.html"><span class="std std-doc">Howto SkewT-logP manual</span></a>). We’ve drawn such a plot below, using the python package <a class="reference external" href="https://unidata.github.io/MetPy/latest/index.html">Metpy</a>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">metpy.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">SkewT</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
@@ -922,10 +929,10 @@ T = \theta \left(\frac{p}{p_0}\right)^{\frac{R_d}{c_p}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/a465cc298f71878fd98db05076bde42ecf8efb7eff7b172f5b492b20915dd5e7.png" src="_images/a465cc298f71878fd98db05076bde42ecf8efb7eff7b172f5b492b20915dd5e7.png" />
+<img alt="_images/b08db43cad9cf61bd07449e2a58aadf15c1a0e3130817fd6f3dfdf67d834478e.png" src="_images/b08db43cad9cf61bd07449e2a58aadf15c1a0e3130817fd6f3dfdf67d834478e.png" />
 </div>
 </div>
-<p>On this plot, one commonly refers to the skewed, constant temperature lines as “isotherms” and the orange lines of constant <span class="math notranslate nohighlight">\(\theta\)</span> as “dry adiabats”. It nicely shows that if you heat a surface parcel to 50<span class="math notranslate nohighlight">\(^{\circ}\)</span>C in the global atmosphere (where the surface temperature is around 15<span class="math notranslate nohighlight">\(^{\circ}\)</span>C), and let it rise dry adiabatically through the global atmosphere, it will become negatively buoyant <span class="math notranslate nohighlight">\(T_p&lt;T_a\)</span> at around 400 hPa, or 7200 m. Only air parcels from giant forest fires ever start with <span class="math notranslate nohighlight">\(T_p - T_a &gt; 35^{\circ}\)</span>C. Yet we routinely find air parcels from the surface which reach into the stratosphere.</p>
+<p>On this plot, one commonly refers to the skewed, constant temperature lines as “isotherms” and the orange lines of constant <span class="math notranslate nohighlight">\(\theta\)</span> as “dry adiabats”. It nicely shows that if you heat a surface parcel to 50<span class="math notranslate nohighlight">\(^{\circ}\)</span>C in the global atmosphere (where the surface temperature is around 15<span class="math notranslate nohighlight">\(^{\circ}\)</span>C), and let it rise dry adiabatically through the global atmosphere, it will become negatively buoyant <span class="math notranslate nohighlight">\(T_p&lt;T_a\)</span> at around 400 hPa, or 7200 m. Only air parcels from giant forest fires ever start with <span class="math notranslate nohighlight">\(T_p - T_a &gt; 35^{\circ}\)</span>C. Yet we routinely find air parcels from the surface which reach the stratosphere.</p>
 <p>What are we missing? That will be the topic of the next lecture.</p>
 <!-- To include:
 
@@ -1012,16 +1019,16 @@ Why is adiabatic a good assumption? --><hr class="footnotes docutils" />
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "metclim_env"
+            mode: "metclim-book-env"
         },
         kernelOptions: {
-            name: "metclim_env",
+            name: "metclim-book-env",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'metclim_env'</script>
+    <script>kernelName = 'metclim-book-env'</script>
 
                 </article>
               
@@ -1078,7 +1085,7 @@ Why is adiabatic a good assumption? --><hr class="footnotes docutils" />
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dry-static-stability">Dry static stability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-is-dry-adiabatic-thinking-useful">When is dry adiabatic thinking useful?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-temperature">Potential temperature</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skew-t-ln-p-chart">The skew T - ln p chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-skewt-logp-diagram">The skewT-logP diagram</a></li>
 </ul>
   </nav></div>
 

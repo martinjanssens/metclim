@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '3. Thermodynamics (ii)';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Howto SkewT-LogP" href="4.%20Howto%20SkewT-LogP.html" />
     <link rel="prev" title="2. Thermodynamics (i)" href="2.%20Thermodynamics%20%28i%29.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -178,6 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="1.%20Gas%20laws.html">1. Gas laws</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2.%20Thermodynamics%20%28i%29.html">2. Thermodynamics (i)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Thermodynamics (ii) - Moist thermodynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4.%20Howto%20SkewT-LogP.html">4. Howto SkewT-LogP</a></li>
 </ul>
 
     </div>
@@ -507,17 +509,22 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
   \ln \frac{e_s}{e_{s0}} &amp; = -\frac{L_v}{R_v}\left( \frac{1}{T} - \frac{1}{T_0} \right) \\
   e_s(T) &amp; = e_{s0}\exp\left({-\frac{L_v}{R_v}\left(\frac{1}{T} - \frac{1}{T_0} \right)}\right)
 \end{split}\]</div>
-<p>Let’s plot this over the range of temperatures that occurs in the troposphere, around <span class="math notranslate nohighlight">\(T_0=273,15\)</span> K, and <span class="math notranslate nohighlight">\(p=1000\)</span> hPa (we also plot a slightly better approximation, called the August-Roche-Magnus formula, sometimes known as Tetens’ formula, to convince you that we’re capturing the basics):</p>
+<p>Let’s plot this over the range of temperatures that occurs in the troposphere, around <span class="math notranslate nohighlight">\(T_0=273,15\)</span> K, and <span class="math notranslate nohighlight">\(p=1000\)</span> hPa (we also plot a slightly better approximation, called the August-Roche-Magnus formula, sometimes known as Tetens’ formula, to convince you that we’re capturing the basics). In the course exercises, we will use Tetens’ formula:</p>
+<div class="math notranslate nohighlight">
+\[
+  e_s(T) = 610.94 \times \exp\left(17.625\times\frac{T - 273.15}{T - 30.11}\right)
+\]</div>
+<p>Beware that this version takes the temperature in Kelvin as input, but other versions exist which take the temperature in Celsius.</p>
 <!-- The exponential form of this equation, with a large exponent $\frac{L_v}{R_v}=\frac{2.5\cdot 10^6}{461.5}\approx 5420 K$ means that warmer air can rapidly hold more water vapour when $T>T_0$ (because of the minus in the exponent, $T$), which is, for example why Earth's tropics are much moister than the poles. --><div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pathlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">([</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">),</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book-square&quot;</span><span class="p">)])</span>
 
 <span class="n">T_trip</span> <span class="o">=</span> <span class="mf">273.15</span> <span class="c1"># K, Temperature for triple point of water at 1000 hPa air pressure</span>
@@ -529,11 +536,11 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">210</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Our approximation</span>
-<span class="k">def</span> <span class="nf">e_s</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">e_s</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">es_trip</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">lv_trip</span><span class="o">/</span><span class="n">Rv</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">T_trip</span><span class="p">))</span>
 
 <span class="c1"># Tetens&#39; approximation</span>
-<span class="k">def</span> <span class="nf">e_st</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">e_st</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">es_trip</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">17.625</span><span class="o">*</span><span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T_trip</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T_trip</span> <span class="o">+</span> <span class="mf">243.04</span><span class="p">))</span>
 
 <span class="c1"># Typical polar T</span>
@@ -564,7 +571,7 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/f1248a90b0f1b7b422e3c697874a40160dc93d0e32bf64e230163cd8fa5fe336.png" src="_images/f1248a90b0f1b7b422e3c697874a40160dc93d0e32bf64e230163cd8fa5fe336.png" />
+<img alt="_images/12c10fe9609c589c1272b0ef874fbde810761d49a89791cfb3426e47a1ca385c.png" src="_images/12c10fe9609c589c1272b0ef874fbde810761d49a89791cfb3426e47a1ca385c.png" />
 </div>
 </div>
 <p><span class="math notranslate nohighlight">\(e_s\)</span> varies by almost four orders of magnitude over the troposphere! And the horizontal lines in the plot show that even for near-surface air, between the tropics (<span class="math notranslate nohighlight">\(T\sim 300\)</span> K, <span class="math notranslate nohighlight">\(e_s \sim 3600\)</span> Pa) and near the poles (<span class="math notranslate nohighlight">\(T\sim 275\)</span> K, <span class="math notranslate nohighlight">\(e_s \sim 700\)</span> Pa) there is a factor <span class="math notranslate nohighlight">\(3600/700\approx 5.1\)</span> difference in how much water it can hold, before condensating it and raining it back down to the surface. This gives us intuition both for why near-surface air is moist and tropopause air is dry, and why the tropics are moist and the poles are dry. But it doesn’t tell us the balance of processes which achieve this yet.</p>
@@ -573,32 +580,43 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 <h3>The temperature and specific humidity of saturated air<a class="headerlink" href="#the-temperature-and-specific-humidity-of-saturated-air" title="Link to this heading">#</a></h3>
 <p>A different way to say all the above, is that for a parcel with vapour pressure <span class="math notranslate nohighlight">\(e\)</span>, we can define a temperature <span class="math notranslate nohighlight">\(T_d\)</span> at which <span class="math notranslate nohighlight">\(e=e_s(T_d)\)</span> (<span class="math notranslate nohighlight">\(RH=1\)</span>). <span class="math notranslate nohighlight">\(T_d\)</span> is called the <em>dew-point temperature</em>. That is, if we know how much water there is in the parcel (<span class="math notranslate nohighlight">\(e\)</span>), we can solve eq. <a class="reference internal" href="#equation-cc-approx">(33)</a> to tell us at which temperature that water vapour will condensate. This is another way to express “how far we are from saturation”. We have plotted it for the average <span class="math notranslate nohighlight">\(e\)</span> measured over the IGRA archive below, to confirm that on average, the global atmosphere is unsaturated: <span class="math notranslate nohighlight">\(T &gt; T_d\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">metpy.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">SkewT</span>
 
 <span class="n">ds_temp</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;data/ptmean.nc&#39;</span><span class="p">)</span>
 
-<span class="c1"># Load vapour pressure (water vapour content)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/vapr_00z-mly.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;pvap&quot;</span><span class="p">})</span>
-<span class="n">df_vap</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;pres&quot;</span><span class="p">,</span> <span class="s2">&quot;pvap&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;pres&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="c1"># Data from</span>
+<span class="c1"># https://www.ncei.noaa.gov/data/integrated-global-radiosonde-archive/access/monthly-por/</span>
+<span class="c1"># All monthly-averaged vapour pressure and pressure, from all stations, since the start of the record (1947)</span>
 
-<span class="c1"># It is stored in 0.1 Pa, so need to multiply by 10 to convert to Pa</span>
-<span class="n">df_vap</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_vap</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">10</span>
+<span class="c1">## Having such a file, execute the following once to generate an average vapour pressure profile</span>
+<span class="c1">## and merge it with the temperature and pressure data we used in section 2.</span>
+<span class="c1">## We have again commented out the lines, to make the book a little more lightweight.</span>
 
-<span class="c1"># Add to dataset</span>
-<span class="n">ds_vap</span> <span class="o">=</span> <span class="n">df_vap</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
-<span class="n">ds_vap</span> <span class="o">=</span> <span class="n">ds_vap</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">pres</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">ds_vap</span><span class="o">.</span><span class="n">pres</span><span class="p">)))</span>
+<span class="c1"># # Load vapour pressure (water vapour content)</span>
+<span class="c1"># df = pd.read_csv(r&quot;data/vapr_00z-mly.txt&quot;, sep=r&#39;\s+&#39;, header=None).rename(columns={3: &quot;pres&quot;, 4: &quot;pvap&quot;})</span>
+<span class="c1"># df_vap = df[[&quot;pres&quot;, &quot;pvap&quot;]].groupby([&quot;pres&quot;]).mean().loc[3:1000]</span>
+
+<span class="c1"># # It is stored in 0.1 Pa, so need to multiply by 10 to convert to Pa</span>
+<span class="c1"># df_vap[&#39;pvap&#39;] = df_vap[&#39;pvap&#39;] / 10</span>
+
+<span class="c1"># # Add to dataset and store</span>
+<span class="c1"># ds_vap = df_vap.to_xarray()</span>
+<span class="c1"># ds_vap = ds_vap.reindex(pres=list(reversed(ds_vap.pres)))</span>
+<span class="c1"># ds_vap.to_netcdf(r&quot;data/emean.nc&quot;, &#39;w&#39;)</span>
+
+<span class="n">ds_vap</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;data/emean.nc&quot;</span><span class="p">)</span>
 <span class="n">ds_ther</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">([</span><span class="n">ds_temp</span><span class="p">,</span> <span class="n">ds_vap</span><span class="p">])</span>
 <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds_ther</span><span class="p">[</span><span class="s1">&#39;pvap&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s1">&#39;pres&#39;</span><span class="p">:</span><span class="s1">&#39;hgeo&#39;</span><span class="p">})</span>
 
-<span class="k">def</span> <span class="nf">Tdew</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Tdew</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T_trip</span> <span class="o">-</span> <span class="n">Rv</span><span class="o">/</span><span class="n">lv_trip</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e</span><span class="o">/</span><span class="n">es_trip</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Convert to dew point temperature</span>
@@ -619,7 +637,7 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/686584eae11373bcc32e26373aa5fe7439c7860d051835e0518499921bbff5e9.png" src="_images/686584eae11373bcc32e26373aa5fe7439c7860d051835e0518499921bbff5e9.png" />
+<img alt="_images/8cedc08b36743826e8591023900f663f92edce89c1982ce479aa0995d57a7a10.png" src="_images/8cedc08b36743826e8591023900f663f92edce89c1982ce479aa0995d57a7a10.png" />
 </div>
 </div>
 <p>Often, the water vapour content is expressed not in vapour pressure <span class="math notranslate nohighlight">\(e\)</span>, but in fractions of the total mass (<span class="math notranslate nohighlight">\(q_v=m_v/m\)</span>). For those situations, we have to relate <span class="math notranslate nohighlight">\(e\)</span> to <span class="math notranslate nohighlight">\(q_v\)</span>. We can do this using i) the gas law of the dry and moist phases (<span class="math notranslate nohighlight">\(p_d = \rho_d R_d T\)</span>, <span class="math notranslate nohighlight">\(e = \rho_v R_v T\)</span>) and ii) <span class="math notranslate nohighlight">\(p = p_d + e\)</span> (Dalton’s law of partial pressures):</p>
@@ -651,10 +669,10 @@ q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
 <p>We have calculated these lines for a theoretical parcel below:</p>
 <!-- The key point here is that if we know $e_s$ and $p$, we know how much water the parcel can hold before it saturates. And since $e_s$ depends only on $T$ through the Clausius-Claperyon equation, really $q_s$ is a function *only* of $p$ and $T$. -->
 <!-- The height at which we reach it, is called the lifting condensation level. --><div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parcel properties at its outset</span>
@@ -679,11 +697,11 @@ q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
 <span class="c1"># 1. Initial dew-point temperature</span>
 
 <span class="c1"># With full definition for qs</span>
-<span class="k">def</span> <span class="nf">e_sq</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">e_sq</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">qs</span> <span class="o">*</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="n">qs</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">Rd</span><span class="o">/</span><span class="n">Rv</span><span class="p">)</span> <span class="o">+</span> <span class="n">Rd</span><span class="o">/</span><span class="n">Rv</span><span class="p">)</span>
 
 <span class="c1"># With approximate definition for qs</span>
-<span class="k">def</span> <span class="nf">e_sq_approx</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">e_sq_approx</span><span class="p">(</span><span class="n">qs</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">qs</span> <span class="o">*</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">Rv</span><span class="p">)</span>
 
 <span class="n">Tdew0</span> <span class="o">=</span> <span class="n">Tdew</span><span class="p">(</span><span class="n">e_sq</span><span class="p">(</span><span class="n">qv</span><span class="p">,</span> <span class="n">p0</span><span class="p">))</span>
@@ -699,7 +717,7 @@ q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
              <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
 
 <span class="c1"># 3. Line of constant potential temperature</span>
-<span class="k">def</span> <span class="nf">Tpot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Tpot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">T</span><span class="o">*</span><span class="p">(</span><span class="mf">1e5</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
 <span class="n">Tpot0</span> <span class="o">=</span> <span class="n">Tpot</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">p0</span><span class="p">)</span>
 <span class="n">T_tpotcst</span> <span class="o">=</span> <span class="n">Tpot0</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mf">1e5</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
@@ -720,7 +738,7 @@ q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/01ef3d6704f31abc9af54f72b59f44a25031c509ba37c34dfe52c021dd6dc804.png" src="_images/01ef3d6704f31abc9af54f72b59f44a25031c509ba37c34dfe52c021dd6dc804.png" />
+<img alt="_images/909a971b7fb210d3eb9b564f84db81fa1f4010fb084a1633973aca298464f47a.png" src="_images/909a971b7fb210d3eb9b564f84db81fa1f4010fb084a1633973aca298464f47a.png" />
 </div>
 </div>
 </section>
@@ -777,17 +795,17 @@ $<span class="math notranslate nohighlight">\(
 <p>And this has given us a new lapse rate, the <em>moist adiabatic lapse rate</em>.</p>
 <p>Let us evaluate this lapse rate and compare it to our global radiosonde archive, and the dry adiabatic lapse rate we derived last lecture.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;./mplstyle/book&quot;</span><span class="p">))</span>
 
 <span class="n">grav</span> <span class="o">=</span> <span class="mf">9.81</span>
 
-<span class="k">def</span> <span class="nf">q_s</span><span class="p">(</span><span class="n">es</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">q_s</span><span class="p">(</span><span class="n">es</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">Rd</span> <span class="o">/</span> <span class="n">Rv</span> <span class="o">*</span> <span class="n">es</span> <span class="o">/</span> <span class="n">p</span>
     
 <span class="c1"># Parcel temperatures initialised to zero</span>
@@ -845,7 +863,7 @@ $<span class="math notranslate nohighlight">\(
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean dT/dz for moist adiabatic ascent: -0.007089509492679575
 </pre></div>
 </div>
-<img alt="_images/b67d49ec22373fb5292ceb2334cdc3a3c6f38acc465523875d0d879089bc2bcb.png" src="_images/b67d49ec22373fb5292ceb2334cdc3a3c6f38acc465523875d0d879089bc2bcb.png" />
+<img alt="_images/523f5a095fb3b49db9b3ed949844b7d83e0dc9112d80e08168ec97edf022b1ce.png" src="_images/523f5a095fb3b49db9b3ed949844b7d83e0dc9112d80e08168ec97edf022b1ce.png" />
 </div>
 </div>
 <p>This is not bad! The tropospheric temperature structure looks very much like that of a parcel lifted adiabatically from the surface at saturation with respect to liquid water.</p>
@@ -866,10 +884,10 @@ $<span class="math notranslate nohighlight">\(
 <p>If temperatures begin to drop off at an even slower rate than 7 K/km (and all the processes we have ignored could make that happen locally), parcels will always have <span class="math notranslate nohighlight">\(T_p&lt;T_e\)</span>, and never rise on their own. We say that the atmosphere is <em>statically stable</em> in such a situation: There will be no convection, until other processes cool the atmosphere, or we put a giant heat source at the surface.</p>
 <p>To illustrate all this, we have drawn a parcel ascent in the plot below. If we imagine atmospheric temperature profiles varying away from the same surface temperature, we can identify which of these atmospheres would be unstable, conditionally stable and stable to our parcel’s adiabatic ascent.</p>
 <!-- we have got a very basic model of the global troposphere's vertical pressure and temperature structure, which isn't too far from what is observed. The picture is: --><div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parcel properties at its outset</span>
@@ -896,7 +914,7 @@ $<span class="math notranslate nohighlight">\(
              <span class="n">transform</span><span class="o">=</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
 
 <span class="c1"># 3. Line of constant potential temperature</span>
-<span class="k">def</span> <span class="nf">Tpot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Tpot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">T</span><span class="o">*</span><span class="p">(</span><span class="mf">1e5</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
 <span class="n">Tpot0</span> <span class="o">=</span> <span class="n">Tpot</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">p0</span><span class="p">)</span>
 <span class="n">T_tpotcst</span> <span class="o">=</span> <span class="n">Tpot0</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="mf">1e5</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">Rd</span><span class="o">/</span><span class="n">cpd</span><span class="p">)</span>
@@ -915,8 +933,8 @@ $<span class="math notranslate nohighlight">\(
 <span class="c1"># 5. Line of constant equivalent potential temperature, at saturation, from the LCL</span>
 <span class="c1"># Let metpy figure this out, because inverting equivalent potential temperature so it </span>
 <span class="c1"># expresses temperature in terms of pressure requires a root solver</span>
-<span class="kn">from</span> <span class="nn">metpy.calc</span> <span class="kn">import</span> <span class="n">moist_lapse</span>
-<span class="kn">from</span> <span class="nn">metpy.units</span> <span class="kn">import</span> <span class="n">units</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">metpy.calc</span><span class="w"> </span><span class="kn">import</span> <span class="n">moist_lapse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">metpy.units</span><span class="w"> </span><span class="kn">import</span> <span class="n">units</span>
 <span class="n">T_ma</span> <span class="o">=</span> <span class="n">moist_lapse</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">index_lcl</span><span class="p">:]</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">Pa</span> <span class="p">,</span> <span class="n">T_lcl</span> <span class="o">*</span> <span class="n">units</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
 <span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">index_lcl</span><span class="p">:]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span> <span class="n">T_ma</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
 <span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;5. T at conserved $\theta_e$ at saturation&#39;</span><span class="p">,</span> 
@@ -935,7 +953,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/982599db7e17f1254fd21bbb303895666c3411c5e5e5d4ec2dfccc2113c0e0c5.png" src="_images/982599db7e17f1254fd21bbb303895666c3411c5e5e5d4ec2dfccc2113c0e0c5.png" />
+<img alt="_images/a3064ed2c0813a308ec39bba1dce8e93399383ad7a9d3d40363f014ee500ef7a.png" src="_images/a3064ed2c0813a308ec39bba1dce8e93399383ad7a9d3d40363f014ee500ef7a.png" />
 </div>
 </div>
 </section>
@@ -1043,16 +1061,16 @@ q_v = \frac{m_v}{m_v+m_d} = \frac{m_v/m_d}{m_v/m_d+m_d/m_d} = \frac{r_v}{1+r_v} 
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "metclim_env"
+            mode: "metclim-book-env"
         },
         kernelOptions: {
-            name: "metclim_env",
+            name: "metclim-book-env",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'metclim_env'</script>
+    <script>kernelName = 'metclim-book-env'</script>
 
                 </article>
               
@@ -1072,6 +1090,15 @@ q_v = \frac{m_v}{m_v+m_d} = \frac{m_v/m_d}{m_v/m_d+m_d/m_d} = \frac{r_v}{1+r_v} 
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">2. Thermodynamics (i)</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="4.%20Howto%20SkewT-LogP.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">4. Howto SkewT-LogP</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

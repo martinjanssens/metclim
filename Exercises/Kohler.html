@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -386,55 +386,94 @@ document.write(`
                   
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">aT</span>   <span class="o">=</span> <span class="mf">3.3e-7</span>   <span class="c1"># Km          - Kelvin factor</span>
-<span class="n">b</span>    <span class="o">=</span> <span class="mf">43e-6</span>    <span class="c1"># m^3 mol^-1  - Raoult factor</span>
-<span class="n">rs</span>   <span class="o">=</span> <span class="mf">0.008e-6</span> <span class="c1"># m           - Dry radius</span>
-<span class="n">Ms</span>   <span class="o">=</span> <span class="mf">58.44e-3</span> <span class="c1"># kg mol^-1   - Molar mass of NaCl</span>
-<span class="n">rhos</span> <span class="o">=</span> <span class="mi">2200</span>     <span class="c1"># kg m^-3     - Dry density of NaCl</span>
-<span class="n">T</span>    <span class="o">=</span> <span class="mf">273.15</span>   <span class="c1"># K           - Temperature</span>
-<span class="n">iH</span>   <span class="o">=</span> <span class="mi">2</span>        <span class="c1"># -           - Van &#39;t Hoff factor</span>
+<span class="c1">## Time variables</span>
+<span class="n">nt</span>           <span class="o">=</span> <span class="mi">10000</span>   <span class="c1">## Increasing tau</span>
 
-<span class="n">ms</span> <span class="o">=</span> <span class="mi">4</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">rhos</span><span class="o">*</span><span class="n">rs</span><span class="o">**</span><span class="mi">3</span>
+<span class="c1">## Output variables (array)</span>
+<span class="n">rad</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nt</span><span class="p">)</span>    <span class="c1">## radius droplet </span>
+<span class="n">one</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nt</span><span class="p">)</span>    <span class="c1">## radius droplet </span>
+<span class="n">s</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nt</span><span class="p">)</span>    <span class="c1">## equilibrium saturation ratio </span>
 
-<span class="n">r</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">SRa</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">b</span><span class="o">*</span><span class="n">iH</span><span class="o">*</span><span class="n">ms</span><span class="o">/</span><span class="n">Ms</span><span class="o">/</span><span class="n">r</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">SKe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">aT</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
-<span class="n">SKo</span> <span class="o">=</span> <span class="n">SRa</span><span class="o">*</span><span class="n">SKe</span>
-<span class="n">rmum</span> <span class="o">=</span> <span class="n">r</span><span class="o">*</span><span class="mf">1e6</span>
+<span class="n">sigma</span>       <span class="o">=</span> <span class="mf">7.5e-02</span>            <span class="c1">## Surface tension of water [N m-1]</span>
+<span class="n">ifv</span>         <span class="o">=</span> <span class="mi">2</span>                  <span class="c1">## van&#39;t hoff factor</span>
+<span class="n">Rv</span>          <span class="o">=</span> <span class="mf">482.0</span>              <span class="c1">## specific gas constant for water vapour</span>
+<span class="n">rhowater</span>    <span class="o">=</span> <span class="mf">1000.</span>              <span class="c1">## density water [kg m-3]</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">();</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rmum</span><span class="p">,</span><span class="n">SKe</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$a/r$&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkseagreen&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rmum</span><span class="p">,</span><span class="n">SRa</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$-b/r^3$&#39;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;peachpuff&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rmum</span><span class="p">,</span><span class="n">SKo</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$e&#39;/e_s$&quot;</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;midnightblue&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Droplet radius $r$ [$\mu$m]&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Relative supersaturation $S(r)$ [-]&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mf">0.97</span><span class="p">,</span><span class="mf">1.03</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Figures/kohler.pdf&#39;</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1">## CCN composition of sodium chloride</span>
+<span class="n">cf</span>          <span class="o">=</span> <span class="mf">1e-03</span>              <span class="c1">## conversion factor from grams to kg</span>
+<span class="n">m_Na</span>        <span class="o">=</span> <span class="mf">22.99</span><span class="o">*</span><span class="n">cf</span>           <span class="c1">## sodium atomic mass [g mol-1]</span>
+<span class="n">m_Cl</span>        <span class="o">=</span> <span class="mf">35.45</span><span class="o">*</span><span class="n">cf</span>           <span class="c1">## clhor atmomic mass [g mol-1]</span>
+<span class="n">m_H</span>         <span class="o">=</span>  <span class="mf">1.01</span><span class="o">*</span><span class="n">cf</span>           <span class="c1">## hydrogen atmomic mass [g mol-1]</span>
+<span class="n">m_O</span>         <span class="o">=</span> <span class="mf">16.0</span> <span class="o">*</span><span class="n">cf</span>           <span class="c1">## oxygen atmomic mass [g mol-1]</span>
+
+<span class="n">molar_s</span>     <span class="o">=</span>   <span class="n">m_Na</span> <span class="o">+</span> <span class="n">m_Cl</span>
+<span class="n">molar_w</span>     <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">m_H</span>  <span class="o">+</span> <span class="n">m_O</span>
+
+<span class="c1">## Specific considtions solute and temperature</span>
+<span class="n">T</span>           <span class="o">=</span> <span class="mi">278</span>               <span class="c1">## temperature</span>
+<span class="n">ms</span>          <span class="o">=</span> <span class="mf">1.e-17</span><span class="o">*</span><span class="n">cf</span>         <span class="c1">## solute mass</span>
+
+<span class="c1">## Köhler curve </span>
+<span class="n">a</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">rhowater</span> <span class="o">*</span> <span class="n">Rv</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">b</span>           <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">ifv</span><span class="o">*</span><span class="n">ms</span><span class="o">*</span><span class="n">molar_w</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">rhowater</span><span class="o">*</span><span class="n">molar_s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c1">## Tendencies</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nt</span><span class="p">):</span>
+	<span class="n">rad</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>      <span class="o">=</span> <span class="mf">0.001</span><span class="o">*</span><span class="n">r</span>
+	<span class="n">rad</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>      <span class="o">=</span> <span class="n">rad</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-06</span>   <span class="c1">## units meter </span>
+	<span class="n">one</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>      <span class="o">=</span> <span class="mi">1</span>          
+	<span class="n">s</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>      <span class="o">=</span> <span class="mf">1.</span> <span class="o">+</span> <span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">rad</span><span class="p">[</span><span class="n">r</span><span class="p">])</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="p">(</span><span class="n">rad</span><span class="p">[</span><span class="n">r</span><span class="p">]</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span>  
+    
+<span class="c1">## Plotting results</span>
+<span class="n">sse</span> <span class="o">=</span> <span class="mf">1.0025</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">rad</span><span class="o">*</span><span class="mf">1e06</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">rad</span><span class="o">*</span><span class="mf">1e06</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">leg1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">leg1</span><span class="o">.</span><span class="n">draw_frame</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">0.98</span><span class="p">,</span><span class="mf">1.015</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Radius ($\mu$m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Saturation ratio&#39;</span><span class="p">)</span>
+<span class="c1">#vlines(0.06,0, 1.012, linestyle=&quot;dashed&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">sse</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s1">&#39;environment&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.985</span><span class="p">,</span><span class="s1">&#39;k^&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s1">&#39;point A&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span><span class="mf">1.0099</span><span class="p">,</span><span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span><span class="s1">&#39;point B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Figures/kohler.pdf&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1f2d8bff0251bc446f208224d6c8426e9ac4e2cfa6749825163cdab30a033a30.png" src="../_images/1f2d8bff0251bc446f208224d6c8426e9ac4e2cfa6749825163cdab30a033a30.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:54: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:54: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+/var/folders/3b/5n5xklhj5v384nytxt4zccym0000gn/T/ipykernel_44932/339214258.py:54: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.xlabel(&#39;Radius ($\mu$m)&#39;)
+/var/folders/3b/5n5xklhj5v384nytxt4zccym0000gn/T/ipykernel_44932/339214258.py:50: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  leg1 = plt.legend(loc=2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.1194364010865997e-09 1.4722649253161982e-24
+</pre></div>
+</div>
+<img alt="../_images/ff967bad9fdad291c58c136eae395892c270a9707dec208d4f2b5f4e30cc4a90.png" src="../_images/ff967bad9fdad291c58c136eae395892c270a9707dec208d4f2b5f4e30cc4a90.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bans</span> <span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">iH</span><span class="o">*</span><span class="n">ms</span><span class="o">/</span><span class="n">Ms</span>
-<span class="n">aans</span> <span class="o">=</span> <span class="n">aT</span><span class="o">/</span><span class="n">T</span>
-
-<span class="n">ract</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">bans</span><span class="o">/</span><span class="n">aans</span><span class="p">)</span>
-<span class="n">ract</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ract</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">b</span><span class="o">/</span><span class="n">a</span><span class="p">)</span>
+<span class="n">ract</span><span class="o">/</span><span class="mf">1e-6</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(1.313073411559048e-07)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.06281363083482268)
 </pre></div>
 </div>
 </div>
@@ -449,16 +488,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "metclim_env"
+            mode: "metclim-book-env"
         },
         kernelOptions: {
-            name: "metclim_env",
+            name: "metclim-book-env",
             path: "./Exercises"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'metclim_env'</script>
+    <script>kernelName = 'metclim-book-env'</script>
 
                 </article>
               
