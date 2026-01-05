@@ -496,7 +496,7 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
 </section>
 <section id="the-clausius-clapeyron-equation">
 <h3>The Clausius-Clapeyron equation<a class="headerlink" href="#the-clausius-clapeyron-equation" title="Link to this heading">#</a></h3>
-<p>This relationship between the vapour pressure at which the air saturates <span class="math notranslate nohighlight">\(e_s\)</span> and temperature, is given by the “Clausius-Clapeyron” equation:</p>
+<p>This relationship between the vapour pressure at which the air saturates <span class="math notranslate nohighlight">\(e_s\)</span> (in Pa) and temperature (in K), is given by the “Clausius-Clapeyron” equation:</p>
 <div class="math notranslate nohighlight" id="equation-clausius">
 <span class="eqno">(32)<a class="headerlink" href="#equation-clausius" title="Link to this equation">#</a></span>\[
   \frac{1}{e_s}\frac{de_s}{dT} = \frac{L_v}{R_vT^2}.
@@ -509,12 +509,12 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
   \ln \frac{e_s}{e_{s0}} &amp; = -\frac{L_v}{R_v}\left( \frac{1}{T} - \frac{1}{T_0} \right) \\
   e_s(T) &amp; = e_{s0}\exp\left({-\frac{L_v}{R_v}\left(\frac{1}{T} - \frac{1}{T_0} \right)}\right)
 \end{split}\]</div>
-<p>Let’s plot this over the range of temperatures that occurs in the troposphere, around <span class="math notranslate nohighlight">\(T_0=273,15\)</span> K, and <span class="math notranslate nohighlight">\(p=1000\)</span> hPa (we also plot a slightly better approximation, called the August-Roche-Magnus formula, sometimes known as Tetens’ formula, to convince you that we’re capturing the basics). In the course exercises, we will use Tetens’ formula:</p>
+<p>Let’s plot this over the range of temperatures that occurs in the troposphere, around <span class="math notranslate nohighlight">\(T_0=273,15\)</span> K, and <span class="math notranslate nohighlight">\(p=1000\)</span> hPa. We also plot a slightly better approximation, called Tetens’ formula <a class="footnote-reference brackets" href="#fntet" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>, which we will use in the course exercises and which appears in the reader:</p>
 <div class="math notranslate nohighlight">
 \[
-  e_s(T) = 610.94 \times \exp\left(17.625\times\frac{T - 273.15}{T - 30.11}\right)
+  e_s(T) = 0.611 \times \exp\left(17.2694\times\frac{T - 273.16}{T - 35.86}\right)
 \]</div>
-<p>Beware that this version takes the temperature in Kelvin as input, but other versions exist which take the temperature in Celsius.</p>
+<p>Beware that this version takes as input the temperature in Kelvin and the pressure in kPa, but other versions exist which take the temperature in Celsius, or the pressure in Pa or hPa.</p>
 <!-- The exponential form of this equation, with a large exponent $\frac{L_v}{R_v}=\frac{2.5\cdot 10^6}{461.5}\approx 5420 K$ means that warmer air can rapidly hold more water vapour when $T>T_0$ (because of the minus in the exponent, $T$), which is, for example why Earth's tropics are much moister than the poles. --><div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -651,7 +651,7 @@ To relate this to raising the parcel's potential energy $gdz$, let's expand $dp/
   q_s(p, T) = \frac{R_d}{R_v}\frac{e_s(T)}{p + e_s(T)(R_d/R_v - 1)}
 \]</div>
 <p>We can see from this relation that to determine <span class="math notranslate nohighlight">\(q_s\)</span>, we need to know both <span class="math notranslate nohighlight">\(e_s(T)\)</span> and <span class="math notranslate nohighlight">\(p\)</span>. Still, the key point is that this relationship defines the dew-point temperature, so that <span class="math notranslate nohighlight">\(q_v = q_s(p, e_s(T_d))\)</span>: At a given pressure, if we know a parcel’s <span class="math notranslate nohighlight">\(q_v\)</span>, we can figure out at which temperature it saturates.</p>
-<p>Because <span class="math notranslate nohighlight">\(p\)</span> is usually 1-2 orders of magnitude greater than <span class="math notranslate nohighlight">\(e_s\)</span> at the same <span class="math notranslate nohighlight">\(T\)</span>, we can to great approximation write<a class="footnote-reference brackets" href="#fnmrs" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>:</p>
+<p>Because <span class="math notranslate nohighlight">\(p\)</span> is usually 1-2 orders of magnitude greater than <span class="math notranslate nohighlight">\(e_s\)</span> at the same <span class="math notranslate nohighlight">\(T\)</span>, we can to great approximation write<a class="footnote-reference brackets" href="#fnmrs" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>:</p>
 <div class="math notranslate nohighlight" id="equation-qsat-approx">
 <span class="eqno">(36)<a class="headerlink" href="#equation-qsat-approx" title="Link to this equation">#</a></span>\[
 q_s \approx \frac{R_d}{R_v}\frac{e_s}{p}
@@ -876,7 +876,7 @@ $<span class="math notranslate nohighlight">\(
 \frac{dw}{dt} &amp; = - \frac{\rho_p - \rho_e}{\rho_p}g = \frac{T_{v_p} - T_{v_e}}{T_{v_e}}g \\
               &amp; \approx \frac{T_{p} - T_{e}}{T_{e}}g.
 \end{split}\]</div>
-<p>That is, we ignore the lightness of the water vapour in this approximation of the buoyancy<a class="footnote-reference brackets" href="#fnignoringqv" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<p>That is, we ignore the lightness of the water vapour in this approximation of the buoyancy<a class="footnote-reference brackets" href="#fnignoringqv" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
 <p>Suppose we had a troposphere where the temperature reduced more quickly than a dry adiabat. Then parcels moving along a dry adiabat would be warmer than the atmosphere (<span class="math notranslate nohighlight">\(T_p &gt; T_e\)</span>) at any height above the surface. We say that the atmosphere is <em>statically unstable</em>: The parcel would accelerate upwards until the tropopause, where it would quickly become negatively buoyant. We call the ascent of such parcels “dry convection”.</p>
 <p>In a real atmosphere, the air parcels don’t ascend adiabatically, but actually mix some of their warm air into the environment. So, dry convection would warm the atmosphere, until it looks exactly like a dry adiabat (<span class="math notranslate nohighlight">\(dT/dz\approx-10\)</span> K/km). Now, the atmosphere is <em>neutrally stable</em> to dry adiabatic ascent - if you warm a parcel by 1K at the surface and move it along a dry adiabat, it will always be 1K warmer. This is often the situation in the atmospheric boundary layer, as we discussed last lecture.</p>
 <p>However, when temperature drops off less quickly than a dry adiabat (<span class="math notranslate nohighlight">\(dT/dz&gt;-10\)</span>), we can still make parcels positively buoyant, <em>if</em> we warm them just enough to take them to the LCL: From there on, they saturate and lose temperature moist adiabatically (<span class="math notranslate nohighlight">\(dT/dz_m\)</span>). What is <span class="math notranslate nohighlight">\(dT/dz_m\)</span>? Eq. <a class="reference internal" href="#equation-moist-adiabat">(39)</a> shows that it actually depends on <span class="math notranslate nohighlight">\(T\)</span>, so it’s not constant with height. In fact, because <span class="math notranslate nohighlight">\(q_s\)</span> becomes very small at the low temperatures high in the troposphere, <span class="math notranslate nohighlight">\(dT/dz_m\approx -g/c_p \equiv -dT/dz_d\)</span> at high altitudes (you can see the lines orange and green lines become parallel in the plot above). However, a good average over the troposphere is <span class="math notranslate nohighlight">\(\Gamma_m\approx-7\)</span> K/km. So an atmosphere where temperature drops off more quickly than <span class="math notranslate nohighlight">\(\sim\)</span>7 K/km is statically unstable to moist adiabatic, cloudy updrafts, called “moist convection”. These moist convective storms have <span class="math notranslate nohighlight">\(T_p&gt;T_e\)</span> over a large range of the troposphere. The temperature drops of at a rate between <span class="math notranslate nohighlight">\(dT/dz_d\)</span> and <span class="math notranslate nohighlight">\(dT/dz_m\)</span> (roughly 10 and 7 K/km), we say that the atmosphere is <em>conditionally unstable</em>, i.e. it is unstable, <em>if</em> the parcels are condensating.</p>
@@ -1034,8 +1034,12 @@ q_v = \frac{m_v}{m_v+m_d} = \frac{m_v/m_d}{m_v/m_d+m_d/m_d} = \frac{r_v}{1+r_v} 
 \)</span>$</p>
 <p>I.e., these quantities are almost the same, so long as <span class="math notranslate nohighlight">\(r_v&lt;&lt;1\)</span>, which is usually a good approximation.</p>
 </aside>
-<aside class="footnote brackets" id="fnmrs" role="doc-footnote">
+<aside class="footnote brackets" id="fntet" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Several approximations like this exist, all with slightly different coefficients, such as the August/Roche/Magnus formula. We will use the coefficients above for this course.</p>
+</aside>
+<aside class="footnote brackets" id="fnmrs" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
 <p>We could alternatively have chosen to work with a <em>saturation mixing ratio</em> <span class="math notranslate nohighlight">\(r_s\)</span>, which, since <span class="math notranslate nohighlight">\(r = m_v/m_d\)</span> equals:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1044,7 +1048,7 @@ q_v = \frac{m_v}{m_v+m_d} = \frac{m_v/m_d}{m_v/m_d+m_d/m_d} = \frac{r_v}{1+r_v} 
 <p>Because this expression is easier to write down than eq. <a class="reference internal" href="#equation-qsat">(35)</a> for <span class="math notranslate nohighlight">\(q_s\)</span>, you will often see saturation quantities expressed in mixing ratios. Still, when <span class="math notranslate nohighlight">\(p&gt;&gt;e_s\)</span>, this again reduces to eq. <a class="reference internal" href="#equation-qsat-approx">(36)</a>, so in most practical settings <span class="math notranslate nohighlight">\(q_s\approx r_s\)</span>. Since we have been working in mass fractions all along, we will therefore continue with that choice. We verify this approximation in the example calculation coded below.</p>
 </aside>
 <aside class="footnote brackets" id="fnignoringqv" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
 <p>This is a bad approximation in many updrafts in the atmosophere, so we just make it for illustrative purposes here.</p>
 </aside>
 </aside>
